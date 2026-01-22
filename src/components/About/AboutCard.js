@@ -8,37 +8,47 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Hi everyone! I’m <span className="purple">Soumyajit Behera</span>{" "}
-            from <span className="purple">Bhubaneswar, India</span>.
+            <span className="hover-glow">Hi everyone, I am </span><span className="purple hover-glow">Patrick Ennin Selby </span>
+            <span className="hover-glow">from </span><span className="purple hover-glow"> Grambling State University</span>.
             <br />
-            I’m currently working as a{" "}
-            <span className="purple">Software Developer</span> at{" "}
-            <span className="purple">Juspay</span>.
-            <br />I hold an Integrated M.Sc. (IMSc) in{" "}
-            <span className="purple">Mathematics and Computing</span> from{" "}
-            <span className="purple">BIT Mesra</span>.
+            <span className="hover-glow">I am a Sophomore </span><span className="purple hover-glow">Cybersecurity Student</span><span className="hover-glow"> with a minor in Computer Information Systems.</span>
+            <br />
+            <span className="hover-glow">I am currently looking for </span><span className="purple hover-glow">Internships and Mentorship</span><span className="hover-glow"> opportunities.</span>
             <br />
             <br />
-            Outside of coding, I love engaging in activities that keep me
-            creative and inspired:
+            <strong className="purple hover-glow">Education: </strong> <span className="hover-reveal"> B.S. Cybersecurity (Minor: CIS) at </span><span className="purple hover-glow">Grambling State University</span><span className="hover-glow"> (GPA: 3.9/4.0).</span>
+            <br />
+            <br />
+            <strong className="purple hover-glow">Affiliations: </strong> <span className="hover-reveal"> ColorStack, NSBE, IEEE, Honor Society®, S.E.C.U.R.E. Cybersecurity Club.</span>
+            <br />
+            <br />
+            <strong className="purple hover-glow">Certifications: </strong>
+            <br />
+            <ul>
+              <li className="hover-glow"><a href="https://www.credly.com/badges/cf7adf90-a999-404f-9006-d724ab1f9bff/public_url" target="_blank" rel="noreferrer">AWS Cloud Fundamentals</a></li>
+              <li className="hover-glow"><a href="https://www.coursera.org/account/accomplishments/verify/21LM0CGZI05F" target="_blank" rel="noreferrer">Google Cybersecurity Professional</a></li>
+              <li className="hover-glow"><a href="https://www.credly.com/badges/c5383299-b317-47d8-83b2-f6efddbf0c77/public_url" target="_blank" rel="noreferrer">IBM Cybersecurity Analyst </a></li>
+            </ul>
+            <br />
+            <span className="hover-reveal">Apart from coding and security research, some other activities that I love include:</span>
           </p>
 
           <ul>
-            <li className="about-activity">
-              <ImPointRight /> Playing Games 🎮
+            <li className="about-activity hover-glow">
+              <ImPointRight /> Playing CTFs (Capture The Flag)
             </li>
-            <li className="about-activity">
-              <ImPointRight /> Writing Tech Blogs ✍️
+            <li className="about-activity hover-glow">
+              <ImPointRight /> Exploring Cloud Architectures
             </li>
-            <li className="about-activity">
-              <ImPointRight /> Traveling and Exploring New Places 🌍
+            <li className="about-activity hover-glow">
+              <ImPointRight /> Learning New Technologies
             </li>
           </ul>
 
           <p style={{ color: "rgb(155 126 172)" }}>
-            "Strive to build things that make a difference!"{" "}
+            <span className="hover-reveal">"In a world of evolving threats, I choose to be the variable that hackers never accounted for."</span>{" "}
           </p>
-          <footer className="blockquote-footer">Soumyajit</footer>
+          <footer className="blockquote-footer hover-glow">Patrick</footer>
         </blockquote>
       </Card.Body>
     </Card>

@@ -1,0 +1,7 @@
+<svg width="64" height="64" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <!-- Shield Base -->
+    <path d="M20 2C10 2 5 10 5 18c0 11 8 18 15 20 7-2 15-9 15-20 0-8-5-16-15-16z" fill="none" stroke="#64ffda" stroke-width="2.5"/>
+    <!-- Circuit Trace / Core -->
+    <path d="M20 12v8m-6 4l6-4 6 4" fill="none" stroke="#64ffda" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="20" cy="12" r="2.5" fill="#64ffda"/>
+</svg>
