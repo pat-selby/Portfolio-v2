@@ -32,7 +32,7 @@ function Projects() {
             isBlog={false}
             title="IT Risk Assessment & Data Classification Lab"
             description="Conducted an IT risk assessment by inventorying organizational assets, classifying sensitive data, and scoring risks using likelihood and impact analysis. Developed a formal data classification standard to define handling requirements. Translated technical risk findings into leadership-ready documentation."
-            ghLink="https://github.com/pat-selby"
+            ghLink="https://github.com/pat-selby/bayoucare-risk-classification-lab"
           />
         </Col>
 
@@ -42,7 +42,7 @@ function Projects() {
             isBlog={false}
             title="Incident Response & Evidence Documentation Lab"
             description="Simulated an incident response workflow by detecting failed authentication attempts, preserving authentication log evidence, and documenting response actions. Analyzed Linux authentication logs to extract failed login events. Performed a post-incident review to identify root causes and preventative controls."
-            ghLink="https://github.com/pat-selby"
+            ghLink="https://github.com/pat-selby/pineridge-incident-response-lab"
           />
         </Col>
       </Container>
