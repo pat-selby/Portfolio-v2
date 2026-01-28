@@ -26,20 +26,8 @@ function Toolstack() {
         <div className="tech-icons-text">Vs Code</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons ">
-        <SiCodesandbox fontSize={"50px"} />
-        <div className="tech-icons-text">Cursor</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons ">
         <SiOpenai fontSize={"50px"} />
-        <div className="tech-icons-text">ChatGPT</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons ">
-        <SiGoogle fontSize={"50px"} />
-        <div className="tech-icons-text">Gemini / AI Tools</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons ">
-        <SiGoogle fontSize={"50px"} />
-        <div className="tech-icons-text">Google Antigravity</div>
+        <div className="tech-icons-text">AI Tools (Gemini/ChatGPT)</div>
       </Col>
     </Row>
   );

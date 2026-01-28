@@ -31,14 +31,19 @@ function Techstack() {
         <SiGit fontSize={"50px"} />
         <div className="tech-icons-text">Git</div>
       </Col>
+
+      {/* Network & Security Skills (Text Based) */}
       <Col xs={4} md={2} className="tech-icons">
-        <SiDocker fontSize={"50px"} />
-        <div className="tech-icons-text">Docker</div>
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>Nmap</div>
+        <div className="tech-icons-text">Scanning</div>
       </Col>
-      {/* Added generic Nmap manually if icon not found, or just text */}
       <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "2em", fontWeight: "bold" }}>Nmap</div>
-        <div className="tech-icons-text">Network Scanning</div>
+        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Incident Response</div>
+        <div className="tech-icons-text">Basic</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Threat Modeling</div>
+        <div className="tech-icons-text">Analysis</div>
       </Col>
     </Row>
   );

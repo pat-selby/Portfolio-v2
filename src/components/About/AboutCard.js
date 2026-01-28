@@ -16,21 +16,24 @@ function AboutCard() {
             <span className="hover-glow">I am currently looking for </span><span className="purple hover-glow">Internships and Mentorship</span><span className="hover-glow"> opportunities.</span>
             <br />
             <br />
-            <strong className="purple hover-glow">Education: </strong> <span className="hover-reveal"> B.S. Cybersecurity (Minor: CIS) at </span><span className="purple hover-glow">Grambling State University</span><span className="hover-glow"> (GPA: 3.9/4.0).</span>
+            <strong className="purple hover-glow">Education: </strong> <span className="hover-reveal"> B.S. Cybersecurity (Minor: Computer Information Systems (CIS) | GPA: 3.9/4.0) at </span><span className="purple hover-glow">Grambling State University</span>.
             <br />
             <br />
-            <strong className="purple hover-glow">Affiliations: </strong> <span className="hover-reveal"> ColorStack, NSBE, IEEE, Honor Society®, S.E.C.U.R.E. Cybersecurity Club.</span>
+            <strong className="purple hover-glow">Relevant Coursework: </strong> <span className="hover-reveal"> Attacks, Threats, and Vulnerabilities (CompTIA Security+ SY0-701 aligned), Discrete Structures, Data Structures & Algorithms, Probability & Statistics I, Calculus I.</span>
+            <br />
+            <br />
+            <strong className="purple hover-glow">Affiliations: </strong> <span className="hover-reveal"> ColorStack, NSBE, IEEE, Honor Society®, S.E.C.U.R.E. Cybersecurity Club (GSU), The Lantern Network (Career & Mentorship), National Society of Leadership and Success (NSLS), National Association of Black Accountants (NABA).</span>
             <br />
             <br />
             <strong className="purple hover-glow">Certifications: </strong>
             <br />
             <ul>
-              <li className="hover-glow"><a href="https://www.credly.com/badges/cf7adf90-a999-404f-9006-d724ab1f9bff/public_url" target="_blank" rel="noreferrer">AWS Cloud Fundamentals</a></li>
-              <li className="hover-glow"><a href="https://www.coursera.org/account/accomplishments/verify/21LM0CGZI05F" target="_blank" rel="noreferrer">Google Cybersecurity Professional</a></li>
-              <li className="hover-glow"><a href="https://www.credly.com/badges/c5383299-b317-47d8-83b2-f6efddbf0c77/public_url" target="_blank" rel="noreferrer">IBM Cybersecurity Analyst </a></li>
+              <li className="hover-glow"><a href="https://www.credly.com/badges/cf7adf90-a999-404f-9006-d724ab1f9bff/public_url" target="_blank" rel="noreferrer">AWS Academy Cloud Foundations (Apr 2025)</a></li>
+              <li className="hover-glow"><a href="https://www.coursera.org/account/accomplishments/verify/21LM0CGZI05F" target="_blank" rel="noreferrer">Google Cybersecurity (Foundations, Play It Safe) – 2025</a></li>
+              <li className="hover-glow"><a href="https://www.credly.com/badges/c5383299-b317-47d8-83b2-f6efddbf0c77/public_url" target="_blank" rel="noreferrer">IBM (AI, Data, Cybersecurity) – 2025</a></li>
             </ul>
             <br />
-            <span className="hover-reveal">Apart from coding and security research, some other activities that I love include:</span>
+            <span className="hover-reveal">Apart from my studies, I enjoy:</span>
           </p>
 
           <ul>
