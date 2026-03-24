@@ -5,6 +5,7 @@ import Particle from "../Particle";
 import iotProject from "../../Assets/Projects/iot_project.png";
 import riskAssessment from "../../Assets/Projects/risk_assessment.png";
 import incidentResponse from "../../Assets/Projects/incident_response.png";
+import scansafeApp from "../../Assets/Projects/scansafe_app.png";
 
 function Projects() {
   return (
@@ -21,7 +22,7 @@ function Projects() {
           {/* 1. ScanSafe iOS */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={iotProject}
+              imgPath={scansafeApp}
               isBlog={false}
               title="ScanSafe iOS — QR Phishing Detector"
               description="Developing an on-device iOS application that detects QR code phishing threats in real time using heuristic URL analysis — no cloud dependency or pretrained models. Built with Swift, SwiftUI, AVFoundation, OpenCV 4.13, and Apple Vision. Features an 18-rule URL risk scoring engine and a dual-layer Findings UI with plain-English explanations and expandable technical detail."
@@ -32,7 +33,7 @@ function Projects() {
           {/* 2. ScanSafe Android */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={iotProject}
+              imgPath={scansafeApp}
               isBlog={false}
               title="ScanSafe Android — QR Phishing Detector"
               description="Original Android version of ScanSafe, an on-device app detecting QR code phishing in real time using heuristic URL analysis — no cloud dependency or pretrained models."

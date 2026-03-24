@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import iotExternship from "../../Assets/iot_externship.png";
+import aiotLab from "../../Assets/aiot_lab.png";
 
 function Experience() {
     return (
@@ -21,10 +22,12 @@ function Experience() {
                         <div className="project-card-view" style={{ textAlign: "left", padding: "20px", background: "transparent", border: "1px solid rgba(16, 185, 129, 0.3)" }}>
                             <Row>
                                 <Col md={4} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                    <div style={{ padding: "20px", textAlign: "center", color: "#10b981", border: "2px dashed #10b981", borderRadius: "10px", width: "100%" }}>
-                                        <h2>AIoT Lab</h2>
-                                        <p>Grambling State</p>
-                                    </div>
+                                    <img
+                                        src={aiotLab}
+                                        alt="AIoT Lab"
+                                        className="img-fluid"
+                                        style={{ maxHeight: "250px", borderRadius: "10px", width: "100%", objectFit: "cover" }}
+                                    />
                                 </Col>
                                 <Col md={8}>
                                     <h3 className="purple">Research Assistant — Mobile Security & Applied Computing</h3>
