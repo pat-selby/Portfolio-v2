@@ -12,10 +12,6 @@ function Techstack() {
         <div className="tech-icons-text">Linux CLI</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <FaAws fontSize={"50px"} />
-        <div className="tech-icons-text">AWS (IAM, EC2, S3)</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
         <SiPython fontSize={"50px"} />
         <div className="tech-icons-text">Python</div>
       </Col>
@@ -44,6 +40,30 @@ function Techstack() {
       <Col xs={4} md={2} className="tech-icons">
         <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Threat Modeling</div>
         <div className="tech-icons-text">Analysis</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>IoT Device Security</div>
+        <div className="tech-icons-text">Protocols</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>MQTT</div>
+        <div className="tech-icons-text">Messaging</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>TLS/mTLS</div>
+        <div className="tech-icons-text">Security</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>HMAC</div>
+        <div className="tech-icons-text">Auth</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>PKI Crypto</div>
+        <div className="tech-icons-text">Keys</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1.1rem", fontWeight: "bold" }}>auditd/ausearch</div>
+        <div className="tech-icons-text">Linux Audit</div>
       </Col>
     </Row>
   );

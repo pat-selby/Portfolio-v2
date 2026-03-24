@@ -15,23 +15,21 @@ function Home2() {
               <span className="hover-reveal">LET ME </span><span className="purple hover-glow"> INTRODUCE </span><span className="hover-reveal"> MYSELF</span>
             </h1>
             <p className="home-about-body">
-              <span className="hover-glow">I am a </span><b className="purple hover-glow">Cybersecurity Undergraduate</b><span className="hover-glow"> at Grambling State University (3.9 GPA).</span>
+              <span className="hover-glow">I am a </span><b className="purple hover-glow">Cybersecurity Sophomore</b><span className="hover-glow"> at Grambling State University with a 3.9 GPA, conducting NSF-funded research in Dr. Vasanth Iyer's AIoT Lab.</span>
               <br />
               <br />
-              <span className="hover-glow">I am seeking hands-on exposure to </span>
+              <span className="hover-glow">I am building </span>
               <i>
-                <b className="purple hover-glow"> security operations, risk analysis, </b>
+                <b className="purple hover-glow">ScanSafe</b>
               </i>
-              <span className="hover-reveal">and </span>
+              <span className="hover-reveal"> — an on-device app that detects QR code phishing in real time using </span>
               <i>
-                <b className="purple hover-glow"> defensive security practices.</b>
+                <b className="purple hover-glow">heuristic URL analysis</b>
               </i>
+              <span className="hover-glow">, with no cloud dependency or pretrained models.</span>
               <br />
               <br />
-              <span className="hover-glow">My technical expertise includes </span><b className="purple hover-glow">Linux CLI, Network Fundamentals,</b><span className="hover-glow"> and tools like </span><b className="purple hover-glow">Nmap and Wireshark</b>.
-              <br />
-              <br />
-              <span className="hover-glow">Whenever possible, I apply my skills in </span><b className="purple hover-glow">Python</b><span className="hover-reveal"> and </span><b className="purple hover-glow">AWS (EC2, S3, IAM)</b><span className="hover-glow"> to build and secure cloud infrastructure.</span>
+              <span className="hover-glow">My technical skills include </span><b className="purple hover-glow">Linux CLI, Python, Threat Modeling,</b><span className="hover-glow"> and IoT security protocols including </span><b className="purple hover-glow">TLS, mTLS, and HMAC</b>.
             </p>
           </Col>
           <Col md={4} className="myAvtar">

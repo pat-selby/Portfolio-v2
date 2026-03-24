@@ -18,6 +18,29 @@ function Projects() {
           <span className="hover-reveal">Here are a few projects I've worked on recently.</span>
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          {/* 1. ScanSafe iOS */}
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={iotProject}
+              isBlog={false}
+              title="ScanSafe iOS — QR Phishing Detector"
+              description="Developing an on-device iOS application that detects QR code phishing threats in real time using heuristic URL analysis — no cloud dependency or pretrained models. Built with Swift, SwiftUI, AVFoundation, OpenCV 4.13, and Apple Vision. Features an 18-rule URL risk scoring engine and a dual-layer Findings UI with plain-English explanations and expandable technical detail."
+              ghLink="https://github.com/pat-selby/scansafe-ios"
+            />
+          </Col>
+
+          {/* 2. ScanSafe Android */}
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={iotProject}
+              isBlog={false}
+              title="ScanSafe Android — QR Phishing Detector"
+              description="Original Android version of ScanSafe, an on-device app detecting QR code phishing in real time using heuristic URL analysis — no cloud dependency or pretrained models."
+              ghLink="https://github.com/pat-selby/scansafe"
+            />
+          </Col>
+
+          {/* 3. IT Risk Assessment */}
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={riskAssessment}
@@ -28,12 +51,13 @@ function Projects() {
             />
           </Col>
 
+          {/* 4. Linux Security Monitoring */}
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={incidentResponse}
               isBlog={false}
-              title="Incident Response & Evidence Documentation Lab"
-              description="Simulated an incident response workflow by detecting failed authentication attempts, preserving authentication log evidence, and documenting response actions. Analyzed Linux authentication logs to extract failed login events. Performed a post-incident review to identify root causes and preventative controls."
+              title="Linux Security Monitoring & Incident Response"
+              description="Configured auditd watch rules and used ausearch to trace file modification events to specific processes on a Linux system. Documented chain-of-custody log evidence and delivered a root cause analysis with 3 preventative control recommendations."
               ghLink="https://github.com/pat-selby/pineridge-incident-response-lab"
             />
           </Col>

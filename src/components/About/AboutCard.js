@@ -38,7 +38,10 @@ function AboutCard() {
 
           <ul>
             <li className="about-activity hover-glow">
-              <ImPointRight /> Playing CTFs (Capture The Flag)
+              <ImPointRight /> Conducting cybersecurity research
+            </li>
+            <li className="about-activity hover-glow">
+              <ImPointRight /> Exploring IoT security protocols
             </li>
             <li className="about-activity hover-glow">
               <ImPointRight /> Exploring Cloud Architectures
