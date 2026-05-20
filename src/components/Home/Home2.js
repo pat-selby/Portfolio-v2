@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 // import myImg from "../../Assets/avatar.svg";
 // import myImg from "../../Assets/cyber_avatar.png";
-import myImg from "../../Assets/intro_avatar.png";
+import myImg from "../../Assets/intro_avatar.jpg";
 import Tilt from "react-parallax-tilt";
 
 function Home2() {

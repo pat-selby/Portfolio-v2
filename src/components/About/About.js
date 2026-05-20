@@ -7,7 +7,7 @@ import Aboutcard from "./AboutCard";
 import Tilt from "react-parallax-tilt";
 // import laptopImg from "../../Assets/about.png";
 // import laptopImg from "../../Assets/about_cyber.png";
-import laptopImg from "../../Assets/about_avatar.png";
+import laptopImg from "../../Assets/about_avatar.jpg";
 import Toolstack from "./Toolstack";
 
 function About() {
