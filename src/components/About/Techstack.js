@@ -2,11 +2,12 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 // import { SiNextdotjs, SiSolidity } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
-import { SiLinux, SiWireshark, SiPython, SiDocker, SiGit, SiMysql } from "react-icons/si";
+import { SiLinux, SiWireshark, SiPython, SiGit, SiMysql } from "react-icons/si";
 
 function Techstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
+      {/* Programming & Standard Tools */}
       <Col xs={4} md={2} className="tech-icons">
         <SiLinux fontSize={"50px"} />
         <div className="tech-icons-text">Linux CLI</div>
@@ -25,45 +26,49 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiGit fontSize={"50px"} />
-        <div className="tech-icons-text">Git</div>
+        <div className="tech-icons-text">Git/GitHub</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <FaAws fontSize={"50px"} />
+        <div className="tech-icons-text">AWS Cloud</div>
       </Col>
 
-      {/* Network & Security Skills (Text Based) */}
+      {/* Cyber Security Skills */}
       <Col xs={4} md={2} className="tech-icons">
         <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>Nmap</div>
         <div className="tech-icons-text">Scanning</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Incident Response</div>
-        <div className="tech-icons-text">Basic</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Threat Modeling</div>
-        <div className="tech-icons-text">Analysis</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>IoT Device Security</div>
-        <div className="tech-icons-text">Protocols</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>MQTT</div>
-        <div className="tech-icons-text">Messaging</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>TLS/mTLS</div>
-        <div className="tech-icons-text">Security</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>HMAC</div>
-        <div className="tech-icons-text">Auth</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>PKI Crypto</div>
-        <div className="tech-icons-text">Keys</div>
+        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Vulnerability</div>
+        <div className="tech-icons-text">Assessment</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <div style={{ fontSize: "1.1rem", fontWeight: "bold" }}>auditd/ausearch</div>
         <div className="tech-icons-text">Linux Audit</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>Splunk</div>
+        <div className="tech-icons-text">SIEM & Forensics</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Threat Modeling</div>
+        <div className="tech-icons-text">STRIDE / Risk</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>MQTT</div>
+        <div className="tech-icons-text">IoT Messaging</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>TLS/mTLS</div>
+        <div className="tech-icons-text">Device Auth</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1.1rem", fontWeight: "bold" }}>HMAC & Crypto</div>
+        <div className="tech-icons-text">PKI Keys</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>STEEP Analysis</div>
+        <div className="tech-icons-text">Research</div>
       </Col>
     </Row>
   );

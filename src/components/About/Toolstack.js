@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 // import macOs from "../../Assets/TechIcons/Apple MacOSX.svg";
 import chrome from "../../Assets/TechIcons/Google Chrome.svg";
-import { SiUbuntu, SiKalilinux, SiOpenai, SiGoogle, SiCodesandbox } from "react-icons/si";
+import { SiUbuntu, SiKalilinux, SiOpenai } from "react-icons/si";
 
 import vsCode from "../../Assets/TechIcons/vscode.svg";
 

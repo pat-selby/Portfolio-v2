@@ -16,21 +16,23 @@ function AboutCard() {
             <span className="hover-glow">I am currently looking for </span><span className="purple hover-glow">Internships and Mentorship</span><span className="hover-glow"> opportunities.</span>
             <br />
             <br />
-            <strong className="purple hover-glow">Education: </strong> <span className="hover-reveal"> B.S. Cybersecurity (Minor: Computer Information Systems (CIS) | GPA: 3.9/4.0) at </span><span className="purple hover-glow">Grambling State University</span>.
+            <strong className="purple hover-glow">Education: </strong> <span className="hover-reveal"> B.S. Cybersecurity (Minor: Computer Information Systems (CIS) | GPA: 3.83/4.0 | Jan 2025 – Dec 2028) at </span><span className="purple hover-glow">Grambling State University</span>.
             <br />
             <br />
-            <strong className="purple hover-glow">Relevant Coursework: </strong> <span className="hover-reveal"> Attacks, Threats, and Vulnerabilities (CompTIA Security+ SY0-701 aligned), Discrete Structures, Data Structures & Algorithms, Probability & Statistics I, Calculus I.</span>
+            <strong className="purple hover-glow">Relevant Coursework: </strong> <span className="hover-reveal"> Attacks, Threats & Vulnerabilities (Sec+ SY0-701), Discrete Structures, Data Structures & Algorithms, Probability & Statistics, Calculus I.</span>
             <br />
             <br />
-            <strong className="purple hover-glow">Affiliations: </strong> <span className="hover-reveal"> ColorStack, NSBE, IEEE, Honor Society®, S.E.C.U.R.E. Cybersecurity Club (GSU), The Lantern Network (Career & Mentorship), National Society of Leadership and Success (NSLS), National Association of Black Accountants (NABA).</span>
+            <strong className="purple hover-glow">Affiliations: </strong> <span className="hover-reveal"> Selected Participant — 2026 IOBSE Conference (Apr 14–16) | International Organization of Black Security Executives, CodePath, ColorStack, NSBE, IEEE, Honor Society®, S.E.C.U.R.E. Cybersecurity Club (GSU), NSLS, Cloud Security Alliance, ASIS International, NABA, The Lantern Network.</span>
             <br />
             <br />
             <strong className="purple hover-glow">Certifications: </strong>
             <br />
             <ul>
+              <li className="hover-glow">CompTIA Security+ (In Progress — SY0-701)</li>
               <li className="hover-glow"><a href="https://www.credly.com/badges/cf7adf90-a999-404f-9006-d724ab1f9bff/public_url" target="_blank" rel="noreferrer">AWS Academy Cloud Foundations (Apr 2025)</a></li>
-              <li className="hover-glow"><a href="https://www.coursera.org/account/accomplishments/verify/21LM0CGZI05F" target="_blank" rel="noreferrer">Google Cybersecurity (Foundations, Play It Safe) – 2025</a></li>
-              <li className="hover-glow"><a href="https://www.credly.com/badges/c5383299-b317-47d8-83b2-f6efddbf0c77/public_url" target="_blank" rel="noreferrer">IBM (AI, Data, Cybersecurity) – 2025</a></li>
+              <li className="hover-glow">CodePath Intermediate Cybersecurity (CYB102) — Certificate of Achievement with Honors (2026)</li>
+              <li className="hover-glow"><a href="https://www.coursera.org/account/accomplishments/verify/21LM0CGZI05F" target="_blank" rel="noreferrer">Google Cybersecurity (Foundations, Play It Safe: Manage Security Risks)</a></li>
+              <li className="hover-glow"><a href="https://www.credly.com/badges/c5383299-b317-47d8-83b2-f6efddbf0c77/public_url" target="_blank" rel="noreferrer">IBM SkillsBuild (AI, Cybersecurity, Data, Working in a Digital World)</a></li>
             </ul>
             <br />
             <span className="hover-reveal">Apart from my studies, I enjoy:</span>

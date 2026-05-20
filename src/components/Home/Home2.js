@@ -15,7 +15,7 @@ function Home2() {
               <span className="hover-reveal">LET ME </span><span className="purple hover-glow"> INTRODUCE </span><span className="hover-reveal"> MYSELF</span>
             </h1>
             <p className="home-about-body">
-              <span className="hover-glow">I am a </span><b className="purple hover-glow">Cybersecurity Sophomore</b><span className="hover-glow"> at Grambling State University with a 3.9 GPA, conducting NSF-funded research in Dr. Vasanth Iyer's AIoT Lab.</span>
+              <span className="hover-glow">I am a </span><b className="purple hover-glow">Cybersecurity Sophomore</b><span className="hover-glow"> at Grambling State University with a 3.83 GPA, conducting NSF-funded research in Dr. Vasanth Iyer's AIoT Lab.</span>
               <br />
               <br />
               <span className="hover-glow">I am building </span>

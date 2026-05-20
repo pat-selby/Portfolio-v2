@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import iotExternship from "../../Assets/iot_externship.png";
 import aiotLab from "../../Assets/aiot_lab.png";
+import codepathLogo from "../../Assets/Projects/incident_response.png";
 
 function Experience() {
     return (
@@ -17,7 +18,7 @@ function Experience() {
                 </p>
 
                 <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-                    {/* New Research Assistant Entry */}
+                    {/* Research Assistant Entry */}
                     <Col md={12} className="project-card" style={{ paddingBottom: "20px" }}>
                         <div className="project-card-view" style={{ textAlign: "left", padding: "20px", background: "transparent", border: "1px solid rgba(16, 185, 129, 0.3)" }}>
                             <Row>
@@ -32,12 +33,38 @@ function Experience() {
                                 <Col md={8}>
                                     <h3 className="purple">Research Assistant — Mobile Security & Applied Computing</h3>
                                     <h5 style={{ color: "white" }}>Grambling State University · AIoT Lab, Dr. Vasanth Iyer — Grambling, LA</h5>
-                                    <p style={{ color: "#a5bda5", fontStyle: "italic" }}>Spring 2026 – Present</p>
+                                    <p style={{ color: "#a5bda5", fontStyle: "italic" }}>Mar 2026 – May 2026</p>
                                     <ul style={{ color: "white", textAlign: "left" }}>
-                                        <li>Developing ScanSafe, an on-device app using heuristic URL analysis to detect QR code phishing threats in real time — no cloud dependency or pretrained models.</li>
-                                        <li>Expanded URL risk scoring engine from 12 to 18 detection rules; Rule 13 directly motivated by a real GSU-targeted phishing email impersonating Microsoft Office 365 via SafeLinks wrapping.</li>
-                                        <li>Redesigned Findings UI with dual-layer disclosure: plain-English summaries for general users, expandable technical detail for advanced users.</li>
+                                        <li>Reduced QR phishing exposure to zero cloud dependency by building ScanSafe, an on-device Android app using an 18-rule heuristic URL analysis engine with no pretrained models.</li>
+                                        <li>Improved phishing detection coverage by 50% by expanding URL risk engine from 12 to 18 rules; Rule 13 directly motivated by a live GSU-targeted attack impersonating Microsoft Office 365 via SafeLinks wrapping.</li>
                                     </ul>
+                                    <p style={{ color: "#10b981", fontWeight: "bold" }}>Utilized: <span style={{ color: "white", fontWeight: "normal" }}>Android Studio, Python, Git, GitHub</span></p>
+                                </Col>
+                            </Row>
+                        </div>
+                    </Col>
+
+                    {/* CodePath Fellow Entry (NEW) */}
+                    <Col md={12} className="project-card" style={{ paddingBottom: "20px" }}>
+                        <div className="project-card-view" style={{ textAlign: "left", padding: "20px", background: "transparent", border: "1px solid rgba(16, 185, 129, 0.3)" }}>
+                            <Row>
+                                <Col md={4} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                    <img
+                                        src={codepathLogo}
+                                        alt="CodePath Logo"
+                                        className="img-fluid"
+                                        style={{ maxHeight: "250px", borderRadius: "10px", width: "100%", objectFit: "cover" }}
+                                    />
+                                </Col>
+                                <Col md={8}>
+                                    <h3 className="purple">Intermediate Cybersecurity Fellow</h3>
+                                    <h5 style={{ color: "white" }}>CodePath — Remote (Certificate of Achievement with Honors · ID: 397157)</h5>
+                                    <p style={{ color: "#a5bda5", fontStyle: "italic" }}>Feb 2026 – May 2026</p>
+                                    <ul style={{ color: "white", textAlign: "left" }}>
+                                        <li>Completed 7 hands-on security labs covering Wireshark/SMTP forensics, Linux auditd monitoring, FTP directory traversal, DoS/Slowloris mitigation, Splunk SIEM analysis, CSIRT incident response, and SolarWinds IOC threat hunting.</li>
+                                        <li>Led capstone team through full incident response lifecycle — dataset analysis, playbook selection, IOC identification, and live Demo Day presentation to a technical audience.</li>
+                                    </ul>
+                                    <p style={{ color: "#10b981", fontWeight: "bold" }}>Utilized: <span style={{ color: "white", fontWeight: "normal" }}>Wireshark, auditd, Splunk, nginx, VirusTotal, Catalyst, Linux CLI, Python</span></p>
                                 </Col>
                             </Row>
                         </div>
@@ -47,7 +74,7 @@ function Experience() {
                     <Col md={12} className="project-card">
                         <div className="project-card-view" style={{ textAlign: "left", padding: "20px", background: "transparent", border: "1px solid rgba(16, 185, 129, 0.3)" }}>
                             <Row>
-                                <Col md={4}>
+                                <Col md={4} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                                     <img
                                         src={iotExternship}
                                         alt="IoT Externship"
@@ -57,12 +84,12 @@ function Experience() {
                                 </Col>
                                 <Col md={8}>
                                     <h3 className="purple">IoT Cyber Defense Extern</h3>
-                                    <h5 style={{ color: "white" }}>Extern / Hydroficient — Remote</h5>
-                                    <p style={{ color: "#a5bda5", fontStyle: "italic" }}>Jan 2026 – Present</p>
+                                    <h5 style={{ color: "white" }}>Hydroficient (via Extern) — Remote (Certificate of Completion)</h5>
+                                    <p style={{ color: "#a5bda5", fontStyle: "italic" }}>Feb 2026 – Mar 2026</p>
                                     <ul style={{ color: "white", textAlign: "left" }}>
-                                        <li>Completing a structured IoT security externship covering the full security lifecycle of a live water monitoring system — from threat modeling through hardened deployment.</li>
-                                        <li>Coursework includes: STRIDE-based threat modeling across sensor, broker, and subscriber layers; TLS encryption and mutual TLS (mTLS) device authentication on an MQTT pipeline; 3-layer replay defense using timestamp validation, sequence counters, and HMAC signing; and real-time anomaly detection using Isolation Forest.</li>
+                                        <li>Built end-to-end IoT security pipeline covering STRIDE threat modeling, TLS/mTLS device authentication on MQTT, 3-layer replay defense (timestamps, sequence counters, HMAC), and Isolation Forest anomaly detection.</li>
                                     </ul>
+                                    <p style={{ color: "#10b981", fontWeight: "bold" }}>Utilized: <span style={{ color: "white", fontWeight: "normal" }}>Python, MQTT, OpenSSL, Wireshark, Linux CLI</span></p>
                                 </Col>
                             </Row>
                         </div>
