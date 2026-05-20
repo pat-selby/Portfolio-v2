@@ -94,6 +94,16 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link
                 as={Link}
+                to="/game"
+                onClick={() => updateExpanded(false)}
+              >
+                <span style={{ marginBottom: "2px", marginRight: "4px" }}>🎮</span> 3D World
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
                 to="/resume"
                 onClick={() => updateExpanded(false)}
               >

@@ -26,6 +26,7 @@ function Projects() {
               title="ScanSafe — On-Device QR Phishing Detection"
               description="Eliminated cloud dependency and false-negative risk by engineering an on-device 18-rule heuristic URL analysis engine that detects QR phishing in real time without pretrained models."
               ghLink="https://github.com/pat-selby/scansafe"
+              demoLink="/demos?tab=scansafe"
             />
           </Col>
 
@@ -37,6 +38,7 @@ function Projects() {
               title="IT Risk Assessment & Data Classification"
               description="Prioritized 5+ security controls across a simulated multi-department organization by inventorying assets, classifying data sensitivity tiers, and conducting likelihood-impact analysis."
               ghLink="https://github.com/pat-selby/bayoucare-risk-classification-lab"
+              demoLink="/demos?tab=risk"
             />
           </Col>
 
@@ -48,6 +50,7 @@ function Projects() {
               title="Linux Security Monitoring & Incident Response"
               description="Delivered root cause analysis with 3 actionable control recommendations by configuring auditd watch rules, tracing file modification events to specific processes via ausearch, and documenting chain-of-custody evidence."
               ghLink="https://github.com/pat-selby/pineridge-incident-response-lab"
+              demoLink="/demos?tab=splunk"
             />
           </Col>
         </Row>
