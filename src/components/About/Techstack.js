@@ -43,7 +43,7 @@ function Techstack() {
         <div className="tech-icons-text">Assessment</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1.1rem", fontWeight: "bold" }}>auditd/ausearch</div>
+        <div style={{ fontSize: "1.1rem", fontWeight: "bold" }}>Log Analysis</div>
         <div className="tech-icons-text">Linux Audit</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
@@ -52,23 +52,23 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Threat Modeling</div>
-        <div className="tech-icons-text">STRIDE / Risk</div>
+        <div className="tech-icons-text">Risk Mapping</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>MQTT</div>
         <div className="tech-icons-text">IoT Messaging</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>TLS/mTLS</div>
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>Secure Comms</div>
         <div className="tech-icons-text">Device Auth</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1.1rem", fontWeight: "bold" }}>HMAC & Crypto</div>
-        <div className="tech-icons-text">PKI Keys</div>
+        <div style={{ fontSize: "1.1rem", fontWeight: "bold" }}>Encryption</div>
+        <div className="tech-icons-text">Message Signing</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>STEEP Analysis</div>
-        <div className="tech-icons-text">Research</div>
+        <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Risk Research</div>
+        <div className="tech-icons-text">Frameworks</div>
       </Col>
     </Row>
   );

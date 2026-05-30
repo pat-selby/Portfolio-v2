@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link, useSearchParams } from "react-router-dom";
-import Particle from "../Particle";
 import {
   FaArrowLeft,
   FaShieldAlt,
@@ -205,7 +204,6 @@ function ProjectDemos() {
 
   return (
     <Container fluid className="project-section demo-container">
-      <Particle />
       <Container>
         <Row className="justify-content-center" style={{ marginBottom: "30px" }}>
           <Col md={10} style={{ textAlign: "center" }}>
@@ -232,7 +230,7 @@ function ProjectDemos() {
                 className={`demo-tab-btn ${activeTab === "risk" ? "active" : ""}`}
                 onClick={() => setActiveTab("risk")}
               >
-                <FaShieldAlt /> STRIDE Threat Modeler
+                <FaShieldAlt /> Threat Modeler
               </button>
               <button
                 className={`demo-tab-btn ${activeTab === "splunk" ? "active" : ""}`}
@@ -251,7 +249,7 @@ function ProjectDemos() {
               <div className="demo-panel">
                 <div className="demo-header">
                   <h3 className="demo-title"><FaSearch /> ScanSafe — Heuristics Sandbox</h3>
-                  <span style={{ fontSize: "0.82rem", color: "#64748b" }}>
+                  <span style={{ fontSize: "0.82rem", color: "#cbd5e1" }}>
                     Run raw URL analysis using our on-device 18-rule parsing engine.
                   </span>
                 </div>
@@ -300,7 +298,7 @@ function ProjectDemos() {
                           </div>
                         ))
                       ) : (
-                        <div style={{ textAlign: "center", padding: "20px", color: "#64748b" }}>
+                        <div style={{ textAlign: "center", padding: "20px", color: "#94a3b8" }}>
                           No scan results. Input a URL and click Scan.
                         </div>
                       )}
@@ -347,9 +345,9 @@ function ProjectDemos() {
             {activeTab === "risk" && (
               <div className="demo-panel">
                 <div className="demo-header">
-                  <h3 className="demo-title"><FaShieldAlt /> STRIDE & DREAD threat modeler</h3>
-                  <span style={{ fontSize: "0.82rem", color: "#64748b" }}>
-                    Select network assets to inspect threat boundaries and DREAD risk ratings.
+                  <h3 className="demo-title"><FaShieldAlt /> Threat Modeling Tool</h3>
+                  <span style={{ fontSize: "0.82rem", color: "#cbd5e1" }}>
+                    Select a system asset to see what could go wrong and how I'd defend it.
                   </span>
                 </div>
                 <Row>
@@ -473,7 +471,7 @@ function ProjectDemos() {
               <div className="demo-panel">
                 <div className="demo-header">
                   <h3 className="demo-title"><FaTerminal /> Splunk — Threat Hunting Dashboard</h3>
-                  <span style={{ fontSize: "0.82rem", color: "#64748b" }}>
+                  <span style={{ fontSize: "0.82rem", color: "#cbd5e1" }}>
                     Identify anomalous auditd events and run playbook scripts.
                   </span>
                 </div>
@@ -485,7 +483,7 @@ function ProjectDemos() {
                 {/* Splunk Console screen */}
                 <div className="soc-terminal-screen">
                   {splunkLogs.length === 0 ? (
-                    <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", flexDirection: "column", color: "#64748b" }}>
+                    <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", flexDirection: "column", color: "#cbd5e1" }}>
                       <FaTerminal style={{ fontSize: "2.5rem", marginBottom: "10px" }} />
                       <span>LOGS OFFLINE. Start Threat Hunt to activate SIEM log collection.</span>
                     </div>

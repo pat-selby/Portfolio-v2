@@ -75,6 +75,15 @@
   margin-bottom: 20px;
 }
 
+@media (max-width: 575px) {
+  .cyber-input-group {
+    flex-direction: column;
+  }
+  .cyber-input-group button {
+    width: 100%;
+  }
+}
+
 .cyber-input {
   background: #020617;
   border: 1px solid #1e293b;
@@ -285,4 +294,28 @@
 .soc-opt-card.error:hover {
   background: rgba(239, 68, 68, 0.1);
   border-color: rgba(239, 68, 68, 0.4);
+}
+
+@media (max-width: 575px) {
+  .dread-meter-row {
+    display: grid;
+    grid-template-areas: 
+      "label value"
+      "bar bar";
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .dread-label {
+    grid-area: label;
+  }
+  .dread-value {
+    grid-area: value;
+    text-align: right;
+  }
+  .dread-bar {
+    grid-area: bar;
+    margin: 4px 0 0 0;
+    width: 100%;
+  }
 }

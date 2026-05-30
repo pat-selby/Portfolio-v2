@@ -4,13 +4,12 @@ import { Container, Row, Col } from "react-bootstrap";
 // import homeLogo from "../../Assets/cyber_hero.png";
 import homeLogo from "../../Assets/hero_avatar.jpg";
 // import homeLogo from "../../Assets/home-main.jpg";
-import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
-  AiFillInstagram,
+  AiOutlineMail,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -19,7 +18,6 @@ function Home() {
   return (
     <section>
       <Container fluid className="home-section" id="home">
-        <Particle />
         <Container className="home-content">
           <Row>
             <Col md={7} className="home-header">
@@ -35,7 +33,7 @@ function Home() {
                 <strong className="main-name hover-glow"> PATRICK ENNIN SELBY</strong>
               </h1>
 
-              <div style={{ padding: 50, textAlign: "left" }}>
+              <div className="home-typewriter-wrapper">
                 <Type />
               </div>
             </Col>
@@ -96,11 +94,10 @@ function Home() {
               <li className="social-icons">
                 <a
                   href="mailto:pselby@gsumail.gram.edu"
-                  target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
                 >
-                  <AiFillInstagram />
+                  <AiOutlineMail />
                 </a>
               </li>
             </ul>

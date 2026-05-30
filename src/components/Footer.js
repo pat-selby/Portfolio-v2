@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import {
   AiFillGithub,
-  AiFillInstagram,
+  AiOutlineMail,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -24,7 +24,7 @@ function Footer() {
             <li className="social-icons">
               <a
                 href="https://github.com/pat-selby"
-                style={{ color: "white" }}
+                className="footer-social-icon"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -34,7 +34,7 @@ function Footer() {
             <li className="social-icons">
               <a
                 href="https://x.com/selby_patrick05"
-                style={{ color: "white" }}
+                className="footer-social-icon"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -44,7 +44,7 @@ function Footer() {
             <li className="social-icons">
               <a
                 href="https://www.linkedin.com/in/patrick-ennin-selby-136253301"
-                style={{ color: "white" }}
+                className="footer-social-icon"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -54,11 +54,10 @@ function Footer() {
             <li className="social-icons">
               <a
                 href="mailto:pselby@gsumail.gram.edu"
-                style={{ color: "white" }}
-                target="_blank"
+                className="footer-social-icon"
                 rel="noopener noreferrer"
               >
-                <AiFillInstagram />
+                <AiOutlineMail />
               </a>
             </li>
           </ul>

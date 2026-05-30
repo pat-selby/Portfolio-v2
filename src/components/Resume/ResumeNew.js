@@ -1,222 +1,277 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import Particle from "../Particle";
 import pdf from "../../Assets/resume.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import {
-  FaUserShield,
-  FaAward,
-  FaTerminal,
-  FaShieldAlt,
-  FaSearch,
-  FaNetworkWired,
-  FaCode,
-  FaCloud,
-  FaUserGraduate,
-  FaClipboardList,
-  FaBug,
-  FaLock,
-  FaServer
+  FaUserShield, FaAward, FaTerminal, FaShieldAlt,
+  FaSearch, FaNetworkWired, FaCode, FaCloud,
+  FaUserGraduate, FaBriefcase, FaBug, FaLock,
+  FaServer, FaCube
 } from "react-icons/fa";
 import "./Resume.css";
+import SplineResume from "./SplineResume";
 
 function ResumeNew() {
-  const [activeQuest, setActiveQuest] = useState("aiot");
+  const [viewMode, setViewMode] = useState("3d");
+  const [activeJob, setActiveJob] = useState("aiot");
   const [activeSkill, setActiveSkill] = useState("nmap");
   const [terminalHistory, setTerminalHistory] = useState([
-    { text: "Welcome to Patrick's Cyber Security Console [v2.28].", type: "system" },
-    { text: "Status: ALL SYSTEMS OPERATIONAL. Security protocols: ENFORCED.", type: "success" },
-    { text: "Ready for scan. Select a module below to initiate diagnostic commands...", type: "system" }
+    { text: "Patrick's Security Console — ready.", type: "system" },
+    { text: "All systems operational. Select a command below.", type: "success" },
   ]);
 
-  // Terminal commands mock executor
   const executeCommand = (cmd) => {
     let output = [];
     if (cmd === "nmap") {
       output = [
         { text: "$ nmap -sV -p 80,443,1883 scan-target.gsu.edu", type: "prompt" },
-        { text: "Starting Nmap 9.00 ( https://nmap.org ) at 2026-05-20 03:52 EST", type: "line" },
-        { text: "Nmap scan report for scan-target.gsu.edu (147.124.22.8)", type: "line" },
-        { text: "Host is up (0.045s latency).", type: "line" },
-        { text: "PORT     STATE SERVICE VERSION", type: "line" },
+        { text: "Host is up. Scanning ports...", type: "line" },
         { text: "80/tcp   open  http    nginx 1.25.1", type: "line" },
-        { text: "443/tcp  open  https   nginx (TLS v1.3 / mTLS broker)", type: "success" },
-        { text: "1883/tcp open  mqtt    Eclipse Mosquitto (authenticated)", type: "success" },
-        { text: "Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel", type: "line" },
-        { text: "Nmap done: 1 IP address (1 host up) scanned in 1.45 seconds.", type: "success" }
+        { text: "443/tcp  open  https   nginx (encrypted, verified)", type: "success" },
+        { text: "1883/tcp open  mqtt    authenticated broker", type: "success" },
+        { text: "Scan complete. 1 host up, no open vulnerabilities found.", type: "success" }
       ];
     } else if (cmd === "coursework") {
       output = [
-        { text: "$ cat /home/pselby/education/coursework.db", type: "prompt" },
-        { text: "{", type: "line" },
-        { text: "  \"Major\": \"B.S. Cybersecurity\",", type: "line" },
-        { text: "  \"GPA\": \"3.83/4.0\",", type: "success" },
-        { text: "  \"GSU_Core\": [\"Attacks, Threats & Vulnerabilities (Sec+ SY0-701)\", \"Discrete Structures\", \"Data Structures & Algorithms\"],", type: "line" },
-        { text: "  \"Math_Foundations\": [\"Calculus I\", \"Probability & Statistics\"],", type: "line" },
-        { text: "  \" CIS_Minor\": \"Computer Information Systems\"", type: "line" },
-        { text: "}", type: "line" }
+        { text: "$ cat education.txt", type: "prompt" },
+        { text: "Degree: B.S. Cybersecurity (Minor: CIS)", type: "line" },
+        { text: "GPA: 3.83 / 4.0", type: "success" },
+        { text: "Courses: Attacks & Vulnerabilities, Data Structures, Discrete Math, Stats, Calc I", type: "line" },
       ];
     } else if (cmd === "scansafe") {
       output = [
-        { text: "$ grep -rn \"CRITICAL\" /var/log/scansafe/URLRiskEngine.log", type: "prompt" },
-        { text: "URLRiskEngine.log:104:[2026-05-18 10:14:02] ALERT - Rule 13 triggered (SafeLinks wrapping detected).", type: "line" },
-        { text: "URLRiskEngine.log:105:[2026-05-18 10:14:02] TARGET - Microsoft Office 365 impersonation page.", type: "line" },
-        { text: "URLRiskEngine.log:106:[2026-05-18 10:14:03] CRITICAL - 18-rule Heuristics flagged phishing attempt.", type: "error" },
-        { text: "URLRiskEngine.log:107:[2026-05-18 10:14:03] ACTION - Phishing URL intercepted. ScanSafe blocked execution.", type: "success" },
-        { text: "ScanSafe Analysis Engine status: Zero cloud dependencies, 0ms latency local lookup completed.", type: "success" }
+        { text: "$ grep ALERT /var/log/scansafe/engine.log", type: "prompt" },
+        { text: "[ALERT] Phishing link detected behind Microsoft SafeLinks redirect.", type: "line" },
+        { text: "[BLOCK] ScanSafe intercepted the URL before the user was exposed.", type: "success" },
+        { text: "Zero cloud calls made. Detection happened fully on-device.", type: "success" }
       ];
     } else if (cmd === "auditd") {
       output = [
-        { text: "$ ausearch -k config_changes -m SYSCALL", type: "prompt" },
-        { text: "----", type: "line" },
-        { text: "time->Mon Feb 23 14:24:51 2026", type: "line" },
-        { text: "type=PROCTITLE msg=audit(1771874691.102:451): proctitle=6E616E6F202F6574632F706173737764", type: "line" },
-        { text: "type=SYSCALL msg=audit(1771874691.102:451): arch=c000003e syscall=2 success=yes exit=3 a0=7ffd588... items=1 ppid=1204 pid=1310 auid=1000 uid=0 gid=0 euid=0", type: "line" },
-        { text: "auditd_trace: [RESOLVED] Root user edited sensitive system file via nano. Log integrity checked.", type: "success" },
-        { text: "Splunk correlation: Event indexed. Threat hunt resolved 3 actionable control recommendations.", type: "success" }
+        { text: "$ ausearch -k file_changes", type: "prompt" },
+        { text: "Suspicious write detected: root process modified /etc/passwd", type: "line" },
+        { text: "[RESOLVED] Event traced, documented, root cause identified.", type: "success" },
+        { text: "3 security control recommendations submitted.", type: "success" }
       ];
     }
     setTerminalHistory((prev) => [...prev, ...output]);
   };
 
-  // Quests Data
-  const quests = {
+  const jobs = {
     aiot: {
-      title: "Mobile Security Research Assistant",
+      title: "Research Assistant — Mobile Security",
       company: "Grambling State University · AIoT Lab",
-      date: "Mar 2026 – May 2026",
-      status: "Active Research",
-      rewards: "Android Studio, Python, Git, Heuristic Analysis",
-      description: [
-        "Reduced QR phishing exposure to zero cloud dependency by engineering ScanSafe, an on-device Android application.",
-        "Created an 18-rule heuristic URL analysis engine operating with no pretrained AI models.",
-        "Increased phishing detection coverage by 50% through Rule 13, directly responding to a live GSU-targeted credential harvesting campaign impersonating Microsoft Office 365 via SafeLinks wrapping."
+      date: "Spring 2026 – Present",
+      status: "Active",
+      tools: "Android Studio, Python, Git",
+      bullets: [
+        "I built ScanSafe — an Android app that catches phishing links hidden in QR codes, entirely on-device with no internet needed.",
+        "I wrote all 18 detection rules myself, including one inspired by a real phishing attack that targeted my school.",
+        "I redesigned the app's results screen so both regular users and technical reviewers can understand it clearly."
       ]
     },
     codepath: {
-      title: "Intermediate Cybersecurity Fellow",
-      company: "CodePath",
+      title: "Cybersecurity Fellow",
+      company: "CodePath · Certificate with Honors",
       date: "Feb 2026 – May 2026",
-      status: "Completed (Honors)",
-      rewards: "Splunk, Wireshark, auditd, Forensics, Incident Response",
-      description: [
-        "Completed 7 hands-on security labs including Wireshark/SMTP forensics, FTP directory traversal mitigation, auditd monitoring, Splunk SIEM log correlation, CSIRT incident response, and SolarWinds IOC threat hunting.",
-        "Led a capstone security analyst team through the full incident response lifecycle: dataset analysis, playbook selection, IOC identification, and live presentation on Demo Day to a technical audience."
+      status: "Honors",
+      tools: "Wireshark, Splunk, Linux, Python",
+      bullets: [
+        "I completed 7 hands-on security labs — tracking suspicious traffic, investigating system logs, and responding to simulated incidents.",
+        "I led my team's final presentation, walking a technical audience through a full incident response from detection to resolution."
       ]
     },
     extern: {
-      title: "IoT Cyber Defense Extern",
-      company: "Hydroficient (via Extern)",
+      title: "IoT Security Extern",
+      company: "Hydroficient (via Extern) · Remote",
       date: "Feb 2026 – Mar 2026",
-      status: "Completed (Certificate)",
-      rewards: "mTLS, MQTT, OpenSSL, STRIDE Modeling, Python",
-      description: [
-        "Constructed a secure end-to-end IoT pipeline covering STRIDE threat modeling, TLS/mTLS client-broker authentication on MQTT.",
-        "Architected a 3-layer replay defense (sequence counters, timestamp checks, HMAC-SHA256 signing).",
-        "Configured an Isolation Forest machine learning model for real-time anomaly detection in device telemetry."
+      status: "Completed",
+      tools: "Python, OpenSSL, Wireshark, Linux",
+      bullets: [
+        "I designed a secure communication pipeline for connected devices — verifying identity, protecting messages in transit, and detecting unusual behavior.",
+        "I built three layers of protection against replay attacks, where an attacker tries to reuse old messages to trick the system."
       ]
     }
   };
 
-  // Skills Data for Inventory
   const skills = {
-    nmap: {
-      name: "Nmap Scanning",
-      level: 90,
-      category: "Cybersecurity",
-      desc: "Used to audit network ports, enumerate services, and detect vulnerabilities on hosts.",
-      power: "Damage: Enumerate & Map"
-    },
-    wireshark: {
-      name: "Wireshark",
-      level: 88,
-      category: "Forensics",
-      desc: "Capturing packets and performing forensic analysis to trace malicious payloads or unauthorized protocols.",
-      power: "Analysis: Decrypt & Audit"
-    },
-    auditd: {
-      name: "auditd & ausearch",
-      level: 85,
-      category: "Forensics",
-      desc: "Linux kernel auditing daemon used to monitor system calls, file integrity violations, and root process anomalies.",
-      power: "Defense: Trace root events"
-    },
-    splunk: {
-      name: "Splunk SIEM",
-      level: 80,
-      category: "Forensics",
-      desc: "Correlating security events, writing search queries, indexing logs, and building incident alert dashboards.",
-      power: "Search: Log Correlation"
-    },
-    mqtt: {
-      name: "MQTT & TLS/mTLS",
-      level: 92,
-      category: "Protocols",
-      desc: "Lightweight pub/sub messaging secured with client/server certificate handshakes for device identity and transport privacy.",
-      power: "Protocol: Safe IoT Pipeline"
-    },
-    hmac: {
-      name: "HMAC & Cryptography",
-      level: 86,
-      category: "Protocols",
-      desc: "Implementing secure hashing (SHA256) combined with secret keys for message integrity and anti-tamper sequence codes.",
-      power: "Defense: Integrity verification"
-    },
-    python: {
-      name: "Python Coding",
-      level: 94,
-      category: "Programming",
-      desc: "Scripting custom security tools, automations, heuristic analysis scripts, and machine learning telemetry models.",
-      power: "Weapon: Rapid Automation"
-    },
-    sql: {
-      name: "SQL Database",
-      level: 82,
-      category: "Programming",
-      desc: "Writing structured queries for data retrieval, logging security parameters, and securing against injection attacks.",
-      power: "Database: Safe data storage"
-    },
-    aws: {
-      name: "AWS Cloud Foundations",
-      level: 78,
-      category: "Cloud",
-      desc: "Configuring Virtual Private Clouds (VPC), Security Groups, IAM Roles, and deploying instances inside AWS securely.",
-      power: "Cloud: Hardened infrastructure"
-    },
-    stride: {
-      name: "STRIDE Modeling",
-      level: 88,
-      category: "Research",
-      desc: "Analyzing architectures for Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, and Elevation of privilege.",
-      power: "Methodology: Threat Prevention"
-    }
+    nmap: { name: "Nmap", level: 90, category: "Scanning", desc: "I use Nmap to map networks, check open ports, and find services that might be exposed or misconfigured.", power: "Find what's exposed" },
+    wireshark: { name: "Wireshark", level: 88, category: "Forensics", desc: "I capture and read network traffic to find suspicious activity, unauthorized connections, or data being sent in the clear.", power: "Read the wire" },
+    auditd: { name: "Linux auditd", level: 85, category: "Monitoring", desc: "I configure Linux's audit system to track who changed what, when — essential for incident investigations.", power: "Track every change" },
+    splunk: { name: "Splunk", level: 80, category: "Log Analysis", desc: "I search and correlate security logs across systems to spot patterns, build alerts, and piece together what happened during an incident.", power: "Find the story in logs" },
+    mqtt: { name: "Secure Messaging (MQTT/TLS)", level: 92, category: "Protocols", desc: "I set up encrypted, authenticated communication channels for IoT devices — so only verified devices can send and receive data.", power: "Encrypt the channel" },
+    hmac: { name: "Message Authentication", level: 86, category: "Cryptography", desc: "I use cryptographic signing to make sure messages haven't been tampered with between sender and receiver.", power: "Prove it wasn't changed" },
+    python: { name: "Python", level: 94, category: "Programming", desc: "My go-to language for building security tools, automating repetitive tasks, and scripting detection logic.", power: "Build anything fast" },
+    sql: { name: "SQL", level: 82, category: "Programming", desc: "I write queries to retrieve and analyze data securely, and I know how to protect databases from injection attacks.", power: "Query safely" },
+    aws: { name: "AWS Cloud", level: 78, category: "Cloud", desc: "I know how to set up cloud environments securely — controlling who has access, what they can do, and where traffic flows.", power: "Secure the cloud" },
+    stride: { name: "Threat Modeling", level: 88, category: "Risk Analysis", desc: "I analyze systems before they're built (or breached) to find where things could go wrong and how to prevent it.", power: "Prevent before it happens" }
   };
+
+  if (viewMode === "3d") {
+    return <SplineResume toggleMode={() => setViewMode("2d")} />;
+  }
 
   return (
     <div>
       <Container fluid className="resume-section cyber-container">
-        <Particle />
 
+        {/* Header */}
         <Row style={{ justifyContent: "center", marginBottom: "30px" }}>
           <Col md={10} style={{ textAlign: "center" }}>
             <h1 className="project-heading" style={{ fontSize: "2.3rem" }}>
-              Cybersecurity Specialist <strong className="purple">Quest Log</strong>
+              My <strong className="purple">Resume</strong>
             </h1>
             <p style={{ color: "white" }}>
-              Explore my professional world through this interactive console. Level up your understanding of my background.
+              An interactive look at my background — experience, skills, and certifications.
             </p>
+            <Button
+              variant="outline-success"
+              onClick={() => setViewMode("3d")}
+              style={{ marginTop: "10px", marginBottom: "20px", borderColor: "#10b981", color: "#10b981", fontWeight: "bold" }}
+            >
+              <FaCube /> &nbsp; Switch to 3D View
+            </Button>
           </Col>
         </Row>
 
+        {/* Row 1: Experience */}
         <Row className="justify-content-center">
-          {/* Column 1: Character Stats & Terminal Diagnostics */}
-          <Col lg={5} md={12}>
-            {/* Player Stats Panel */}
+          <Col md={12}>
             <div className="cyber-panel">
               <div className="cyber-header">
-                <h3 className="cyber-title"><FaUserShield /> Character Sheet</h3>
-                <span style={{ fontSize: "0.8rem", color: "#10b981", fontFamily: "monospace" }}>SEC_STATUS: SECURE</span>
+                <h3 className="cyber-title"><FaBriefcase /> Experience</h3>
+                <span style={{ fontSize: "0.8rem", color: "#10b981", fontFamily: "monospace" }}>3 roles</span>
+              </div>
+              <Row>
+                <Col lg={3} md={12}>
+                  <div className="quest-list">
+                    {[
+                      { key: "aiot", title: "Research Assistant", sub: "GSU AIoT Lab", badge: "Active", cls: "status-active" },
+                      { key: "codepath", title: "Cybersecurity Fellow", sub: "CodePath", badge: "Honors", cls: "status-completed" },
+                      { key: "extern", title: "IoT Security Extern", sub: "Hydroficient", badge: "Done", cls: "status-completed" },
+                    ].map(({ key, title, sub, badge, cls }) => (
+                      <div key={key} className={`quest-item ${activeJob === key ? "active" : ""}`} onClick={() => setActiveJob(key)}>
+                        <div>
+                          <div style={{ fontWeight: "bold", fontSize: "0.9rem" }}>{title}</div>
+                          <div style={{ fontSize: "0.72rem", color: "#94a3b8" }}>{sub}</div>
+                        </div>
+                        <div className="quest-meta">
+                          <span className={`quest-status ${cls}`}>{badge}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Col>
+                <Col lg={9} md={12}>
+                  <div className="quest-details">
+                    <h4 className="purple" style={{ fontSize: "1.15rem", fontWeight: "bold" }}>{jobs[activeJob].title}</h4>
+                    <p style={{ fontSize: "0.85rem", color: "#94a3b8", marginBottom: "4px" }}>{jobs[activeJob].company}</p>
+                    <p style={{ fontSize: "0.78rem", color: "#10b981", fontStyle: "italic", marginBottom: "14px" }}>{jobs[activeJob].date}</p>
+                    <ul style={{ fontSize: "0.88rem", color: "#e2e8f0", paddingLeft: "18px" }}>
+                      {jobs[activeJob].bullets.map((b, i) => (
+                        <li key={i} style={{ marginBottom: "10px", lineHeight: "1.6" }}>{b}</li>
+                      ))}
+                    </ul>
+                    <div style={{ marginTop: "14px", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "12px" }}>
+                      <span style={{ fontSize: "0.75rem", fontWeight: "bold", color: "#10b981" }}>Tools I used: </span>
+                      <span style={{ fontSize: "0.82rem", color: "#ffffff", fontFamily: "monospace" }}>{jobs[activeJob].tools}</span>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+
+        {/* Row 2: Skills */}
+        <Row className="justify-content-center">
+          <Col md={12}>
+            <div className="cyber-panel">
+              <div className="cyber-header">
+                <h3 className="cyber-title"><FaShieldAlt /> Skills</h3>
+                <span style={{ fontSize: "0.8rem", color: "#cbd5e1" }}>Select a skill to see what I can do with it</span>
+              </div>
+              <Row>
+                <Col lg={7} md={12} style={{ marginBottom: "15px" }}>
+                  <div className="inventory-grid">
+                    {[
+                      ["nmap", <FaSearch />, "Nmap"],
+                      ["wireshark", <FaBug />, "Wireshark"],
+                      ["auditd", <FaTerminal />, "Linux Audit"],
+                      ["splunk", <FaServer />, "Splunk"],
+                      ["mqtt", <FaNetworkWired />, "Secure Messaging"],
+                      ["hmac", <FaLock />, "Cryptography"],
+                      ["python", <FaCode />, "Python"],
+                      ["sql", <FaServer />, "SQL"],
+                      ["aws", <FaCloud />, "AWS Cloud"],
+                      ["stride", <FaShieldAlt />, "Threat Modeling"],
+                    ].map(([key, icon, label]) => (
+                      <div key={key} className={`inventory-slot ${activeSkill === key ? "active" : ""}`} onClick={() => setActiveSkill(key)}>
+                        {React.cloneElement(icon, { className: "inventory-icon" })}
+                        <span className="inventory-name">{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Col>
+                <Col lg={5} md={12}>
+                  <div className="inventory-desc-panel d-flex flex-column justify-content-center">
+                    <h4 className="purple" style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "8px" }}>{skills[activeSkill].name}</h4>
+                    <span style={{ fontSize: "0.75rem", background: "rgba(16,185,129,0.15)", color: "#10b981", border: "1px solid rgba(16,185,129,0.3)", padding: "2px 8px", borderRadius: "4px", alignSelf: "flex-start", marginBottom: "12px", textTransform: "uppercase", fontWeight: "bold" }}>
+                      {skills[activeSkill].category}
+                    </span>
+                    <p style={{ fontSize: "0.88rem", color: "#e2e8f0", lineHeight: "1.6", minHeight: "70px" }}>{skills[activeSkill].desc}</p>
+                    <div style={{ marginTop: "15px", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "12px" }}>
+                      <span style={{ display: "block", fontSize: "0.75rem", color: "#94a3b8", textTransform: "uppercase", fontWeight: "bold", marginBottom: "6px" }}>Proficiency:</span>
+                      <div className="d-flex align-items-center gap-3">
+                        <div className="stat-bar-container" style={{ flex: 1, marginTop: 0 }}>
+                          <div className="stat-bar-fill mp-bar" style={{ width: `${skills[activeSkill].level}%` }}></div>
+                        </div>
+                        <span style={{ fontSize: "0.85rem", fontFamily: "monospace", color: "#38bdf8", fontWeight: "bold" }}>{skills[activeSkill].level}%</span>
+                      </div>
+                    </div>
+                    <div style={{ marginTop: "12px", fontStyle: "italic", fontSize: "0.8rem", color: "#10b981" }}>{skills[activeSkill].power}</div>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+
+        {/* Row 3: Certifications */}
+        <Row className="justify-content-center">
+          <Col md={12}>
+            <div className="cyber-panel">
+              <div className="cyber-header">
+                <h3 className="cyber-title"><FaAward /> Certifications</h3>
+              </div>
+              <div className="achievement-list">
+                {[
+                  ["CompTIA Security+", "In Progress — SY0-701"],
+                  ["CodePath CYB102", "Certificate of Achievement · Honors"],
+                  ["AWS Cloud Foundations", "AWS Academy (2025)"],
+                  ["Google Cybersecurity", "Foundations & Risk Mitigation"],
+                  ["IBM SkillsBuild", "AI, Security & Data"],
+                  ["IOBSE 2026", "Black Security Executives Cohort"],
+                ].map(([title, sub]) => (
+                  <div key={title} className="badge-card">
+                    <div className="badge-icon-glow"><FaAward /></div>
+                    <div className="badge-details">
+                      <div className="badge-title">{title}</div>
+                      <div className="badge-subtitle">{sub}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Col>
+        </Row>
+
+        {/* Row 4: Profile + Interactive Terminal */}
+        <Row className="justify-content-center">
+          <Col lg={5} md={12}>
+            <div className="cyber-panel">
+              <div className="cyber-header">
+                <h3 className="cyber-title"><FaUserShield /> Profile</h3>
               </div>
               <Row>
                 <Col xs={4} style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -224,22 +279,26 @@ function ResumeNew() {
                     <FaUserGraduate />
                   </div>
                   <span className="purple" style={{ fontWeight: "bold", fontSize: "0.9rem", marginTop: "10px" }}>Patrick Selby</span>
-                  <span style={{ fontSize: "0.75rem", color: "#64748b" }}>GSU-CS-2028</span>
+                  <span style={{ fontSize: "0.75rem", color: "#94a3b8" }}>GSU · Class of 2028</span>
                 </Col>
                 <Col xs={8}>
                   <div className="char-info-row">
-                    <div className="char-label">Class</div>
-                    <div className="char-value">Cybersecurity Specialist (Sophomore)</div>
+                    <div className="char-label">Degree</div>
+                    <div className="char-value">B.S. Cybersecurity</div>
                   </div>
                   <div className="char-info-row">
-                    <div className="char-label">Academic XP (GPA)</div>
+                    <div className="char-label">Minor</div>
+                    <div className="char-value">Computer Info Systems</div>
+                  </div>
+                  <div className="char-info-row">
+                    <div className="char-label">GPA</div>
                     <div className="char-value">3.83 / 4.0</div>
                     <div className="stat-bar-container">
                       <div className="stat-bar-fill xp-bar" style={{ width: "95.75%" }}></div>
                     </div>
                   </div>
                   <div className="char-info-row">
-                    <div className="char-label">Security Integrity (HP)</div>
+                    <div className="char-label">Integrity</div>
                     <div className="char-value">100 / 100</div>
                     <div className="stat-bar-container">
                       <div className="stat-bar-fill hp-bar" style={{ width: "100%" }}></div>
@@ -248,261 +307,44 @@ function ResumeNew() {
                 </Col>
               </Row>
             </div>
+          </Col>
 
-            {/* Diagnostic Terminal Panel */}
+          <Col lg={7} md={12}>
             <div className="cyber-panel">
               <div className="cyber-header">
-                <h3 className="cyber-title"><FaTerminal /> Diagnostics Terminal</h3>
-                <span style={{ color: "#34d399", fontSize: "0.85rem", fontFamily: "monospace" }}>PORT: 22</span>
+                <h3 className="cyber-title"><FaTerminal /> Interactive Terminal</h3>
+                <span style={{ color: "#34d399", fontSize: "0.85rem", fontFamily: "monospace" }}>Try a command</span>
               </div>
               <div className="terminal-screen" id="console-screen">
                 {terminalHistory.map((item, idx) => (
-                  <div key={idx} className={`terminal-line ${item.type === 'error' ? 'text-danger' : item.type === 'success' ? 'text-success' : item.type === 'prompt' ? 'terminal-prompt' : ''}`}>
+                  <div key={idx} className={`terminal-line ${item.type === "error" ? "text-danger" : item.type === "success" ? "text-success" : item.type === "prompt" ? "terminal-prompt" : ""}`}>
                     {item.text}
                   </div>
                 ))}
               </div>
               <div style={{ marginTop: "15px" }}>
-                <span style={{ color: "#64748b", display: "block", fontSize: "0.75rem", marginBottom: "8px", fontWeight: "bold", textTransform: "uppercase" }}>Execute Diagnostic Probe:</span>
-                <button className="terminal-btn" onClick={() => executeCommand("nmap")}>nmap -sV broker</button>
-                <button className="terminal-btn" onClick={() => executeCommand("coursework")}>cat coursework.db</button>
-                <button className="terminal-btn" onClick={() => executeCommand("scansafe")}>grep ScanSafe</button>
-                <button className="terminal-btn" onClick={() => executeCommand("auditd")}>ausearch auditd</button>
-              </div>
-            </div>
-          </Col>
-
-          {/* Column 2: Quests (Experience) */}
-          <Col lg={7} md={12}>
-            <div className="cyber-panel" style={{ height: "calc(100% - 24px)" }}>
-              <div className="cyber-header">
-                <h3 className="cyber-title"><FaClipboardList /> Quests Completed (Work Experience)</h3>
-              </div>
-              <Row>
-                <Col md={5}>
-                  <div className="quest-list">
-                    <div
-                      className={`quest-item ${activeQuest === "aiot" ? "active" : ""}`}
-                      onClick={() => setActiveQuest("aiot")}
-                    >
-                      <div>
-                        <div style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Research Assistant</div>
-                        <div style={{ fontSize: "0.72rem", color: "#94a3b8" }}>GSU AIoT Lab</div>
-                      </div>
-                      <div className="quest-meta">
-                        <span className="quest-status status-active">Active</span>
-                      </div>
-                    </div>
-
-                    <div
-                      className={`quest-item ${activeQuest === "codepath" ? "active" : ""}`}
-                      onClick={() => setActiveQuest("codepath")}
-                    >
-                      <div>
-                        <div style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Cybersecurity Fellow</div>
-                        <div style={{ fontSize: "0.72rem", color: "#94a3b8" }}>CodePath</div>
-                      </div>
-                      <div className="quest-meta">
-                        <span className="quest-status status-completed">Success</span>
-                      </div>
-                    </div>
-
-                    <div
-                      className={`quest-item ${activeQuest === "extern" ? "active" : ""}`}
-                      onClick={() => setActiveQuest("extern")}
-                    >
-                      <div>
-                        <div style={{ fontWeight: "bold", fontSize: "0.9rem" }}>IoT Cyber Extern</div>
-                        <div style={{ fontSize: "0.72rem", color: "#94a3b8" }}>Hydroficient</div>
-                      </div>
-                      <div className="quest-meta">
-                        <span className="quest-status status-completed">Success</span>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-
-                <Col md={7}>
-                  <div className="quest-details">
-                    <h4 className="purple" style={{ fontSize: "1.1rem", fontWeight: "bold" }}>{quests[activeQuest].title}</h4>
-                    <p style={{ fontSize: "0.85rem", color: "#94a3b8", marginBottom: "5px" }}>{quests[activeQuest].company}</p>
-                    <p style={{ fontSize: "0.78rem", color: "#10b981", fontStyle: "italic", marginBottom: "15px" }}>{quests[activeQuest].date}</p>
-                    
-                    <div style={{ fontSize: "0.82rem", color: "#e2e8f0" }}>
-                      <p style={{ fontWeight: "bold", color: "#38bdf8", marginBottom: "8px" }}>Objectives Met:</p>
-                      <ul style={{ paddingLeft: "15px" }}>
-                        {quests[activeQuest].description.map((bullet, index) => (
-                          <li key={index} style={{ marginBottom: "8px" }}>{bullet}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div style={{ marginTop: "20px", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "12px" }}>
-                      <span style={{ fontSize: "0.75rem", fontWeight: "bold", color: "#10b981", display: "block" }}>Loot Acquired (Skills Utilized):</span>
-                      <span style={{ fontSize: "0.8rem", color: "#ffffff", fontFamily: "monospace" }}>{quests[activeQuest].rewards}</span>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-
-        {/* Row 3: Skills Inventory */}
-        <Row className="justify-content-center">
-          <Col md={12}>
-            <div className="cyber-panel">
-              <div className="cyber-header">
-                <h3 className="cyber-title"><FaShieldAlt /> Skill Arsenal & Tool Inventory</h3>
-                <span style={{ fontSize: "0.8rem", color: "#64748b" }}>Select a skill to inspect weapon capabilities</span>
-              </div>
-              <Row>
-                <Col lg={7} md={12} style={{ marginBottom: "15px" }}>
-                  <div className="inventory-grid">
-                    <div className={`inventory-slot ${activeSkill === "nmap" ? "active" : ""}`} onClick={() => setActiveSkill("nmap")}>
-                      <FaSearch className="inventory-icon" />
-                      <span className="inventory-name">Nmap Scan</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "wireshark" ? "active" : ""}`} onClick={() => setActiveSkill("wireshark")}>
-                      <FaBug className="inventory-icon" />
-                      <span className="inventory-name">Wireshark</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "auditd" ? "active" : ""}`} onClick={() => setActiveSkill("auditd")}>
-                      <FaTerminal className="inventory-icon" />
-                      <span className="inventory-name">auditd</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "splunk" ? "active" : ""}`} onClick={() => setActiveSkill("splunk")}>
-                      <FaServer className="inventory-icon" />
-                      <span className="inventory-name">Splunk</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "mqtt" ? "active" : ""}`} onClick={() => setActiveSkill("mqtt")}>
-                      <FaNetworkWired className="inventory-icon" />
-                      <span className="inventory-name">MQTT / TLS</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "hmac" ? "active" : ""}`} onClick={() => setActiveSkill("hmac")}>
-                      <FaLock className="inventory-icon" />
-                      <span className="inventory-name">HMAC / Crypto</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "python" ? "active" : ""}`} onClick={() => setActiveSkill("python")}>
-                      <FaCode className="inventory-icon" />
-                      <span className="inventory-name">Python</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "sql" ? "active" : ""}`} onClick={() => setActiveSkill("sql")}>
-                      <FaServer className="inventory-icon" />
-                      <span className="inventory-name">SQL Database</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "aws" ? "active" : ""}`} onClick={() => setActiveSkill("aws")}>
-                      <FaCloud className="inventory-icon" />
-                      <span className="inventory-name">AWS Cloud</span>
-                    </div>
-                    <div className={`inventory-slot ${activeSkill === "stride" ? "active" : ""}`} onClick={() => setActiveSkill("stride")}>
-                      <FaShieldAlt className="inventory-icon" />
-                      <span className="inventory-name">STRIDE Modeling</span>
-                    </div>
-                  </div>
-                </Col>
-                <Col lg={5} md={12}>
-                  <div className="inventory-desc-panel d-flex flex-column justify-content-center">
-                    <h4 className="purple" style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "8px" }}>
-                      {skills[activeSkill].name}
-                    </h4>
-                    <span style={{ fontSize: "0.75rem", background: "rgba(16, 185, 129, 0.15)", color: "#10b981", border: "1px solid rgba(16, 185, 129, 0.3)", padding: "2px 8px", borderRadius: "4px", alignSelf: "flex-start", marginBottom: "12px", textTransform: "uppercase", fontWeight: "bold" }}>
-                      {skills[activeSkill].category}
-                    </span>
-                    <p style={{ fontSize: "0.85rem", color: "#e2e8f0", lineHeight: "1.4", minHeight: "60px" }}>
-                      {skills[activeSkill].desc}
-                    </p>
-                    <div style={{ marginTop: "15px", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "12px" }}>
-                      <span style={{ display: "block", fontSize: "0.75rem", color: "#94a3b8", textTransform: "uppercase", fontWeight: "bold", marginBottom: "4px" }}>Item Mastery Rating:</span>
-                      <div className="d-flex align-items-center gap-3">
-                        <div className="stat-bar-container" style={{ flex: 1, marginTop: 0 }}>
-                          <div className="stat-bar-fill mp-bar" style={{ width: `${skills[activeSkill].level}%` }}></div>
-                        </div>
-                        <span style={{ fontSize: "0.85rem", fontFamily: "monospace", color: "#38bdf8", fontWeight: "bold" }}>{skills[activeSkill].level}%</span>
-                      </div>
-                    </div>
-                    <div style={{ marginTop: "12px", fontStyle: "italic", fontSize: "0.78rem", color: "#10b981", fontFamily: "monospace" }}>
-                      {skills[activeSkill].power}
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-
-        {/* Row 4: Achievement Showcase (Certifications) */}
-        <Row className="justify-content-center">
-          <Col md={12}>
-            <div className="cyber-panel">
-              <div className="cyber-header">
-                <h3 className="cyber-title"><FaAward /> Unlocked Achievements (Certifications)</h3>
-              </div>
-              <div className="achievement-list">
-                <div className="badge-card">
-                  <div className="badge-icon-glow"><FaAward /></div>
-                  <div className="badge-details">
-                    <div className="badge-title">CompTIA Security+</div>
-                    <div className="badge-subtitle">In Progress — SY0-701</div>
-                  </div>
-                </div>
-                <div className="badge-card">
-                  <div className="badge-icon-glow"><FaAward /></div>
-                  <div className="badge-details">
-                    <div className="badge-title">AWS Cloud Foundations</div>
-                    <div className="badge-subtitle">AWS Academy Certified (2025)</div>
-                  </div>
-                </div>
-                <div className="badge-card">
-                  <div className="badge-icon-glow"><FaAward /></div>
-                  <div className="badge-details">
-                    <div className="badge-title">CodePath Honors</div>
-                    <div className="badge-subtitle">CYB102 Certificate of Achievement</div>
-                  </div>
-                </div>
-                <div className="badge-card">
-                  <div className="badge-icon-glow"><FaAward /></div>
-                  <div className="badge-details">
-                    <div className="badge-title">Google Cybersecurity</div>
-                    <div className="badge-subtitle">Foundations & Risk Mitigation</div>
-                  </div>
-                </div>
-                <div className="badge-card">
-                  <div className="badge-icon-glow"><FaAward /></div>
-                  <div className="badge-details">
-                    <div className="badge-title">IBM SkillsBuild</div>
-                    <div className="badge-subtitle">AI, Security, and Data Specialist</div>
-                  </div>
-                </div>
-                <div className="badge-card">
-                  <div className="badge-icon-glow"><FaAward /></div>
-                  <div className="badge-details">
-                    <div className="badge-title">IOBSE 2026 Participant</div>
-                    <div className="badge-subtitle">Black Security Executives Cohort</div>
-                  </div>
-                </div>
+                <span style={{ color: "#cbd5e1", display: "block", fontSize: "0.75rem", marginBottom: "8px", fontWeight: "bold", textTransform: "uppercase" }}>Run a command:</span>
+                <button className="terminal-btn" onClick={() => executeCommand("nmap")}>Scan Network</button>
+                <button className="terminal-btn" onClick={() => executeCommand("coursework")}>View Education</button>
+                <button className="terminal-btn" onClick={() => executeCommand("scansafe")}>ScanSafe Demo</button>
+                <button className="terminal-btn" onClick={() => executeCommand("auditd")}>Log Investigation</button>
               </div>
             </div>
           </Col>
         </Row>
 
-        {/* Bottom Row: Official Physical Scroll Download */}
+        {/* Download */}
         <Row className="justify-content-center" style={{ marginTop: "20px" }}>
           <Col md={6} style={{ textAlign: "center" }}>
             <div className="cyber-panel" style={{ borderStyle: "dashed" }}>
-              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "15px" }}>Request Official Physical Scroll (PDF)</h4>
-              <Button
-                variant="primary"
-                href={pdf}
-                target="_blank"
-                style={{ maxWidth: "280px" }}
-              >
-                <AiOutlineDownload />
-                &nbsp;Download Official Resume
+              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "15px" }}>Download My Resume (PDF)</h4>
+              <Button variant="primary" href={pdf} target="_blank" style={{ maxWidth: "280px" }}>
+                <AiOutlineDownload />&nbsp;Download Resume
               </Button>
             </div>
           </Col>
         </Row>
+
       </Container>
     </div>
   );

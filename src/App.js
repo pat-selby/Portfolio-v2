@@ -3,12 +3,14 @@ import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
 import Experience from "./components/Experience/Experience";
 import Home from "./components/Home/Home";
+import CityPortfolio from "./components/City/CityPortfolio";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
-import Game3D from "./components/Game/Game3D";
+import SplineResume from "./components/Resume/SplineResume";
 import ProjectDemos from "./components/Projects/ProjectDemos";
+import CyberThreeBackground from "./components/CyberThreeBackground";
 import {
   BrowserRouter as Router,
   Route,
@@ -33,17 +35,19 @@ function App() {
 
   return (
     <Router>
+      <CyberThreeBackground />
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<CityPortfolio />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/resume-3d" element={<SplineResume toggleMode={() => { window.location.href = "/resume"; }} />} />
           <Route path="/experience" element={<Experience />} />
-          <Route path="/game" element={<Game3D />} />
           <Route path="/demos" element={<ProjectDemos />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

@@ -1,9 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-// import macOs from "../../Assets/TechIcons/Apple MacOSX.svg";
-import chrome from "../../Assets/TechIcons/Google Chrome.svg";
-import { SiUbuntu, SiKalilinux, SiOpenai } from "react-icons/si";
-
+import { SiUbuntu, SiKalilinux, SiOpenai, SiAndroidstudio, SiGithub } from "react-icons/si";
 import vsCode from "../../Assets/TechIcons/vscode.svg";
 
 function Toolstack() {
@@ -17,17 +14,21 @@ function Toolstack() {
         <SiKalilinux fontSize={"50px"} />
         <div className="tech-icons-text">Kali Linux</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons ">
-        <img src={chrome} alt="Chrome" className="tech-icon-images" />
-        <div className="tech-icons-text">Google Chrome</div>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiAndroidstudio fontSize={"50px"} />
+        <div className="tech-icons-text">Android Studio</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons ">
-        <img src={vsCode} alt="vsCode" className="tech-icon-images" />
-        <div className="tech-icons-text">Vs Code</div>
+      <Col xs={4} md={2} className="tech-icons">
+        <img src={vsCode} alt="VS Code" style={{ height: "50px", width: "50px", objectFit: "contain" }} />
+        <div className="tech-icons-text">VS Code</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons ">
+      <Col xs={4} md={2} className="tech-icons">
+        <SiGithub fontSize={"50px"} />
+        <div className="tech-icons-text">GitHub</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
         <SiOpenai fontSize={"50px"} />
-        <div className="tech-icons-text">AI Tools (Gemini/ChatGPT)</div>
+        <div className="tech-icons-text">AI-Assisted Dev</div>
       </Col>
     </Row>
   );
