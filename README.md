@@ -3,7 +3,7 @@
 This is my professional portfolio website, showcasing my work as a **Cybersecurity and Cloud Computing** student at Grambling State University.
 
 ## 🌐 Live Demo
-You can view the live site here: **[portfolio-v2-gzkg.vercel.app](https://portfolio-v2-gzkg.vercel.app/)**
+You can view the live site here: **[patrickselby.vercel.app](https://patrickselby.vercel.app/)**
 
 ---
 
