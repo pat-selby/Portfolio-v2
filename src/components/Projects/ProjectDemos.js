@@ -248,7 +248,7 @@ function ProjectDemos() {
             {activeTab === "scansafe" && (
               <div className="demo-panel">
                 <div className="demo-header">
-                  <h3 className="demo-title"><FaSearch /> ScanSafe — Heuristics Sandbox</h3>
+                  <h3 className="demo-title"><FaSearch /> ScanSafe: Heuristics Sandbox</h3>
                   <span style={{ fontSize: "0.82rem", color: "#cbd5e1" }}>
                     Run raw URL analysis using our on-device 18-rule parsing engine.
                   </span>
@@ -470,7 +470,7 @@ function ProjectDemos() {
             {activeTab === "splunk" && (
               <div className="demo-panel">
                 <div className="demo-header">
-                  <h3 className="demo-title"><FaTerminal /> Splunk — Threat Hunting Dashboard</h3>
+                  <h3 className="demo-title"><FaTerminal /> Splunk: Threat Hunting Dashboard</h3>
                   <span style={{ fontSize: "0.82rem", color: "#cbd5e1" }}>
                     Identify anomalous auditd events and run playbook scripts.
                   </span>

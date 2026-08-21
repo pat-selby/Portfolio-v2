@@ -30,3 +30,5 @@ Server/config.js
 
 # scratch directory
 /scratch
+# Local editor/tooling config
+.claude/

@@ -1,9 +1,32 @@
 /* ProjectDemos.css - Cyber Sandbox Project Demos Styling */
 
+/* The sandbox keeps its console look, so it carries its own dark surface
+   rather than inheriting the light page background. */
 .demo-container {
   color: #e2e8f0;
   font-family: 'Inter', 'Outfit', 'Courier New', monospace;
+  background: #040912;
+  padding-top: 48px;
   padding-bottom: 50px;
+  min-height: calc(100vh - var(--nav-h));
+}
+
+/* Compat shims for the few legacy classes this page still uses. */
+.demo-container .project-heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  letter-spacing: -0.03em;
+  color: #f8fafc;
+  margin-bottom: 0.6rem;
+}
+
+.demo-container .purple {
+  color: #10b981;
+}
+
+.demo-container .text-muted {
+  color: #94a3b8 !important;
 }
 
 .demo-panel {

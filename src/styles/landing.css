@@ -1,0 +1,1643 @@
+/* ------------------------------------------------------------------
+   Nav
+------------------------------------------------------------------ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav--scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.nav__mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--invert-bg);
+  color: var(--invert-fg);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: -0.02em;
+}
+
+.nav__handle {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav__link {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--text);
+}
+
+.nav__link.is-active {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--accent);
+}
+
+.nav__cta {
+  padding: 8px 18px;
+  font-size: 0.86rem;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--gh-gold);
+  border-color: var(--gh-gold);
+  transform: rotate(-18deg);
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.nav__bar {
+  display: block;
+  width: 17px;
+  height: 1.5px;
+  margin: 0 auto;
+  background: var(--text);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.is-open-top {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.is-open-mid {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* ------------------------------------------------------------------
+   Hero
+------------------------------------------------------------------ */
+.hero {
+  padding: 84px 0 96px;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 4.8vw, 3.5rem);
+  letter-spacing: -0.042em;
+  line-height: 1.02;
+  margin: 18px 0 0;
+}
+
+.hero__lede {
+  font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+  color: var(--text-muted);
+  margin: 20px 0 0;
+  max-width: 46ch;
+}
+
+.hero__currently {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  margin: 24px 0 0;
+}
+
+.hero__currently-key {
+  color: var(--accent);
+}
+
+.hero__arrow {
+  color: var(--text-faint);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* ---- Hero avatar ------------------------------------------------- */
+.hero__avatar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ---- Mii-style vector avatar -------------------------------------
+   The hands float free of the body, so nothing can tear at a joint. Three
+   rhythms run at unrelated periods (2.6s / 4.3s / 6.1s) so the loop never
+   visibly repeats, plus an occasional blink. */
+.mii {
+  display: block;
+  height: 100%;
+  width: auto;
+  overflow: visible;
+}
+
+.mii--wave { height: clamp(250px, 30vw, 380px); }
+.mii--bye  { height: clamp(225px, 26vw, 320px); }
+
+/* transform-box keeps each origin on the shape's own bounding box rather
+   than the whole SVG viewport. */
+.mii__figure {
+  transform-box: fill-box;
+  transform-origin: 50% 92%;
+  animation: mii-sway 6.1s ease-in-out infinite, mii-breathe 4.3s ease-in-out infinite;
+}
+
+.mii__hand {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.mii--wave .mii__hand--wave { animation: mii-wave 2.6s cubic-bezier(0.45, 0, 0.35, 1) infinite; }
+.mii--wave .mii__hand--rest { animation: mii-hand-idle 4.3s ease-in-out infinite; }
+.mii--bye  .mii__hand--bye-l { animation: mii-cheer-l 2.4s cubic-bezier(0.45, 0, 0.35, 1) infinite; }
+/* Offset so the two hands never peak together. */
+.mii--bye  .mii__hand--bye-r { animation: mii-cheer-r 2.4s cubic-bezier(0.45, 0, 0.35, 1) -0.35s infinite; }
+
+.mii__eyes {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: mii-blink 6.7s ease-in-out infinite;
+}
+
+.mii__shadow {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: mii-shadow 4.3s ease-in-out infinite;
+}
+
+/* A burst of waves, then a rest beat. The amplitude decays across the burst,
+   which is what stops it reading as a metronome. */
+@keyframes mii-wave {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  7%   { transform: translate(-15px, -7px) rotate(-13deg); }
+  14%  { transform: translate(9px, 1px) rotate(9deg); }
+  21%  { transform: translate(-13px, -6px) rotate(-11deg); }
+  28%  { transform: translate(8px, 1px) rotate(8deg); }
+  35%  { transform: translate(-10px, -4px) rotate(-9deg); }
+  42%  { transform: translate(6px, 0) rotate(6deg); }
+  49%  { transform: translate(-6px, -2px) rotate(-5deg); }
+  56%, 100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes mii-cheer-l {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  9%   { transform: translate(-11px, -9px) rotate(-12deg); }
+  19%  { transform: translate(6px, 2px) rotate(7deg); }
+  29%  { transform: translate(-9px, -7px) rotate(-10deg); }
+  39%  { transform: translate(5px, 1px) rotate(5deg); }
+  49%  { transform: translate(-5px, -3px) rotate(-5deg); }
+  58%, 100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes mii-cheer-r {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  9%   { transform: translate(11px, -9px) rotate(12deg); }
+  19%  { transform: translate(-6px, 2px) rotate(-7deg); }
+  29%  { transform: translate(9px, -7px) rotate(10deg); }
+  39%  { transform: translate(-5px, 1px) rotate(-5deg); }
+  49%  { transform: translate(5px, -3px) rotate(5deg); }
+  58%, 100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* The resting hand drifts slightly so it doesn't look frozen. */
+@keyframes mii-hand-idle {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+@keyframes mii-sway {
+  0%, 100% { transform: rotate(-1.1deg); }
+  50%      { transform: rotate(1.1deg); }
+}
+
+@keyframes mii-breathe {
+  0%, 100% { scale: 1 1; }
+  50%      { scale: 1.006 1.014; }
+}
+
+/* Shadow tightens as the figure rises, which is what grounds the bob. */
+@keyframes mii-shadow {
+  0%, 100% { scale: 1 1; opacity: 0.2; }
+  50%      { scale: 0.93 1; opacity: 0.15; }
+}
+
+/* Blink: a fast squash held closed for only a couple of frames. */
+@keyframes mii-blink {
+  0%, 92%, 100% { scale: 1 1; }
+  95%           { scale: 1 0.08; }
+  98%           { scale: 1 1; }
+}
+
+.hero__avatar-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* Breathing now lives on .av; this layer only handles the entrance and a
+     slow bob, so the two don't fight over the same transform. */
+  animation: avatar-hop 0.9s cubic-bezier(0.22, 1.2, 0.36, 1) both,
+    avatar-bob 3.3s ease-in-out 0.9s infinite;
+  transform-origin: 50% 96%;
+  cursor: pointer;
+}
+
+/* Tapping drops the rest beat so the waving runs continuously for a moment. */
+.hero__avatar-btn.is-poked .mii__hand--wave {
+  animation: mii-wave-excited 0.42s ease-in-out infinite;
+}
+
+@keyframes mii-wave-excited {
+  0%, 100% { transform: translate(-14px, -6px) rotate(-14deg); }
+  50%      { transform: translate(10px, 2px) rotate(11deg); }
+}
+
+@keyframes avatar-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.hero__bubble {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  z-index: 2;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 14px 4px;
+  border-left: 3px solid var(--gh-gold);
+  padding: 8px 14px;
+  box-shadow: var(--shadow);
+  animation: bubble-pop 0.45s cubic-bezier(0.22, 1.4, 0.36, 1) both;
+}
+
+.hero__poke {
+  font-size: 0.76rem;
+  color: var(--text-faint);
+  margin-top: 6px;
+}
+
+@keyframes avatar-hop {
+  0% {
+    opacity: 0;
+    transform: translateY(46px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bubble-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   About
+------------------------------------------------------------------ */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 56px;
+  margin-top: 44px;
+  align-items: start;
+}
+
+/* Portrait source is 683x1024, and a square crop decapitates him, so keep it
+   4:5 and bias the crop toward the top of the frame. */
+.about__photo {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 6%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-bottom: 26px;
+}
+
+.about__para {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  margin: 0 0 18px;
+}
+
+.about__focus {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.about__focus li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  color: var(--text);
+  font-size: 1.06rem;
+}
+
+.about__focus-arrow {
+  color: var(--accent);
+  flex: none;
+}
+
+.about__eyebrow {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  margin: 0 0 12px;
+}
+
+.about__right > .about__eyebrow:not(:first-child) {
+  margin-top: 34px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.skills__cell {
+  padding: 20px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.skills__cell:nth-child(2n) {
+  border-right: none;
+}
+
+.skills__cell:nth-last-child(-n + 2) {
+  border-bottom: none;
+}
+
+.skills__title {
+  font-size: 1.06rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.skills__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.edu {
+  padding: 20px;
+}
+
+.edu__school {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.edu__degree {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.edu__sep {
+  color: var(--text-faint);
+}
+
+.edu__dates {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-faint);
+}
+
+.edu__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.certs {
+  list-style: none;
+  padding: 6px 20px;
+  margin: 0;
+}
+
+.certs__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.certs__row:last-child {
+  border-bottom: none;
+}
+
+.certs__name {
+  font-size: 1.02rem;
+}
+
+.certs__issuer {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.certs__issuer.is-pending {
+  color: var(--accent);
+}
+
+.about__affiliations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* ------------------------------------------------------------------
+   Experience
+------------------------------------------------------------------ */
+.xp__list {
+  margin-top: 40px;
+  display: grid;
+  gap: 14px;
+}
+
+.xp {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.xp:hover,
+.xp.is-open {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow);
+}
+
+.xp__head {
+  display: grid;
+  grid-template-columns: 44px 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.xp__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+}
+
+.xp__ident {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.xp__org {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.xp__now {
+  font-size: 0.68rem;
+  color: var(--gh-green);
+  background: var(--gh-green-soft);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+/* Marks pitched-but-unbuilt work so it can never be mistaken for shipped. */
+.xp__concept {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  background: var(--chip-bg, rgba(16, 19, 25, 0.06));
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+/* Initials stand in when an entry has no logo art. */
+.xp__logo--mark {
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface-2, rgba(16, 19, 25, 0.05));
+  border: 1px solid var(--border);
+}
+
+.xp__role {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.xp__dates {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.xp__toggle {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1;
+  background: var(--surface-muted);
+}
+
+.xp__body {
+  padding: 0 20px 20px 80px;
+}
+
+.xp__team {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  margin: 0 0 14px;
+}
+
+.xp__bullets {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 1.04rem;
+}
+
+.xp__bullets li::marker {
+  color: var(--accent);
+}
+
+.xp__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+/* ------------------------------------------------------------------
+   Projects (vertical scroll drives horizontal slides)
+------------------------------------------------------------------ */
+.pj__runway {
+  position: relative;
+  margin-top: 44px;
+}
+
+.pj__runway.is-pinned .pj__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  cursor: grab;
+  /* Let the browser own vertical panning; sideways gestures are handled in JS. */
+  touch-action: pan-y;
+  /* Gives the slide rotations real foreshortening instead of a flat squash. */
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+}
+
+.pj__runway.is-pinned .pj__stage.is-dragging {
+  cursor: grabbing;
+}
+
+/* Links and buttons stay clickable while the stage is draggable. */
+.pj__card {
+  cursor: auto;
+}
+
+.pj__track {
+  display: flex;
+  will-change: transform;
+}
+
+/* Children keep their own place in 3D space rather than being flattened into
+   the track's plane. */
+.pj__runway.is-pinned .pj__track {
+  transform-style: preserve-3d;
+}
+
+.pj__runway.is-pinned .pj__slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.pj__slide {
+  position: relative;
+  padding: 0 24px;
+}
+
+/* The tilt is decorative; without motion the slides stay square and legible. */
+@media (prefers-reduced-motion: reduce) {
+  .pj__runway.is-pinned .pj__slide {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* The write-up stays out of the way until you point at the slide, so the
+   artwork reads first. Only applied where a real pointer exists: on touch
+   there is no hover, and on the stacked mobile layout the card is the only
+   place the copy lives. */
+@media (hover: hover) and (pointer: fine) {
+  .pj__runway.is-pinned .pj__card {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+    pointer-events: none;
+    transition: opacity 0.26s ease, transform 0.26s ease;
+  }
+
+  /* focus-within keeps it reachable by keyboard, since the card holds links. */
+  .pj__runway.is-pinned .pj__stage:hover .pj__slide.is-active .pj__card,
+  .pj__runway.is-pinned .pj__slide:focus-within .pj__card {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .pj__runway.is-pinned .pj__card {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Only meaningful where the card is hover-gated. */
+.pj__hover-hint {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pj__runway.is-pinned .pj__hover-hint {
+    display: block;
+    position: absolute;
+    right: 14px;
+    bottom: 12px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.72rem;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+  }
+
+  .pj__runway.is-pinned .pj__stage:hover .pj__hover-hint,
+  .pj__runway.is-pinned .pj__slide:focus-within .pj__hover-hint {
+    opacity: 0;
+  }
+}
+
+/* Stacked fallback below the pin breakpoint. */
+.pj__runway:not(.is-pinned) .pj__track {
+  flex-direction: column;
+  gap: 48px;
+}
+
+.pj__media {
+  position: relative;
+  /* Smaller than the page column, and bounded by viewport height so the whole
+     slide plus its floating card fit inside the pinned stage without cropping. */
+  max-width: min(var(--maxw), 78vh * 16 / 9, 860px);
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+  box-shadow: var(--shadow-lg);
+}
+
+.pj__media img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Info card floats over the media, like a caption pinned to the artwork. */
+.pj__card {
+  position: absolute;
+  right: max(20px, calc((100% - min(var(--maxw), 78vh * 16 / 9, 860px)) / 2 + 28px));
+  bottom: 10%;
+  width: min(290px, 72%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 18px;
+}
+
+.pj__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  margin: 0 0 10px;
+}
+
+.pj__slash {
+  color: var(--border-strong);
+}
+
+.pj__tag {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.76rem;
+}
+
+.pj__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.32rem;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin: 0;
+}
+
+.pj__subtitle {
+  color: var(--accent);
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin: 6px 0 0;
+}
+
+.pj__summary {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin: 10px 0 0;
+}
+
+.pj__outcome {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.pj__outcome-key {
+  color: var(--gh-green);
+}
+
+.pj__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.pj__link {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.pj__link:hover {
+  color: var(--accent);
+}
+
+/* Progress capsule */
+.pj__progress {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 18px;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+.pj__progress-count {
+  color: var(--text);
+}
+
+.pj__dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pj__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--border-strong);
+  transition: width 0.25s ease, background 0.25s ease;
+}
+
+.pj__dot.is-on {
+  width: 22px;
+  background: var(--text);
+}
+
+/* ------------------------------------------------------------------
+   Sandbox shelf (taped cards)
+------------------------------------------------------------------ */
+.sbx__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.sbx__filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sbx__filter {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 6px 15px;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.sbx__filter:hover {
+  color: var(--text);
+}
+
+.sbx__filter.is-on {
+  background: var(--invert-bg);
+  color: var(--invert-fg);
+  border-color: var(--invert-bg);
+}
+
+.sbx__shelf {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 34px 26px;
+}
+
+.sbx__card {
+  position: relative;
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 12px 16px;
+  box-shadow: var(--shadow);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.sbx__card:hover {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+}
+
+/* Strip of masking tape holding the card to the shelf. */
+.sbx__tape {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 86px;
+  height: 22px;
+  background: rgba(240, 180, 41, 0.32);
+  border-left: 1px solid rgba(240, 180, 41, 0.22);
+  border-right: 1px solid rgba(240, 180, 41, 0.22);
+  border-radius: 2px;
+}
+
+.sbx__media {
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--surface-muted);
+}
+
+.sbx__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.sbx__body {
+  padding: 14px 4px 0;
+}
+
+.sbx__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sbx__title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sbx__kind {
+  font-size: 0.76rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.sbx__tagline {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  margin: 8px 0 0;
+}
+
+.sbx__open {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.84rem;
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------------
+   Side-quests (auto-scrolling photo marquee)
+------------------------------------------------------------------ */
+.sq__rows {
+  margin-top: 40px;
+  display: grid;
+  gap: 18px;
+}
+
+.sq__row {
+  overflow: hidden;
+  /* Fade the ends so photos slide in and out instead of getting clipped. */
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.sq__track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  /* One full loop covers exactly the original set, so it repeats seamlessly. */
+  animation: sq-roll calc(var(--count) * 6s) linear infinite;
+}
+
+.sq__row--rev .sq__track {
+  animation-direction: reverse;
+}
+
+.sq__row:hover .sq__track,
+.sq__row:focus-within .sq__track {
+  animation-play-state: paused;
+}
+
+@keyframes sq-roll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.sq__item {
+  flex: none;
+  width: 280px;
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sq__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.sq__item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--surface-muted);
+}
+
+.sq__cap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+}
+
+.sq__label {
+  font-size: 0.7rem;
+  color: var(--gh-green);
+}
+
+.sq__text {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.sq__hint {
+  font-size: 0.76rem;
+  color: var(--text-faint);
+  margin: 18px 0 0;
+}
+
+/* ------------------------------------------------------------------
+   Contact
+------------------------------------------------------------------ */
+.contact {
+  text-align: center;
+}
+
+.contact .section-sub,
+.contact .contact__rows {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact__avatar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* Leaps in when the closing section scrolls into view. `avatar-arrive` owns
+   transform here, so breathing uses the independent `scale` property instead
+   of competing for it. */
+.contact__avatar .mii__figure {
+  animation: avatar-arrive 1s cubic-bezier(0.22, 1.2, 0.36, 1) both,
+    mii-breathe 4.3s ease-in-out 1s infinite;
+  transform-origin: 50% 92%;
+}
+
+.reveal .contact__avatar .mii__figure,
+.reveal .contact__avatar .mii__hand {
+  animation-play-state: paused;
+}
+
+.reveal.is-visible .contact__avatar .mii__figure,
+.reveal.is-visible .contact__avatar .mii__hand {
+  animation-play-state: running;
+}
+
+.contact__title {
+  max-width: 20ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact__lede {
+  max-width: 56ch;
+}
+
+.contact__soon {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@keyframes avatar-arrive {
+  0% {
+    opacity: 0;
+    transform: translateY(90px) scale(0.84);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-18px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.contact__cta {
+  margin-top: 30px;
+}
+
+.contact__rows {
+  margin: 40px 0 0;
+  max-width: 560px;
+}
+
+.contact__row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.contact__row:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.contact__key {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+.contact__val {
+  margin: 0;
+  font-size: 1.02rem;
+  overflow-wrap: anywhere;
+}
+
+/* ------------------------------------------------------------------
+   Footer
+------------------------------------------------------------------ */
+.foot {
+  border-top: 1px solid var(--border);
+  padding: 26px 0;
+}
+
+.foot__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.foot__text {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+/* Ghana's black star. */
+.foot__star {
+  margin-left: 8px;
+  color: var(--text);
+}
+
+.foot__links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.foot__link {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.foot__link:hover {
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------------
+   Responsive
+------------------------------------------------------------------ */
+@media (max-width: 940px) {
+  .hero__inner,
+  .about__grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .hero__copy {
+    width: 100%;
+  }
+
+  .hero {
+    padding: 56px 0 72px;
+  }
+
+  .hero__avatar {
+    order: -1;
+    max-width: 300px;
+  }
+
+  .about__photo {
+    max-width: 240px;
+  }
+
+  .pj {
+    grid-template-columns: 1fr;
+  }
+
+  .pj__media {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pj__media img {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 780px) {
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__links {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 16px 24px 22px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    display: none;
+  }
+
+  .nav__links.is-open {
+    display: flex;
+  }
+
+  .nav__link {
+    padding: 9px 0;
+    font-size: 0.95rem;
+  }
+
+  .nav__cta {
+    margin-top: 10px;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+  }
+
+  .skills__cell {
+    border-right: none;
+  }
+
+  .skills__cell:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skills__cell:last-child {
+    border-bottom: none;
+  }
+
+  .xp__head {
+    grid-template-columns: 40px 1fr auto;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .xp__logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .xp__dates {
+    grid-column: 2 / -1;
+    grid-row: 2;
+  }
+
+  .xp__role {
+    white-space: normal;
+  }
+
+  .xp__body {
+    padding: 0 16px 18px;
+  }
+
+  .contact__row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .foot__inner {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ------------------------------------------------------------------
+   3D avatar
+   The flat avatar renders underneath and cross-fades out once the rig
+   is live, so the hero never shows a gap while the model downloads.
+------------------------------------------------------------------ */
+.av3d {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.av3d__poster {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+.av3d.is-ready .av3d__poster {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.av3d__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+  /* The canvas must not eat vertical scrolling on touch. */
+  touch-action: pan-y;
+}
+
+.av3d.is-ready .av3d__canvas {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------
+   Fixed social rail (left edge)
+   Anchored to the bottom with a hairline running to the floor, matching
+   the reference. Hidden below 1280px, where it would overlap the content
+   column; the footer carries the same links there.
+------------------------------------------------------------------ */
+.rail {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .rail {
+    position: fixed;
+    bottom: 0;
+    left: 28px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .rail__link {
+    display: grid;
+    place-items: center;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .rail__link:hover,
+  .rail__link:focus-visible {
+    color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  /* The hairline reads as the rail resting on the page edge. */
+  .rail__line {
+    width: 1px;
+    height: 90px;
+    background: var(--border-strong);
+  }
+}
+
+@media (min-width: 1280px) and (prefers-reduced-motion: reduce) {
+  .rail__link:hover,
+  .rail__link:focus-visible {
+    transform: none;
+  }
+}
+
+/* ---- Verifiable credential links ---------------------------------- */
+.certs__name--link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.certs__name--link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.certs__verify {
+  font-size: 0.78em;
+  color: var(--text-faint);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.certs__name--link:hover .certs__verify {
+  color: var(--accent);
+  transform: translate(1px, -1px);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Project info card reveals on hover ---------------------------
+   The card sits over the artwork, so it stays hidden until the cursor is
+   actually on the slide and fades out the moment it leaves. Focus-within
+   keeps it reachable by keyboard, and coarse pointers (touch) always show
+   it since there is no hover there to trigger on. */
+@media (hover: hover) and (pointer: fine) {
+  .pj__slide .pj__card {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+    pointer-events: none;
+    transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .pj__slide:hover .pj__card,
+  .pj__slide:focus-within .pj__card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Quiet hint that there is something to reveal. */
+  .pj__slide .pj__media::after {
+    content: "hover to read";
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(6px);
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .pj__slide:hover .pj__media::after {
+    opacity: 0;
+  }
+}
