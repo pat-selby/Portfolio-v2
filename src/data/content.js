@@ -12,7 +12,7 @@ export const profile = {
     "A cybersecurity sophomore at Grambling State University, originally from Ghana.",
     "I don't just learn security. I build it.",
   ],
-  email: "pselby@gsumail.gram.edu",
+  email: "patrickselby256@gmail.com",
   links: {
     github: "https://github.com/pat-selby",
     linkedin: "https://www.linkedin.com/in/patrick-ennin-selby-136253301",
