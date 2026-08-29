@@ -4,7 +4,6 @@ import AboutSection from "./AboutSection";
 import ExperienceSection from "./ExperienceSection";
 import ProjectsSection from "./ProjectsSection";
 import SandboxSection from "./SandboxSection";
-import SideQuests from "./SideQuests";
 import ContactSection from "./ContactSection";
 
 function Landing() {
@@ -15,7 +14,6 @@ function Landing() {
       <ExperienceSection />
       <ProjectsSection />
       <SandboxSection />
-      <SideQuests />
       <ContactSection />
     </main>
   );

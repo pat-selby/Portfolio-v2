@@ -27,11 +27,6 @@ export const about = {
     "I am also an AI Fellow with AI4ALL Ignite, where my team trained a Random Forest classifier on 568K transactions to catch credit-card fraud, scoring it on precision and recall rather than accuracy.",
     "My focus is threat modeling, system monitoring, and secure communication for connected devices.",
   ],
-  focus: [
-    "Mobile security research that ships real code",
-    "IoT security, locking down the devices nobody thinks about",
-    "Applied ML for security, where the measurement matters as much as the model",
-  ],
   skills: [
     {
       group: "Security",
@@ -105,24 +100,9 @@ export const certifications = [
     href: "https://coursera.org/share/998a31d3d1742ab6f7d65a6afcd63e91",
   },
   {
-    name: "IBM SkillsBuild: AI",
-    issuer: "IBM",
-    href: "https://www.credly.com/badges/cfa24246-d433-4402-9991-05f090e0edab/public_url",
-  },
-  {
-    name: "IBM SkillsBuild: Cybersecurity",
-    issuer: "IBM",
-    href: "https://www.credly.com/badges/c5383299-b317-47d8-83b2-f6efddbf0c77/public_url",
-  },
-  {
-    name: "IBM SkillsBuild: Data",
-    issuer: "IBM",
-    href: "https://www.credly.com/badges/8ab62037-66d8-4e13-b0c5-b306543d4bf1/public_url",
-  },
-  {
-    name: "IBM SkillsBuild: Digital World Skills",
-    issuer: "IBM",
-    href: "https://www.credly.com/badges/8c09d3af-06c3-4617-8c4e-a89d9fdc897f/public_url",
+    name: "IBM SkillsBuild",
+    issuer: "AI · Cybersecurity · Data · Digital World Skills",
+    href: "https://www.credly.com/users/patrick-selby",
   },
 ];
 
@@ -250,12 +230,12 @@ export const projects = [
   {
     id: "uniqr",
     title: "UniQR",
-    subtitle: "System-wide QR reader for Windows",
+    subtitle: "System-wide QR reader, cross-platform",
     image: "uniqr.png",
     summary:
       "Press one hotkey and every QR code visible anywhere on your screen gets decoded and copied. No reaching for your phone to scan a code your computer is already displaying.",
-    outcome: "Decodes 17/17 hostile screen conditions, inverted and tilted codes included",
-    tags: ["Windows", "Computer vision", "Tooling"],
+    outcome: "28 regression cases green on Windows, macOS and Linux; ~140ms typical scan",
+    tags: ["Computer vision", "Python", "Tooling"],
     links: [],
     built:
       "Python and OpenCV. Frames come straight off a GDI BitBlt as numpy arrays with no image-file round trip, and both of OpenCV's QR detectors run on every capture because they fail on different things. The tray icon, the global hotkey, and the picker overlay are raw Win32 plus tkinter.",

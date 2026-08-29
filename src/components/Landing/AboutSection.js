@@ -21,14 +21,6 @@ function AboutSection() {
               </p>
             ))}
 
-            <ul className="about__focus">
-              {about.focus.map((item) => (
-                <li key={item}>
-                  <span className="about__focus-arrow mono">&#8594;</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="about__right">
