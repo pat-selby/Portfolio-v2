@@ -1587,3 +1587,12 @@
   font-size: 0.9rem;
   color: var(--text-faint);
 }
+
+/* Unpinned (phones and narrow windows): slides stack, so the card sits under
+   its image instead of floating over it and the next slide. */
+.pj__runway:not(.is-pinned) .pj__card {
+  position: static;
+  width: auto;
+  max-width: min(var(--maxw), 860px);
+  margin: 12px auto 0;
+}
