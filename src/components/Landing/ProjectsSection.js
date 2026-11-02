@@ -5,11 +5,13 @@ import useView from "./useView";
 import scansafeApp from "../../Assets/Projects/scansafe_app.webp";
 import uniqr from "../../Assets/Projects/uniqr.webp";
 import uniqrDemo from "../../Assets/Projects/uniqr-demo.mp4";
+import kairoDemo from "../../Assets/Projects/kairo-demo.mp4";
 import riskAssessment from "../../Assets/Projects/risk_assessment.webp";
 import incidentResponse from "../../Assets/Projects/incident_response.webp";
 
 const VIDEOS = {
   "uniqr-demo.mp4": uniqrDemo,
+  "kairo-demo.mp4": kairoDemo,
 };
 
 // Motion-sensitive visitors get the poster frame and the play button instead.
@@ -213,12 +215,12 @@ function ProjectsSection() {
                       src={VIDEOS[project.video]}
                       poster={IMAGES[project.image]}
                       aria-label={`${project.title} demo video`}
-                      autoPlay={!REDUCED_MOTION}
-                      muted
-                      loop
+                      autoPlay={!REDUCED_MOTION && !project.videoOnClick}
+                      muted={!project.videoOnClick}
+                      loop={!project.videoOnClick}
                       playsInline
                       controls
-                      preload="metadata"
+                      preload={project.videoOnClick ? "none" : "metadata"}
                     />
                   ) : IMAGES[project.image] ? (
                     <img src={IMAGES[project.image]} alt={project.title} loading="lazy" />

@@ -396,6 +396,9 @@ export const projects = [
     title: "Kairo",
     subtitle: "AI research workspace, team hackathon project",
     image: null,
+    // Team demo video (69 s, 28 MB): click to play, never autoloaded.
+    video: "kairo-demo.mp4",
+    videoOnClick: true,
     summary:
       "Kairo is a team-built workspace for planning and running research experiments. My part was local React fixes in three areas, checked against 91 frontend tests, a clean build, and go vet. I documented 2 backend test failures I hit locally. I also prepared a manual-plan demo that ran an experiment against live PostgreSQL in about 18 to 19 seconds.",
     outcome: "2nd place at Grambling's Hacktoberfest Hack Day with a 4-person team.",
