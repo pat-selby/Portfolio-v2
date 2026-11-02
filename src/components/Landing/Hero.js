@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { profile } from "../../data/content";
 import Avatar from "./Avatar";
+import ViewSwitch from "./ViewSwitch";
+import useView from "./useView";
 
 const GREETINGS = ["Hi there! 👋", "Akwaaba! 🇬🇭", "Welcome in.", "Thanks for stopping by!"];
 
 function Hero() {
   const [greetIndex, setGreetIndex] = useState(0);
   const [poked, setPoked] = useState(false);
+  const { view } = useView();
 
   const poke = () => {
     setPoked(true);
@@ -26,12 +29,9 @@ function Hero() {
           <h1 className="hero__title">Hi, I'm {profile.first}.</h1>
 
           <p className="hero__lede">
-            {profile.tagline.map((line) => (
-              <React.Fragment key={line}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))}
+            {profile.tagline[0]}
+            <br />
+            {view.tagline}
           </p>
 
           <p className="hero__currently mono">
@@ -39,6 +39,8 @@ function Hero() {
             <span className="hero__arrow">&#8594;</span>
             {profile.currently}
           </p>
+
+          <ViewSwitch className="hero__switch" />
 
           <div className="hero__actions">
             <a href="#projects" className="btn btn-primary">

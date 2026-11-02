@@ -1,9 +1,26 @@
 import React from "react";
-import pdf from "../../Assets/resume.pdf";
-import { experience, leadership, education, certifications, about, profile } from "../../data/content";
+import cyberPdf from "../../Assets/resume-cyber.pdf";
+import swePdf from "../../Assets/resume-swe.pdf";
+import {
+  experience as allExperience,
+  leadership as allLeadership,
+  education,
+  certifications,
+  profile,
+  pick,
+} from "../../data/content";
+import ViewSwitch from "../Landing/ViewSwitch";
+import useView from "../Landing/useView";
 import "./Resume.css";
 
+const PDFS = { cyber: cyberPdf, swe: swePdf };
+
 function ResumeNew() {
+  const { view } = useView();
+  const pdf = PDFS[view.resume];
+  const experience = pick(allExperience, view.experience);
+  const leadership = pick(allLeadership, view.leadership);
+
   return (
     <main className="section resume">
       <div className="shell">
@@ -12,6 +29,8 @@ function ResumeNew() {
         <p className="section-sub">
           The short version of everything on the home page. Grab the PDF, or read it below.
         </p>
+
+        <ViewSwitch className="resume__switch" />
 
         <div className="resume__actions">
           <a className="btn btn-primary" href={pdf} download="Patrick-Ennin-Selby-Resume.pdf">
@@ -33,7 +52,7 @@ function ResumeNew() {
               {education.degree} · {education.detail}
             </p>
             <div className="resume__chips">
-              {education.coursework.map((c) => (
+              {view.coursework.map((c) => (
                 <span key={c} className="chip">
                   {c}
                 </span>
@@ -45,7 +64,7 @@ function ResumeNew() {
         <section className="resume__block">
           <h2 className="resume__h2">Experience</h2>
           {experience.map((job) => (
-            <div key={job.role} className="card resume__card">
+            <div key={job.id} className="card resume__card">
               <div className="resume__row-head">
                 <h3 className="resume__role">{job.role}</h3>
                 <span className="resume__dates mono">{job.dates}</span>
@@ -74,7 +93,7 @@ function ResumeNew() {
         <section className="resume__block">
           <h2 className="resume__h2">Leadership</h2>
           {leadership.map((job) => (
-            <div key={job.role} className="card resume__card">
+            <div key={job.id} className="card resume__card">
               <div className="resume__row-head">
                 <h3 className="resume__role">{job.role}</h3>
                 <span className="resume__dates mono">{job.dates}</span>
@@ -103,7 +122,7 @@ function ResumeNew() {
         <section className="resume__block">
           <h2 className="resume__h2">Skills</h2>
           <div className="card resume__card">
-            {about.skills.map((group) => (
+            {view.skills.map((group) => (
               <div key={group.group} className="resume__skill-row">
                 <span className="resume__skill-key mono">{group.group}</span>
                 <div className="resume__chips">

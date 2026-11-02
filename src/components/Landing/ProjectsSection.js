@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { projects } from "../../data/content";
+import { projects as allProjects, pick } from "../../data/content";
+import useView from "./useView";
 import scansafeApp from "../../Assets/Projects/scansafe_app.webp";
 import uniqr from "../../Assets/Projects/uniqr.webp";
 import riskAssessment from "../../Assets/Projects/risk_assessment.webp";
@@ -30,6 +31,8 @@ function ProjectsSection() {
   const [pinned, setPinned] = useState(
     typeof window === "undefined" ? true : window.innerWidth >= PIN_BREAKPOINT
   );
+  const { view } = useView();
+  const projects = pick(allProjects, view.projects);
   const count = projects.length;
 
   useEffect(() => {

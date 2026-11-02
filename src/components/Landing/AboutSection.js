@@ -2,9 +2,11 @@ import React from "react";
 import { about, education, certifications, affiliations } from "../../data/content";
 import aboutAvatar from "../../Assets/about_avatar.webp";
 import useReveal from "./useReveal";
+import useView from "./useView";
 
 function AboutSection() {
   const [ref, cls] = useReveal();
+  const { view } = useView();
 
   return (
     <section className="section" id="about" ref={ref}>
@@ -26,7 +28,7 @@ function AboutSection() {
           <div className="about__right">
             <p className="about__eyebrow mono">things I can do</p>
             <div className="skills">
-              {about.skills.map((group) => (
+              {view.skills.map((group) => (
                 <div key={group.group} className="skills__cell">
                   <h3 className="skills__title">{group.group}</h3>
                   <div className="skills__chips">
@@ -48,7 +50,7 @@ function AboutSection() {
               </p>
               <p className="edu__dates mono">{education.dates}</p>
               <div className="edu__chips">
-                {education.coursework.map((course) => (
+                {view.coursework.map((course) => (
                   <span key={course} className="chip">
                     {course}
                   </span>
