@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { profile } from "../../data/content";
-import MiiAvatar from "./MiiAvatar";
+import Avatar from "./Avatar";
 
 const GREETINGS = ["Hi there! 👋", "Akwaaba! 🇬🇭", "Welcome in.", "Thanks for stopping by!"];
 
@@ -61,7 +61,7 @@ function Hero() {
             onClick={poke}
             aria-label="Wave back at Patrick"
           >
-            <MiiAvatar variant="wave" alt="Avatar of Patrick waving hello" />
+            <Avatar variant="wave" alt="Avatar of Patrick waving hello" />
           </button>
 
           <span className="hero__poke mono">psst, tap me 👋</span>

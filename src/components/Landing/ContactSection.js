@@ -1,6 +1,6 @@
 import React from "react";
 import { profile } from "../../data/content";
-import MiiAvatar from "./MiiAvatar";
+import Avatar from "./Avatar";
 import useReveal from "./useReveal";
 
 const ROWS = [
@@ -27,7 +27,7 @@ function ContactSection() {
     <section className="section contact" id="contact" ref={ref}>
       <div className={`shell ${cls}`}>
         <div className="contact__avatar">
-          <MiiAvatar variant="bye" alt="Avatar of Patrick waving goodbye" />
+          <Avatar variant="bye" alt="Avatar of Patrick waving goodbye" />
         </div>
 
         <p className="section-label mono">## say-hi</p>

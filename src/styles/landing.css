@@ -197,112 +197,22 @@
   justify-content: flex-end;
 }
 
-/* ---- Mii-style vector avatar -------------------------------------
-   The hands float free of the body, so nothing can tear at a joint. Three
-   rhythms run at unrelated periods (2.6s / 4.3s / 6.1s) so the loop never
-   visibly repeats, plus an occasional blink. */
-.mii {
+/* ---- DiceBear avatar ---------------------------------------------
+   One generated portrait. The button layer handles entrance and bob; the
+   image itself only sways, so the two never fight over one transform. */
+.dice {
   display: block;
-  height: 100%;
   width: auto;
-  overflow: visible;
+  animation: dice-sway 6.1s ease-in-out infinite;
+  transform-origin: 50% 100%;
 }
 
-.mii--wave { height: clamp(250px, 30vw, 380px); }
-.mii--bye  { height: clamp(225px, 26vw, 320px); }
+.dice--wave { height: clamp(240px, 28vw, 360px); }
+.dice--bye  { height: clamp(200px, 24vw, 300px); }
 
-/* transform-box keeps each origin on the shape's own bounding box rather
-   than the whole SVG viewport. */
-.mii__figure {
-  transform-box: fill-box;
-  transform-origin: 50% 92%;
-  animation: mii-sway 6.1s ease-in-out infinite, mii-breathe 4.3s ease-in-out infinite;
-}
-
-.mii__hand {
-  transform-box: fill-box;
-  transform-origin: 50% 50%;
-}
-
-.mii--wave .mii__hand--wave { animation: mii-wave 2.6s cubic-bezier(0.45, 0, 0.35, 1) infinite; }
-.mii--wave .mii__hand--rest { animation: mii-hand-idle 4.3s ease-in-out infinite; }
-.mii--bye  .mii__hand--bye-l { animation: mii-cheer-l 2.4s cubic-bezier(0.45, 0, 0.35, 1) infinite; }
-/* Offset so the two hands never peak together. */
-.mii--bye  .mii__hand--bye-r { animation: mii-cheer-r 2.4s cubic-bezier(0.45, 0, 0.35, 1) -0.35s infinite; }
-
-.mii__eyes {
-  transform-box: fill-box;
-  transform-origin: 50% 50%;
-  animation: mii-blink 6.7s ease-in-out infinite;
-}
-
-.mii__shadow {
-  transform-box: fill-box;
-  transform-origin: 50% 50%;
-  animation: mii-shadow 4.3s ease-in-out infinite;
-}
-
-/* A burst of waves, then a rest beat. The amplitude decays across the burst,
-   which is what stops it reading as a metronome. */
-@keyframes mii-wave {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  7%   { transform: translate(-15px, -7px) rotate(-13deg); }
-  14%  { transform: translate(9px, 1px) rotate(9deg); }
-  21%  { transform: translate(-13px, -6px) rotate(-11deg); }
-  28%  { transform: translate(8px, 1px) rotate(8deg); }
-  35%  { transform: translate(-10px, -4px) rotate(-9deg); }
-  42%  { transform: translate(6px, 0) rotate(6deg); }
-  49%  { transform: translate(-6px, -2px) rotate(-5deg); }
-  56%, 100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-@keyframes mii-cheer-l {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  9%   { transform: translate(-11px, -9px) rotate(-12deg); }
-  19%  { transform: translate(6px, 2px) rotate(7deg); }
-  29%  { transform: translate(-9px, -7px) rotate(-10deg); }
-  39%  { transform: translate(5px, 1px) rotate(5deg); }
-  49%  { transform: translate(-5px, -3px) rotate(-5deg); }
-  58%, 100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-@keyframes mii-cheer-r {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  9%   { transform: translate(11px, -9px) rotate(12deg); }
-  19%  { transform: translate(-6px, 2px) rotate(-7deg); }
-  29%  { transform: translate(9px, -7px) rotate(10deg); }
-  39%  { transform: translate(-5px, 1px) rotate(-5deg); }
-  49%  { transform: translate(5px, -3px) rotate(5deg); }
-  58%, 100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-/* The resting hand drifts slightly so it doesn't look frozen. */
-@keyframes mii-hand-idle {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-4px); }
-}
-
-@keyframes mii-sway {
-  0%, 100% { transform: rotate(-1.1deg); }
-  50%      { transform: rotate(1.1deg); }
-}
-
-@keyframes mii-breathe {
-  0%, 100% { scale: 1 1; }
-  50%      { scale: 1.006 1.014; }
-}
-
-/* Shadow tightens as the figure rises, which is what grounds the bob. */
-@keyframes mii-shadow {
-  0%, 100% { scale: 1 1; opacity: 0.2; }
-  50%      { scale: 0.93 1; opacity: 0.15; }
-}
-
-/* Blink: a fast squash held closed for only a couple of frames. */
-@keyframes mii-blink {
-  0%, 92%, 100% { scale: 1 1; }
-  95%           { scale: 1 0.08; }
-  98%           { scale: 1 1; }
+@keyframes dice-sway {
+  0%, 100% { rotate: -2deg; }
+  50%      { rotate: 2deg; }
 }
 
 .hero__avatar-btn {
@@ -320,14 +230,14 @@
   cursor: pointer;
 }
 
-/* Tapping drops the rest beat so the waving runs continuously for a moment. */
-.hero__avatar-btn.is-poked .mii__hand--wave {
-  animation: mii-wave-excited 0.42s ease-in-out infinite;
+/* Tapping makes the portrait hop with excitement for a moment. */
+.hero__avatar-btn.is-poked .dice {
+  animation: dice-excited 0.3s ease-in-out 3;
 }
 
-@keyframes mii-wave-excited {
-  0%, 100% { transform: translate(-14px, -6px) rotate(-14deg); }
-  50%      { transform: translate(10px, 2px) rotate(11deg); }
+@keyframes dice-excited {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  50%      { translate: 0 -12px; rotate: 6deg; }
 }
 
 @keyframes avatar-bob {
@@ -1128,19 +1038,17 @@
 /* Leaps in when the closing section scrolls into view. `avatar-arrive` owns
    transform here, so breathing uses the independent `scale` property instead
    of competing for it. */
-.contact__avatar .mii__figure {
+.contact__avatar .dice {
   animation: avatar-arrive 1s cubic-bezier(0.22, 1.2, 0.36, 1) both,
-    mii-breathe 4.3s ease-in-out 1s infinite;
+    dice-sway 6.1s ease-in-out 1s infinite;
   transform-origin: 50% 92%;
 }
 
-.reveal .contact__avatar .mii__figure,
-.reveal .contact__avatar .mii__hand {
+.reveal .contact__avatar .dice {
   animation-play-state: paused;
 }
 
-.reveal.is-visible .contact__avatar .mii__figure,
-.reveal.is-visible .contact__avatar .mii__hand {
+.reveal.is-visible .contact__avatar .dice {
   animation-play-state: running;
 }
 
