@@ -4,12 +4,19 @@ import useView from "./useView";
 import aiotLab from "../../Assets/aiot_lab.webp";
 import codepathLogo from "../../Assets/codepath_logo.webp";
 import iotExternship from "../../Assets/iot_externship.webp";
+import ai4allLogo from "../../Assets/ai4all_logo.webp";
+import cyberforceLogo from "../../Assets/cyberforce_logo.webp";
+import colorstackLogo from "../../Assets/colorstack_logo.webp";
 import useReveal from "./useReveal";
 
 const LOGOS = {
   "aiot_lab.png": aiotLab,
   "codepath_logo.png": codepathLogo,
   "iot_externship.png": iotExternship,
+  // Official marks from ai-4-all.org, cyberforce.energy.gov and colorstack.org.
+  ai4all_logo: ai4allLogo,
+  cyberforce_logo: cyberforceLogo,
+  colorstack_logo: colorstackLogo,
 };
 
 // Initials for entries with no logo art, so the row never renders a broken image.

@@ -135,7 +135,7 @@ export const experience = [
     team: "Remote",
     role: "Machine Learning Research Fellow",
     dates: "Jun 2026 - Aug 2026",
-    logo: null,
+    logo: "ai4all_logo",
     bullets: [
       "Investigated language-model inference performance by profiling KV-cache overhead and dynamic batching, identifying 3 bottlenecks and reducing response latency by 25%.",
       "Built PyTorch/CUDA harnesses for multi-head attention, increasing tensor-core utilization by 28% under high concurrency.",
@@ -206,7 +206,7 @@ export const experience = [
     team: "Grambling State University team",
     role: "Blue Team Member",
     dates: "Nov 2025",
-    logo: null,
+    logo: "cyberforce_logo",
     bullets: [
       "Defended enterprise and industrial-control infrastructure in DOE CyberForce with a six-member team, maintaining 97% availability across 6 critical services and placing in the top 10% nationally.",
       "Investigated 23 host and network events with Wireshark, logs, and command-line tools, identifying 8 high-confidence incidents and remediating 14 security misconfigurations.",
@@ -265,7 +265,7 @@ export const leadership = [
     role: "Events Committee Member",
     dates: "Aug 2025 - Present",
     current: true,
-    logo: null,
+    logo: "colorstack_logo",
     bullets: [
       "Co-organized 4 career events reaching 200+ students and reviewed 40 peers' resumes, with 65% securing tech internship interviews.",
     ],
@@ -307,7 +307,7 @@ export const leadership = [
     role: "Events Committee Member",
     dates: "Aug 2025 - Present",
     current: true,
-    logo: null,
+    logo: "colorstack_logo",
     bullets: [
       "Co-organized 4 campus career events reaching 200+ students and reviewed 40 peers' resumes to support technical career preparation.",
     ],
