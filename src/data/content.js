@@ -329,7 +329,7 @@ export const projects = [
     subtitle: "AI research workspace, team hackathon project",
     image: null,
     summary:
-      "Kairo is a team-built workspace for planning and reviewing research experiments. My part was local React fixes in three areas: connection errors, domain labels, and experiment-plan guidance. I also worked on demo workflows, manual-plan fallbacks, and the presentation.",
+      "Kairo is a team-built workspace for planning and running research experiments. My part was local React fixes in three areas, checked against 91 frontend tests, a clean build, and go vet. I documented 2 backend test failures I hit locally. I also prepared a manual-plan demo that ran an experiment against live PostgreSQL in about 18 to 19 seconds.",
     outcome: "2nd place at Grambling's Hacktoberfest Hack Day with a 4-person team.",
     tags: ["Hackathon", "React", "Team project"],
     links: [{ label: "Team repo", href: "https://github.com/Alanperry1/Kario" }],
