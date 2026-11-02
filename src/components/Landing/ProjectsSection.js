@@ -4,8 +4,18 @@ import { projects as allProjects, pick } from "../../data/content";
 import useView from "./useView";
 import scansafeApp from "../../Assets/Projects/scansafe_app.webp";
 import uniqr from "../../Assets/Projects/uniqr.webp";
+import uniqrDemo from "../../Assets/Projects/uniqr-demo.mp4";
 import riskAssessment from "../../Assets/Projects/risk_assessment.webp";
 import incidentResponse from "../../Assets/Projects/incident_response.webp";
+
+const VIDEOS = {
+  "uniqr-demo.mp4": uniqrDemo,
+};
+
+// Motion-sensitive visitors get the poster frame and the play button instead.
+const REDUCED_MOTION =
+  typeof window !== "undefined" &&
+  window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 const IMAGES = {
   "scansafe_app.png": scansafeApp,
@@ -196,7 +206,21 @@ function ProjectsSection() {
             {projects.map((project, i) => (
               <article className="pj__slide" key={project.id}>
                 <div className="pj__media">
-                  {IMAGES[project.image] ? (
+                  {VIDEOS[project.video] ? (
+                    // Muted so browsers allow autoplay; the controls let visitors unmute.
+                    <video
+                      className="pj__video"
+                      src={VIDEOS[project.video]}
+                      poster={IMAGES[project.image]}
+                      aria-label={`${project.title} demo video`}
+                      autoPlay={!REDUCED_MOTION}
+                      muted
+                      loop
+                      playsInline
+                      controls
+                      preload="metadata"
+                    />
+                  ) : IMAGES[project.image] ? (
                     <img src={IMAGES[project.image]} alt={project.title} loading="lazy" />
                   ) : (
                     // No screenshot yet: a typographic panel instead of a broken image.

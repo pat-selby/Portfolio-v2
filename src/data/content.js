@@ -352,6 +352,8 @@ export const projects = [
     title: "UniQR",
     subtitle: "Read on-screen QR codes without a phone",
     image: "uniqr.png",
+    // Patrick's 28-second launch video (also posted on LinkedIn).
+    video: "uniqr-demo.mp4",
     summary:
       "I built UniQR so I could read a QR code on my own screen without reaching for my phone. The first version uses Python and OpenCV. Later I ported the scanner and Windows app to C++20 with no OpenCV at all.",
     outcome:

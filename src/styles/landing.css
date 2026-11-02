@@ -1639,3 +1639,13 @@
 .resume__switch {
   margin-bottom: 18px;
 }
+
+/* The UniQR demo is square; show all of it on a matching light backdrop
+   rather than cropping its captions to fill the 16:9 frame. */
+.pj__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #eff0f3;
+}
