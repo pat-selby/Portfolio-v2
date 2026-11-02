@@ -193,7 +193,15 @@ function ProjectsSection() {
             {projects.map((project, i) => (
               <article className="pj__slide" key={project.id}>
                 <div className="pj__media">
-                  <img src={IMAGES[project.image]} alt={project.title} loading="lazy" />
+                  {IMAGES[project.image] ? (
+                    <img src={IMAGES[project.image]} alt={project.title} loading="lazy" />
+                  ) : (
+                    // No screenshot yet: a typographic panel instead of a broken image.
+                    <div className="pj__placeholder" aria-hidden="true">
+                      <span className="pj__placeholder-title">{project.title}</span>
+                      <span className="pj__placeholder-tags mono">{project.tags.join(" · ")}</span>
+                    </div>
+                  )}
                   {/* Discoverability for the hover-revealed write-up. Hidden
                       once the card is showing, and on touch where it's moot. */}
                   <span className="pj__hover-hint mono" aria-hidden="true">
