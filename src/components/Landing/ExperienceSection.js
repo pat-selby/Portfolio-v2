@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { experience } from "../../data/content";
+import { experience, leadership } from "../../data/content";
 import aiotLab from "../../Assets/aiot_lab.webp";
 import codepathLogo from "../../Assets/codepath_logo.webp";
 import iotExternship from "../../Assets/iot_externship.webp";
@@ -58,13 +58,15 @@ function ExperienceRow({ item, open, onToggle }) {
               <li key={b}>{b}</li>
             ))}
           </ul>
-          <div className="xp__tools">
-            {item.tools.map((t) => (
-              <span key={t} className="chip">
-                {t}
-              </span>
-            ))}
-          </div>
+          {item.tools.length > 0 && (
+            <div className="xp__tools">
+              {item.tools.map((t) => (
+                <span key={t} className="chip">
+                  {t}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -80,18 +82,23 @@ function ExperienceSection() {
       <div className={`shell ${cls}`}>
         <p className="section-label mono">## experience</p>
         <h2 className="section-title">Where I've worked</h2>
-        <p className="section-sub">Research, fellowships, and hands-on security work.</p>
+        <p className="section-sub">Fellowships, research, and hands-on security work, plus the groups I help run.</p>
 
-        <div className="xp__list">
-          {experience.map((item) => (
-            <ExperienceRow
-              key={item.role}
-              item={item}
-              open={openId === item.role}
-              onToggle={() => setOpenId(openId === item.role ? null : item.role)}
-            />
-          ))}
-        </div>
+        {[experience, leadership].map((list, i) => (
+          <React.Fragment key={i}>
+            {i === 1 && <h3 className="xp__subhead">Leadership</h3>}
+            <div className="xp__list">
+              {list.map((item) => (
+                <ExperienceRow
+                  key={item.role}
+                  item={item}
+                  open={openId === item.role}
+                  onToggle={() => setOpenId(openId === item.role ? null : item.role)}
+                />
+              ))}
+            </div>
+          </React.Fragment>
+        ))}
       </div>
     </section>
   );

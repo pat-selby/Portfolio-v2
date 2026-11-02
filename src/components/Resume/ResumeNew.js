@@ -1,6 +1,6 @@
 import React from "react";
 import pdf from "../../Assets/resume.pdf";
-import { experience, education, certifications, about, profile } from "../../data/content";
+import { experience, leadership, education, certifications, about, profile } from "../../data/content";
 import "./Resume.css";
 
 function ResumeNew() {
@@ -58,13 +58,44 @@ function ResumeNew() {
                   <li key={b}>{b}</li>
                 ))}
               </ul>
-              <div className="resume__chips">
-                {job.tools.map((t) => (
-                  <span key={t} className="chip">
-                    {t}
-                  </span>
-                ))}
+              {job.tools.length > 0 && (
+                <div className="resume__chips">
+                  {job.tools.map((t) => (
+                    <span key={t} className="chip">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+
+        <section className="resume__block">
+          <h2 className="resume__h2">Leadership</h2>
+          {leadership.map((job) => (
+            <div key={job.role} className="card resume__card">
+              <div className="resume__row-head">
+                <h3 className="resume__role">{job.role}</h3>
+                <span className="resume__dates mono">{job.dates}</span>
               </div>
+              <p className="resume__org">
+                {job.org} · {job.team}
+              </p>
+              <ul className="resume__bullets">
+                {job.bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+              {job.tools.length > 0 && (
+                <div className="resume__chips">
+                  {job.tools.map((t) => (
+                    <span key={t} className="chip">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </section>

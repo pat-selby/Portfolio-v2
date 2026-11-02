@@ -1553,3 +1553,46 @@
     opacity: 0;
   }
 }
+
+/* Leadership heading between the two experience lists. */
+.xp__subhead {
+  margin: 36px 0 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Stand-in for projects without a screenshot. */
+.pj__placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8% 10%;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 23px, var(--border) 23px 24px),
+    var(--surface-muted);
+}
+
+.pj__placeholder-title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pj__placeholder-tags {
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+
+/* Unpinned (phones and narrow windows): slides stack, so the card sits under
+   its image instead of floating over it and the next slide. */
+.pj__runway:not(.is-pinned) .pj__card {
+  position: static;
+  width: auto;
+  max-width: min(var(--maxw), 860px);
+  margin: 12px auto 0;
+}

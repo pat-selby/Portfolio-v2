@@ -1,81 +1,92 @@
 // All site copy lives here so sections stay presentational.
+// Every claim and number traces to the November 2026 AfroTech resumes
+// (Resumes/AfroTech_Print_2026_Updated). Items marked "master only" come from
+// Patrick_Selby_MASTER.tex and are kept because nothing in AfroTech contradicts them.
 
 export const profile = {
   name: "Patrick Ennin Selby",
   first: "Patrick",
   handle: "patrickselby.vercel.app",
   initials: "PES",
-  role: "Cybersecurity Researcher",
+  role: "Cybersecurity student",
   status: "open to summer 2027 internships",
-  currently: "building on-device security tools",
+  currently: "B.S. Cybersecurity, Grambling State, expected May 2028",
   tagline: [
     "A cybersecurity sophomore at Grambling State University, originally from Ghana.",
-    "I don't just learn security. I build it.",
+    "I build security tools and measure how well they work.",
   ],
   email: "patrickselby256@gmail.com",
   links: {
     github: "https://github.com/pat-selby",
-    linkedin: "https://www.linkedin.com/in/patrick-ennin-selby-136253301",
+    linkedin: "https://www.linkedin.com/in/pat-selby",
     x: "https://x.com/selby_patrick05",
   },
 };
 
 export const about = {
   bio: [
-    "I'm Patrick, a Cybersecurity sophomore (minor: CIS) at Grambling State University, born and raised in Ghana. I carry a 3.88 GPA and a genuine obsession with building things that protect people.",
-    "At Grambling State University's AIoT Lab, under Dr. Vasanth Iyer, I built ScanSafe: a cross-platform iOS and Android app that catches QR phishing entirely on-device. The brief was open, just cybersecurity and OpenCV, so I picked the problem, designed all 22 detection rules myself, and benchmarked the engine for the research report.",
-    "I am also an AI Fellow with AI4ALL Ignite, where my team trained a Random Forest classifier on 568K transactions to catch credit-card fraud, scoring it on precision and recall rather than accuracy.",
-    "My focus is threat modeling, system monitoring, and secure communication for connected devices.",
+    "I'm Patrick, a cybersecurity sophomore at Grambling State University with a minor in Computer Information Systems and a 3.88 GPA. I was born and raised in Ghana.",
+    "I like tools that show their numbers. UniQR reads QR codes off my screen without a phone. It decodes 96.8% of 1,064 damaged test codes with zero wrong decodes, and porting it to C++20 cut the median scan from 115 to 5 ms.",
+    "At Grambling's AIoT Lab I built ScanSafe, which checks a URL for phishing risk without sending it to an outside reputation service. On a 28-URL baseline it caught 85% of commodity phishing but only 30% of sophisticated attacks. That gap is the part I find most interesting.",
+    "In summer 2026 I was an AI4ALL Ignite Machine Learning Research Fellow, benchmarking ways to make language-model inference faster and lighter with a four-person team.",
   ],
   skills: [
     {
+      group: "Languages",
+      items: ["Python", "C++20", "TypeScript", "SQL", "Bash", "Kotlin"],
+    },
+    {
       group: "Security",
       items: [
-        "Threat modeling (STRIDE)",
-        "Incident response",
-        "Log analysis",
-        "Vulnerability assessment",
-        "Nmap",
+        "MITRE ATT&CK",
+        "Log correlation",
+        "Incident triage",
+        "STRIDE",
         "Wireshark",
-        "Linux CLI",
+        "MQTT",
+        "HMAC",
+        "TLS/mTLS",
+        "Technical runbooks",
       ],
     },
     {
-      group: "Data & AI",
+      group: "Systems & ML",
+      items: ["CUDA", "PyTorch", "Multithreading", "Isolation Forest", "Linux", "Windows Server"],
+    },
+    {
+      group: "Apps, cloud & tooling",
       items: [
-        "Python",
-        "SQL",
-        "Supervised classification",
-        "Random Forest",
-        "Precision / recall / F1",
+        "React",
+        "PostgreSQL",
+        "OpenCV",
+        "Flask",
+        "AWS S3, Lambda, IAM",
+        "pytest",
+        "CMake / CTest",
+        "GitHub Actions CI",
+        "Git & GitHub",
       ],
-    },
-    {
-      group: "Protocols & cloud",
-      items: ["TLS/mTLS", "MQTT", "HMAC", "TCP/IP", "AWS Cloud Foundations"],
-    },
-    {
-      group: "Platforms & tools",
-      items: ["Swift/SwiftUI", "Kotlin", "OpenCV", "Git & GitHub", "Technical writing"],
     },
   ],
 };
 
 export const education = {
   school: "Grambling State University",
-  degree: "B.S. Cybersecurity (Minor: CIS)",
-  detail: "GPA 3.88 / 4.0",
-  dates: "Jan 2025 - Dec 2028",
+  degree: "B.S. Cybersecurity, Minor in Computer Information Systems",
+  detail: "GPA 3.88 / 4.00",
+  dates: "Expected May 2028",
   coursework: [
-    "Attacks, Threats & Vulnerabilities",
     "Data Structures & Algorithms",
-    "Discrete Structures",
-    "Probability & Statistics",
+    "Object-Oriented Programming",
+    "Operating Systems",
+    "Software Security",
+    "Networking",
+    "Computer Systems Architecture",
   ],
 };
 
-// Credential URLs lifted from the linked resume PDF, so every badge on the
-// site points at the same proof an employer would get from the resume.
+// Master only. Credential URLs lifted from the earlier resume PDF, so every
+// badge on the site points at the same proof an employer would get.
 export const certifications = [
   {
     name: "CodePath Cybersecurity (CYB102)",
@@ -106,65 +117,89 @@ export const certifications = [
   },
 ];
 
+// Master only, except the two campus groups, which are on the AfroTech resumes.
 export const affiliations = [
+  "Grambling Cybersecurity Alliance",
+  "ColorStack",
   "2026 IOBSE Conference",
   "TMCF DevCon Zone 2 Scholar (2026)",
-  "ColorStack",
   "NSBE",
   "IEEE",
   "Cloud Security Alliance",
-  "S.E.C.U.R.E. Cybersecurity Club (GSU)",
 ];
 
 export const experience = [
   {
-    org: "Grambling State University",
-    team: "AIoT Lab, under Dr. Vasanth Iyer, Grambling, LA",
-    role: "Research Assistant",
-    dates: "Mar 2026 - May 2026",
-    current: false,
-    logo: "aiot_lab.png",
-    bullets: [
-      "Built ScanSafe, a cross-platform iOS (Swift/SwiftUI) and Android (Kotlin) app that flags a malicious QR-code link in under 5ms, fast enough to warn the user before the page opens, using a 22-rule heuristic URL engine that runs fully on-device with zero URLs transmitted and zero camera frames stored.",
-      "Benchmarked the engine against a 28-URL corpus for an NSF research report, establishing an 85% true-positive rate on commodity phishing.",
-      "Used the measured gap on sophisticated attacks to justify a machine-learning phase rather than adding more fixed rules.",
-    ],
-    tools: ["Swift/SwiftUI", "Kotlin", "OpenCV", "Python", "Git"],
-  },
-  {
     org: "AI4ALL Ignite",
-    team: "National AI program, remote",
-    role: "AI Fellow",
-    dates: "Jun 2026 - Present",
-    current: true,
+    team: "Remote",
+    role: "Machine Learning Research Fellow",
+    dates: "Jun 2026 - Aug 2026",
     logo: null,
     bullets: [
-      "Built a credit-card fraud detection model with a 5-person team, training a Random Forest classifier on 568K transactions.",
-      "Scored the model on precision, recall, and F1 rather than accuracy, since a model that ignores the rare fraud class still looks correct while missing every actual fraud.",
-      "Authored the Datasets and Training/Testing sections of the team research proposal, defining the split and evaluation methodology so results stayed comparable across every teammate's runs.",
+      "Investigated language-model inference performance by profiling KV-cache overhead and dynamic batching, identifying 3 bottlenecks and reducing response latency by 25%.",
+      "Built PyTorch/CUDA harnesses for multi-head attention, increasing tensor-core utilization by 28% under high concurrency.",
+      "Benchmarked quantization, kernel fusion, KV-cache compression, and dynamic batching with a four-person team, reducing GPU memory usage by 34% and increasing throughput 2.4x in a co-authored technical report.",
     ],
-    tools: ["Python", "Random Forest", "scikit-learn", "Model evaluation"],
+    tools: ["Python", "PyTorch", "CUDA"],
+  },
+  {
+    org: "CodePath",
+    team: "Remote",
+    role: "Software Engineering Fellow",
+    dates: "Feb 2026 - May 2026",
+    logo: "codepath_logo.png",
+    bullets: [
+      "Built a security-log processing pipeline to automate event intake, using Python and PostgreSQL to ingest 150K+ unstructured logs and reduce ingestion time by 85%.",
+      "Architected multithreaded regex analysis across 50K concurrent event streams, cutting intrusion-detection latency by 35% in the security-event pipeline.",
+      "Debugged and validated 14 backend modules with pytest, achieving 95% branch coverage and catching 14 critical bugs before deployment.",
+    ],
+    tools: ["Python", "PostgreSQL", "Multithreading", "pytest"],
+  },
+  {
+    org: "Grambling State University",
+    team: "AIoT Lab, Grambling, LA",
+    role: "Security Research Assistant",
+    dates: "Mar 2026 - May 2026",
+    logo: "aiot_lab.png",
+    bullets: [
+      "Built ScanSafe to assess phishing risk without sending URLs to external reputation services, implementing a 22-rule Python engine, Flask prototype, and Kotlin companion with engine evaluation under 5 ms.",
+      "Established a 28-URL evaluation baseline with 85% commodity-phishing detection, 30% sophisticated-attack detection, and about 8% false positives to expose coverage gaps.",
+    ],
+    tools: ["Python", "Flask", "Kotlin"],
   },
   {
     org: "Hydroficient (via Extern)",
     team: "Remote, Certificate of Completion",
     certHref: "https://drive.google.com/file/d/1ykKCIxiV0DH0MTabyHMP_0dvTANDq1wj/view?usp=sharing",
-    role: "IoT Cyber Defense Extern",
+    role: "IoT Security Extern",
     dates: "Feb 2026 - Mar 2026",
     logo: "iot_externship.png",
     bullets: [
-      "Hardened a simulated MQTT telemetry pipeline during a structured externship, mapping the attack surface with STRIDE.",
-      "Closed replay attacks with a 3-layer defense of timestamps, sequence counters, and HMAC, so a captured device message cannot be re-sent as valid.",
-      "Enforced device identity with TLS/mTLS across the pipeline.",
+      "Assessed connected-device security for an MQTT fleet using STRIDE threat modeling, prioritizing 2 high-severity risks by likelihood and impact.",
+      "Implemented timestamps, monotonic counters, and HMAC checks to reject replayed messages, with per-device certificates over mutual TLS to authenticate connections.",
+      "Developed an Isolation Forest telemetry detector to surface abnormal device traffic and prioritize investigation of suspicious behavior.",
     ],
-    tools: ["MQTT", "STRIDE", "TLS/mTLS", "HMAC", "Wireshark", "Linux"],
+    tools: ["MQTT", "STRIDE", "HMAC", "TLS/mTLS", "Isolation Forest"],
   },
   {
+    org: "DOE CyberForce Competition",
+    team: "Grambling State University team",
+    role: "Blue Team Member",
+    dates: "Nov 2025",
+    logo: null,
+    bullets: [
+      "Defended enterprise and industrial-control infrastructure in DOE CyberForce with a six-member team, maintaining 97% availability across 6 critical services and placing in the top 10% nationally.",
+      "Investigated 23 host and network events with Wireshark, logs, and command-line tools, identifying 8 high-confidence incidents and remediating 14 security misconfigurations.",
+      "Automated 3 recurring checks with Python and Bash, cutting environment-validation time from approximately 20 minutes to under 5 minutes during live adversarial activity.",
+    ],
+    tools: ["Wireshark", "Python", "Bash"],
+  },
+  {
+    // Master only. Pitched, not built. Labelled so it can never read as shipped work.
     org: "TrustLight",
     team: "PROPEL Future of Tech Innovation Challenge, GSU",
     role: "Creator & Research Lead",
     dates: "Feb 2026",
-    // Pitched, not built. Labelled so it can never read as shipped work.
     concept: true,
     logo: null,
     bullets: [
@@ -175,6 +210,45 @@ export const experience = [
   },
 ];
 
+export const leadership = [
+  {
+    org: "Grambling Cybersecurity Alliance",
+    team: "Grambling State University",
+    role: "Technical Development Chair",
+    dates: "Jan 2026 - Present",
+    current: true,
+    logo: null,
+    bullets: [
+      "Organized 18 Hack The Box and TryHackMe prep sessions; all 3 competitors placed in the top 10%, and the team was selected for DOE's 2026 CyberForce Competition.",
+      "Wrote 10 walkthroughs, preparing 15 first-time competitors for 4 CTFs and hackathons.",
+    ],
+    tools: [],
+  },
+  {
+    org: "TigerHacks",
+    team: "Grambling, LA",
+    role: "Organizer",
+    dates: "Aug 2026",
+    logo: null,
+    bullets: [
+      "Led a 60-participant hackathon, securing 4 sponsors, $3,500 in funding and prizes, and 8 industry mentors.",
+    ],
+    tools: [],
+  },
+  {
+    org: "ColorStack Grambling",
+    team: "Grambling State University",
+    role: "Events Committee Member",
+    dates: "Aug 2025 - Present",
+    current: true,
+    logo: null,
+    bullets: [
+      "Co-organized 4 career events reaching 200+ students and reviewed 40 peers' resumes, with 65% securing tech internship interviews.",
+    ],
+    tools: [],
+  },
+];
+
 // Horizontally-scrolling strip of playable sandboxes.
 export const sandboxes = [
   {
@@ -182,7 +256,7 @@ export const sandboxes = [
     kicker: "Simulator",
     title: "ScanSafe URL scanner",
     blurb:
-      "Paste any URL and watch all 22 on-device heuristics fire in real time, with a live risk score.",
+      "Paste a URL and try a simplified version of ScanSafe's rule checks, with a live risk score.",
     image: "scansafe_app.png",
     href: "/demos?tab=scansafe",
   },
@@ -208,80 +282,102 @@ export const sandboxes = [
 
 export const projects = [
   {
+    id: "uniqr",
+    title: "UniQR",
+    subtitle: "Read on-screen QR codes without a phone",
+    image: "uniqr.png",
+    summary:
+      "I built UniQR so I could read a QR code on my own screen without reaching for my phone. The first version uses Python and OpenCV. Later I ported the scanner and Windows app to C++20 with no OpenCV at all.",
+    outcome:
+      "96.8% of 1,064 damaged codes across 7 formats, zero wrong decodes. Median scan 115 to 5 ms in C++20. 20 releases with pytest and GitHub Actions CI.",
+    tags: ["Computer vision", "Python", "C++20"],
+    links: [{ label: "GitHub", href: "https://github.com/pat-selby/uniqr" }],
+  },
+  {
+    id: "packetshield",
+    title: "PacketShield",
+    subtitle: "Does a GPU help with packet inspection?",
+    image: null,
+    summary:
+      "PacketShield tests whether GPU acceleration pays off for network packet inspection. It runs C++20/CUDA signature-matching kernels over 100K-packet batches, with pinned memory and asynchronous transfers.",
+    outcome:
+      "On an NVIDIA T4, batch runtime fell from 429.5 to 32.1 ms against a multithreaded CPU baseline, with 100% CPU/GPU verdict agreement on the synthetic test batch.",
+    tags: ["GPU", "C++20", "CUDA"],
+    links: [{ label: "GitHub", href: "https://github.com/pat-selby/packetshield-agentic" }],
+  },
+  {
     id: "scansafe",
     title: "ScanSafe",
-    subtitle: "On-device QR phishing detection, iOS and Android",
+    subtitle: "Phishing-risk checks that keep your URLs to yourself",
     image: "scansafe_app.png",
     summary:
-      "A cross-platform app that catches phishing links hidden in QR codes entirely on the phone, with no internet needed. It flags a malicious link in under 5ms, fast enough to warn you before the page opens.",
-    outcome: "85% true-positive rate on a 28-URL corpus, benchmarked for an NSF research report",
-    tags: ["iOS & Android", "Mobile security", "Research"],
+      "ScanSafe scores a URL for phishing risk without sending it to an outside reputation service. It's a 22-rule Python engine with a Flask prototype and a Kotlin companion app, and the engine evaluates a URL in under 5 ms.",
+    outcome:
+      "28-URL baseline: 85% of commodity phishing caught, 30% of sophisticated attacks, about 8% false positives.",
+    tags: ["Phishing detection", "Python", "Research"],
     links: [
       { label: "GitHub", href: "https://github.com/pat-selby/scan-safe" },
       { label: "Live demo", href: "/demos?tab=scansafe", internal: true },
     ],
-    built:
-      "Swift/SwiftUI on iOS and Kotlin on Android, over an OpenCV 4.13 computer-vision pipeline and a 22-rule heuristic URL engine I designed from scratch. No cloud lookups and no pretrained models, so zero URLs are transmitted and zero camera frames are stored.",
-    challenge:
-      "Cloud reputation APIs are accurate but slow, and they leak every URL you scan. Getting comparable signal from purely local parsing meant designing each of the 22 rules by hand and tuning them against real phishing samples.",
-    learned:
-      "Benchmarking mattered more than adding rules. Measuring the engine at 85% on commodity phishing exposed exactly where fixed heuristics stop working, which is what justified moving to a machine-learning phase instead of writing rule 23.",
   },
   {
-    id: "uniqr",
-    title: "UniQR",
-    subtitle: "System-wide QR reader, cross-platform",
-    image: "uniqr.png",
+    // Kairo limits (handoff note, November 1, 2026): user-confirmed 2nd place,
+    // four-person team, local React changes in three areas. No claim of backend
+    // ownership, merged code, production deployment, or working AI planning.
+    id: "kairo",
+    title: "Kairo",
+    subtitle: "AI research workspace, team hackathon project",
+    image: null,
     summary:
-      "Press one hotkey and every QR code visible anywhere on your screen gets decoded and copied. No reaching for your phone to scan a code your computer is already displaying.",
-    outcome: "28 regression cases green on Windows, macOS and Linux; ~140ms typical scan",
-    tags: ["Computer vision", "Python", "Tooling"],
-    links: [],
-    built:
-      "Python and OpenCV. Frames come straight off a GDI BitBlt as numpy arrays with no image-file round trip, and both of OpenCV's QR detectors run on every capture because they fail on different things. The tray icon, the global hotkey, and the picker overlay are raw Win32 plus tkinter.",
-    challenge:
-      "Neither detector can see a light-on-dark code at all, measured at 0% across every rotation, and dark-mode sites and slide decks produce those constantly. Every scan now runs against an inverted copy too, with the expensive tiling and upscaling passes held back for when the cheap ones come back empty.",
-    learned:
-      "Studying where the detectors returned nothing was worth more than tuning the cases they already handled. Almost all of the hit rate came from naming each failure condition and adding one cheap pass for it.",
+      "Kairo is a team-built workspace for planning and running research experiments. My part was local React fixes in three areas, checked against 91 frontend tests, a clean build, and go vet. I documented 2 backend test failures I hit locally. I also prepared a manual-plan demo that ran an experiment against live PostgreSQL in about 18 to 19 seconds.",
+    outcome: "2nd place at Grambling's Hacktoberfest Hack Day with a 4-person team.",
+    tags: ["Hackathon", "React", "Team project"],
+    links: [{ label: "Team repo", href: "https://github.com/Alanperry1/Kario" }],
   },
   {
+    id: "cloudcampus",
+    title: "CloudCampus",
+    subtitle: "Serverless student-document pipeline on AWS",
+    image: null,
+    summary:
+      "An upload to S3 triggers a Lambda function that extracts the document's text, so student paperwork gets processed without anyone retyping it. The IAM role can reach only the bucket and actions the pipeline needs.",
+    outcome: "50+ PDFs processed. A 3-hour manual workflow now takes under 30 minutes.",
+    tags: ["Cloud", "AWS", "Python"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/pat-selby/cloudcampus-serverless-document-pipeline",
+      },
+    ],
+  },
+  {
+    // Master only.
     id: "risk",
     title: "IT Risk Assessment & Data Classification",
     subtitle: "BayouCare lab",
     image: "risk_assessment.png",
     summary:
-      "I mapped a fictional healthcare company's digital assets, ranked their risks, and recommended the security controls most worth their time and money.",
-    outcome: "Full asset inventory with prioritized, costed controls",
-    tags: ["Risk", "Governance", "Frameworks"],
+      "I inventoried a simulated organization's assets, sorted its data into sensitivity tiers, and ranked each risk by likelihood and impact to decide which controls come first.",
+    outcome: "5+ security controls prioritized",
+    tags: ["Risk", "Governance", "Lab"],
     links: [
       { label: "GitHub", href: "https://github.com/pat-selby/bayoucare-risk-classification-lab" },
       { label: "Live demo", href: "/demos?tab=risk", internal: true },
     ],
-    built:
-      "Inventoried every asset, classified data by sensitivity, then scored each risk on likelihood and impact to rank remediation order.",
-    challenge:
-      "Every risk looks urgent in isolation. The hard part was defending why a given control should come second, in terms a non-technical budget owner would accept.",
-    learned:
-      "Security work is mostly prioritization. A recommendation nobody can afford to act on isn't a recommendation.",
   },
   {
+    // Master only.
     id: "splunk",
     title: "Linux Security Monitoring & Incident Response",
     subtitle: "PineRidge lab",
     image: "incident_response.png",
     summary:
-      "I investigated a simulated security incident on Linux, tracing every file change, identifying the culprit process, and writing up exactly how to prevent it next time.",
-    outcome: "Root cause traced end to end, with a written prevention plan",
-    tags: ["Blue team", "Forensics", "Linux"],
+      "Someone was changing protected files on a Linux box. I set auditd watch rules and rebuilt the timeline with ausearch until I found the process responsible.",
+    outcome: "Root cause found, with 3 ranked control recommendations and chain-of-custody notes",
+    tags: ["Blue team", "Forensics", "Lab"],
     links: [
       { label: "GitHub", href: "https://github.com/pat-selby/pineridge-incident-response-lab" },
       { label: "Live demo", href: "/demos?tab=splunk", internal: true },
     ],
-    built:
-      "auditd for file integrity monitoring, Splunk to correlate the logs, and standard Linux tooling to walk the process tree back to the origin.",
-    challenge:
-      "Audit logs are overwhelmingly noisy. Separating the handful of events that mattered from thousands of routine ones took several passes of filtering.",
-    learned:
-      "Writing the postmortem is where the investigation actually gets tested. If you can't explain the chain simply, you haven't finished tracing it.",
   },
 ];

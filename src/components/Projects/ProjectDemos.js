@@ -34,7 +34,7 @@ function ProjectDemos() {
     if (!urlToScan) return;
     const url = urlToScan.trim().toLowerCase();
     
-    // Heuristic Rules Evaluation (Simulating the 18 on-device rules)
+    // Heuristic rules evaluation: a simplified subset of ScanSafe's 22 rules
     const rules = [
       {
         id: 1,
@@ -250,13 +250,13 @@ function ProjectDemos() {
                 <div className="demo-header">
                   <h3 className="demo-title"><FaSearch /> ScanSafe: Heuristics Sandbox</h3>
                   <span style={{ fontSize: "0.82rem", color: "#cbd5e1" }}>
-                    Run raw URL analysis using our on-device 18-rule parsing engine.
+                    A simplified, in-browser version of a few of ScanSafe's 22 rules.
                   </span>
                 </div>
                 <Row>
                   <Col lg={7} md={12}>
                     <p style={{ fontSize: "0.9rem" }}>
-                      ScanSafe bypasses cloud database queries to eliminate latency. Type any URL below to inspect matching heuristic blocks.
+                      ScanSafe checks URLs without sending them to an outside reputation service. Type any URL below to inspect matching heuristic blocks.
                     </p>
                     <div className="cyber-input-group">
                       <input
