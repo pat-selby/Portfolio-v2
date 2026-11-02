@@ -5,7 +5,7 @@ const Avatar3D = lazy(() => import("./Avatar3D"));
 
 /**
  * The site's avatar. Holds its space with a soft placeholder while the 3D
- * code and model load, so nothing on the page jumps when it appears.
+ * code loads, so nothing on the page jumps when it appears.
  *
  * `variant`: "wave" (hero, chooser) or "bye" (contact). `poke`: bump it to
  * play the next gesture.
