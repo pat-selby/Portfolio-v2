@@ -9,10 +9,12 @@ const GREETINGS = ["Hi there! 👋", "Akwaaba! 🇬🇭", "Welcome in.", "Thanks
 function Hero() {
   const [greetIndex, setGreetIndex] = useState(0);
   const [poked, setPoked] = useState(false);
+  const [pokes, setPokes] = useState(0);
   const { view } = useView();
 
   const poke = () => {
     setPoked(true);
+    setPokes((n) => n + 1);
     setGreetIndex((i) => (i + 1) % GREETINGS.length);
     window.setTimeout(() => setPoked(false), 900);
   };
@@ -63,7 +65,7 @@ function Hero() {
             onClick={poke}
             aria-label="Wave back at Patrick"
           >
-            <Avatar variant="wave" alt="Avatar of Patrick waving hello" />
+            <Avatar variant="wave" poke={pokes} alt="Avatar of Patrick waving hello" />
           </button>
 
           <span className="hero__poke mono">psst, tap me 👋</span>

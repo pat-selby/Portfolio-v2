@@ -197,23 +197,27 @@
   justify-content: flex-end;
 }
 
-/* ---- DiceBear avatar ---------------------------------------------
-   One generated portrait. The button layer handles entrance and bob; the
-   image itself only sways, so the two never fight over one transform. */
-.dice {
+/* ---- 3D avatar ---------------------------------------------------
+   A WebGL canvas fills this box. Until the model arrives it shows a soft
+   glow, then fades the canvas in. */
+.av3d {
+  position: relative;
+  width: clamp(240px, 30vw, 380px);
+  aspect-ratio: 4 / 5;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 14%, transparent), transparent);
+}
+
+.av3d--bye { width: clamp(200px, 24vw, 300px); }
+
+.av3d canvas {
   display: block;
-  width: auto;
-  animation: dice-sway 6.1s ease-in-out infinite;
-  transform-origin: 50% 100%;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-.dice--wave { height: clamp(240px, 28vw, 360px); }
-.dice--bye  { height: clamp(200px, 24vw, 300px); }
-
-@keyframes dice-sway {
-  0%, 100% { rotate: -2deg; }
-  50%      { rotate: 2deg; }
-}
+.av3d.is-ready canvas { opacity: 1; }
 
 .hero__avatar-btn {
   background: none;
@@ -228,16 +232,6 @@
     avatar-bob 3.3s ease-in-out 0.9s infinite;
   transform-origin: 50% 96%;
   cursor: pointer;
-}
-
-/* Tapping makes the portrait hop with excitement for a moment. */
-.hero__avatar-btn.is-poked .dice {
-  animation: dice-excited 0.3s ease-in-out 3;
-}
-
-@keyframes dice-excited {
-  0%, 100% { translate: 0 0; rotate: 0deg; }
-  50%      { translate: 0 -12px; rotate: 6deg; }
 }
 
 @keyframes avatar-bob {
@@ -1046,17 +1040,16 @@
 /* Leaps in when the closing section scrolls into view. `avatar-arrive` owns
    transform here, so breathing uses the independent `scale` property instead
    of competing for it. */
-.contact__avatar .dice {
-  animation: avatar-arrive 1s cubic-bezier(0.22, 1.2, 0.36, 1) both,
-    dice-sway 6.1s ease-in-out 1s infinite;
+.contact__avatar .av3d {
+  animation: avatar-arrive 1s cubic-bezier(0.22, 1.2, 0.36, 1) both;
   transform-origin: 50% 92%;
 }
 
-.reveal .contact__avatar .dice {
+.reveal .contact__avatar .av3d {
   animation-play-state: paused;
 }
 
-.reveal.is-visible .contact__avatar .dice {
+.reveal.is-visible .contact__avatar .av3d {
   animation-play-state: running;
 }
 
@@ -1537,8 +1530,8 @@
 }
 
 .chooser__avatar {
-  height: clamp(170px, 22vw, 230px);
-  margin-bottom: 12px;
+  width: clamp(180px, 22vw, 240px);
+  margin-bottom: 4px;
 }
 
 .chooser__title {
