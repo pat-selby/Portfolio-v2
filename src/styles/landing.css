@@ -455,7 +455,15 @@
 .certs__issuer {
   font-size: 0.78rem;
   color: var(--text-faint);
-  white-space: nowrap;
+  text-align: right;
+}
+
+/* Short issuers stay on one line; the long IBM one may wrap on phones rather
+   than push the row past the screen edge. */
+@media (min-width: 600px) {
+  .certs__issuer {
+    white-space: nowrap;
+  }
 }
 
 .certs__issuer.is-pending {
@@ -1163,10 +1171,18 @@
    Responsive
 ------------------------------------------------------------------ */
 @media (max-width: 940px) {
+  /* minmax(0, 1fr), not 1fr: a plain 1fr column grows to its widest child
+     (a long certification line), which pushed the page past phone width. */
   .hero__inner,
   .about__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     justify-items: center;
+  }
+
+  .about__left,
+  .about__right {
+    width: 100%;
+    min-width: 0;
   }
 
   .hero__copy {
