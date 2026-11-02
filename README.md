@@ -1,6 +1,6 @@
 # 🛡️ My Cybersecurity Portfolio v2
 
-This is my professional portfolio website, showcasing my work as a **Cybersecurity and Cloud Computing** student at Grambling State University.
+This is my professional portfolio website, showcasing my work as a **Cybersecurity** student (minor: Computer Information Systems) at Grambling State University.
 
 ## 🌐 Live Demo
 You can view the live site here: **[patrickselby.vercel.app](https://patrickselby.vercel.app/)**
@@ -16,7 +16,7 @@ You can view the live site here: **[patrickselby.vercel.app](https://patrickselb
 ---
 
 ## 🛠️ Built With
-- **Frontend**: [React.js](https://reactjs.org/)
+- **Frontend**: [React.js](https://reactjs.org/) with [Vite](https://vitejs.dev/)
 - **Styling**: [Bootstrap](https://getbootstrap.com/)
 - **Hosting**: [Vercel](https://vercel.com/)
 - **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
