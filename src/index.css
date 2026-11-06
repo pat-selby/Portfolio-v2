@@ -1,6 +1,0 @@
-/* Base styling lives in src/styles/theme.css; this file is intentionally minimal. */
-html,
-body,
-#root {
-  min-height: 100%;
-}
