@@ -130,11 +130,12 @@ export const affiliations = [
 
 export const experience = [
   {
+    id: "ai4all",
     org: "AI4ALL Ignite",
     team: "Remote",
     role: "Machine Learning Research Fellow",
     dates: "Jun 2026 - Aug 2026",
-    logo: null,
+    logo: "ai4all_logo",
     bullets: [
       "Investigated language-model inference performance by profiling KV-cache overhead and dynamic batching, identifying 3 bottlenecks and reducing response latency by 25%.",
       "Built PyTorch/CUDA harnesses for multi-head attention, increasing tensor-core utilization by 28% under high concurrency.",
@@ -143,6 +144,7 @@ export const experience = [
     tools: ["Python", "PyTorch", "CUDA"],
   },
   {
+    id: "codepath-swe",
     org: "CodePath",
     team: "Remote",
     role: "Software Engineering Fellow",
@@ -156,6 +158,22 @@ export const experience = [
     tools: ["Python", "PostgreSQL", "Multithreading", "pytest"],
   },
   {
+    // Same program, security face (Cyber resume). FACTS.md: one face per view.
+    id: "codepath-cyber",
+    org: "CodePath",
+    team: "Remote",
+    role: "Threat Detection Analyst",
+    dates: "Feb 2026 - May 2026",
+    logo: "codepath_logo.png",
+    bullets: [
+      "Investigated a Windows privilege-escalation scenario by correlating 4 event sources, reconstructing token theft and service installation, and mapping findings to MITRE ATT&CK T1134.001.",
+      "Developed time-window correlation logic linking privilege adjustments and service installations to distinguish suspicious activity from routine administration.",
+      "Documented attack evidence and correlation logic in a triage runbook to support repeatable investigations.",
+    ],
+    tools: ["MITRE ATT&CK", "Log correlation", "Incident triage"],
+  },
+  {
+    id: "aiot",
     org: "Grambling State University",
     team: "AIoT Lab, Grambling, LA",
     role: "Security Research Assistant",
@@ -168,6 +186,7 @@ export const experience = [
     tools: ["Python", "Flask", "Kotlin"],
   },
   {
+    id: "hydroficient",
     org: "Hydroficient (via Extern)",
     team: "Remote, Certificate of Completion",
     certHref: "https://drive.google.com/file/d/1ykKCIxiV0DH0MTabyHMP_0dvTANDq1wj/view?usp=sharing",
@@ -182,11 +201,12 @@ export const experience = [
     tools: ["MQTT", "STRIDE", "HMAC", "TLS/mTLS", "Isolation Forest"],
   },
   {
+    id: "cyberforce",
     org: "DOE CyberForce Competition",
     team: "Grambling State University team",
     role: "Blue Team Member",
     dates: "Nov 2025",
-    logo: null,
+    logo: "cyberforce_logo",
     bullets: [
       "Defended enterprise and industrial-control infrastructure in DOE CyberForce with a six-member team, maintaining 97% availability across 6 critical services and placing in the top 10% nationally.",
       "Investigated 23 host and network events with Wireshark, logs, and command-line tools, identifying 8 high-confidence incidents and remediating 14 security misconfigurations.",
@@ -196,6 +216,7 @@ export const experience = [
   },
   {
     // Master only. Pitched, not built. Labelled so it can never read as shipped work.
+    id: "trustlight",
     org: "TrustLight",
     team: "PROPEL Future of Tech Innovation Challenge, GSU",
     role: "Creator & Research Lead",
@@ -212,6 +233,7 @@ export const experience = [
 
 export const leadership = [
   {
+    id: "gca",
     org: "Grambling Cybersecurity Alliance",
     team: "Grambling State University",
     role: "Technical Development Chair",
@@ -225,6 +247,7 @@ export const leadership = [
     tools: [],
   },
   {
+    id: "tigerhacks",
     org: "TigerHacks",
     team: "Grambling, LA",
     role: "Organizer",
@@ -236,14 +259,57 @@ export const leadership = [
     tools: [],
   },
   {
+    id: "colorstack",
     org: "ColorStack Grambling",
     team: "Grambling State University",
     role: "Events Committee Member",
     dates: "Aug 2025 - Present",
     current: true,
-    logo: null,
+    logo: "colorstack_logo",
     bullets: [
       "Co-organized 4 career events reaching 200+ students and reviewed 40 peers' resumes, with 65% securing tech internship interviews.",
+    ],
+    tools: [],
+  },
+  {
+    // Cyber resume wording.
+    id: "gca-cyber",
+    org: "Grambling Cybersecurity Alliance",
+    team: "Grambling State University",
+    role: "Technical Development Chair",
+    dates: "Jan 2026 - Present",
+    current: true,
+    logo: null,
+    bullets: [
+      "Organized 18 technical preparation sessions and wrote 10 walkthroughs, preparing 15 first-time competitors for 4 CTFs and hackathons.",
+    ],
+    tools: [],
+  },
+  {
+    // SWE resume wording.
+    id: "gca-swe",
+    org: "Grambling Cybersecurity Alliance",
+    team: "Grambling State University",
+    role: "Technical Development Chair",
+    dates: "Jan 2026 - Present",
+    current: true,
+    logo: null,
+    bullets: [
+      "Organized 18 Hack The Box and TryHackMe prep sessions; all 3 competitors placed in the top 10%, and the team was selected for DOE's 2026 CyberForce Competition.",
+    ],
+    tools: [],
+  },
+  {
+    // Cyber resume wording.
+    id: "colorstack-cyber",
+    org: "ColorStack Grambling",
+    team: "Grambling State University",
+    role: "Events Committee Member",
+    dates: "Aug 2025 - Present",
+    current: true,
+    logo: "colorstack_logo",
+    bullets: [
+      "Co-organized 4 campus career events reaching 200+ students and reviewed 40 peers' resumes to support technical career preparation.",
     ],
     tools: [],
   },
@@ -286,6 +352,8 @@ export const projects = [
     title: "UniQR",
     subtitle: "Read on-screen QR codes without a phone",
     image: "uniqr.png",
+    // Patrick's 28-second launch video (also posted on LinkedIn).
+    video: "uniqr-demo.mp4",
     summary:
       "I built UniQR so I could read a QR code on my own screen without reaching for my phone. The first version uses Python and OpenCV. Later I ported the scanner and Windows app to C++20 with no OpenCV at all.",
     outcome:
@@ -328,6 +396,9 @@ export const projects = [
     title: "Kairo",
     subtitle: "AI research workspace, team hackathon project",
     image: null,
+    // Team demo video (69 s, 28 MB): click to play, never autoloaded.
+    video: "kairo-demo.mp4",
+    videoOnClick: true,
     summary:
       "Kairo is a team-built workspace for planning and running research experiments. My part was local React fixes in three areas, checked against 91 frontend tests, a clean build, and go vet. I documented 2 backend test failures I hit locally. I also prepared a manual-plan demo that ran an experiment against live PostgreSQL in about 18 to 19 seconds.",
     outcome: "2nd place at Grambling's Hacktoberfest Hack Day with a 4-person team.",
@@ -381,3 +452,95 @@ export const projects = [
     ],
   },
 ];
+
+// The three ways a visitor can meet Patrick. General is the default; Cyber and
+// SWE mirror the AfroTech Cyber and SWE resumes entry for entry.
+export const views = {
+  general: {
+    label: "General me",
+    blurb: "The whole picture: security, software, and the groups I help run.",
+    tagline: "I build security tools and measure how well they work.",
+    experience: ["ai4all", "codepath-swe", "aiot", "hydroficient", "cyberforce", "trustlight"],
+    leadership: ["gca", "tigerhacks", "colorstack"],
+    projects: ["uniqr", "packetshield", "scansafe", "kairo", "cloudcampus", "risk", "splunk"],
+    skills: about.skills,
+    coursework: education.coursework,
+    resume: "swe",
+  },
+  cyber: {
+    label: "Cyber me",
+    blurb: "Detection, IoT security, and phishing-risk research.",
+    tagline: "I work on detection, IoT security, and phishing-risk research.",
+    experience: ["codepath-cyber", "hydroficient", "cyberforce", "aiot"],
+    leadership: ["gca-cyber", "colorstack-cyber"],
+    projects: ["scansafe", "cloudcampus", "splunk", "risk"],
+    skills: [
+      {
+        group: "Programming & systems",
+        items: ["Python", "Bash", "Kotlin", "Linux", "Windows Server", "Git & GitHub"],
+      },
+      {
+        group: "Security engineering",
+        items: [
+          "MITRE ATT&CK",
+          "Log correlation",
+          "Incident triage",
+          "STRIDE",
+          "Isolation Forest",
+          "Technical runbooks",
+        ],
+      },
+      {
+        group: "Networking & crypto",
+        items: ["Wireshark", "MQTT", "HMAC", "TLS/mTLS", "Per-device certificates"],
+      },
+      {
+        group: "Cloud & applications",
+        items: ["AWS S3, Lambda, IAM", "Least privilege", "Flask", "Automated validation"],
+      },
+    ],
+    coursework: [
+      "Software Security",
+      "Networking",
+      "Operating Systems",
+      "Computer Systems Architecture",
+      "Data Structures & Algorithms",
+    ],
+    resume: "cyber",
+  },
+  swe: {
+    label: "SWE me",
+    blurb: "Fast, tested tools in Python, C++20, and CUDA.",
+    tagline: "I build fast, tested tools in Python, C++20, and CUDA.",
+    experience: ["codepath-swe", "ai4all"],
+    leadership: ["tigerhacks", "colorstack", "gca-swe"],
+    projects: ["uniqr", "packetshield", "kairo"],
+    skills: [
+      { group: "Languages", items: ["Python", "C++20", "TypeScript", "SQL"] },
+      { group: "Applications & data", items: ["React", "PostgreSQL", "OpenCV"] },
+      {
+        group: "Systems & quality",
+        items: [
+          "Multithreading",
+          "CUDA",
+          "PyTorch",
+          "Git & GitHub",
+          "GitHub Actions CI",
+          "pytest",
+          "CMake",
+          "CTest",
+        ],
+      },
+    ],
+    coursework: [
+      "Data Structures & Algorithms",
+      "Object-Oriented Programming",
+      "Operating Systems",
+      "Software Security",
+    ],
+    resume: "swe",
+  },
+};
+
+// Picks entries by id, in the order the view lists them.
+export const pick = (list, ids) => ids.map((id) => list.find((x) => x.id === id)).filter(Boolean);

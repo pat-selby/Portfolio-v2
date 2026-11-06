@@ -14,7 +14,7 @@ function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const onLanding = pathname === "/";
 
   useEffect(() => {
@@ -45,12 +45,13 @@ function Nav() {
     return () => observer.disconnect();
   }, [onLanding]);
 
-  const href = (id) => (onLanding ? `#${id}` : `/#${id}`);
+  // Carry ?view= along so moving between pages never drops the visitor's choice.
+  const href = (id) => (onLanding ? `#${id}` : `/${search}#${id}`);
 
   return (
     <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="nav__inner shell">
-        <Link to="/" className="nav__brand" onClick={() => setOpen(false)}>
+        <Link to={`/${search}`} className="nav__brand" onClick={() => setOpen(false)}>
           <span className="nav__mark">{profile.initials}</span>
           <span className="nav__handle mono">{profile.handle}</span>
         </Link>
@@ -76,7 +77,7 @@ function Nav() {
               {label}
             </a>
           ))}
-          <Link to="/resume" className="nav__link mono" onClick={() => setOpen(false)}>
+          <Link to={`/resume${search}`} className="nav__link mono" onClick={() => setOpen(false)}>
             resume
           </Link>
           <a

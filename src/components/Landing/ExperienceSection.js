@@ -1,14 +1,22 @@
 import React, { useState } from "react";
-import { experience, leadership } from "../../data/content";
+import { experience as allExperience, leadership as allLeadership, pick } from "../../data/content";
+import useView from "./useView";
 import aiotLab from "../../Assets/aiot_lab.webp";
 import codepathLogo from "../../Assets/codepath_logo.webp";
 import iotExternship from "../../Assets/iot_externship.webp";
+import ai4allLogo from "../../Assets/ai4all_logo.webp";
+import cyberforceLogo from "../../Assets/cyberforce_logo.webp";
+import colorstackLogo from "../../Assets/colorstack_logo.webp";
 import useReveal from "./useReveal";
 
 const LOGOS = {
   "aiot_lab.png": aiotLab,
   "codepath_logo.png": codepathLogo,
   "iot_externship.png": iotExternship,
+  // Official marks from ai-4-all.org, cyberforce.energy.gov and colorstack.org.
+  ai4all_logo: ai4allLogo,
+  cyberforce_logo: cyberforceLogo,
+  colorstack_logo: colorstackLogo,
 };
 
 // Initials for entries with no logo art, so the row never renders a broken image.
@@ -74,7 +82,10 @@ function ExperienceRow({ item, open, onToggle }) {
 }
 
 function ExperienceSection() {
-  const [openId, setOpenId] = useState(experience[0].role);
+  const { view } = useView();
+  const experience = pick(allExperience, view.experience);
+  const leadership = pick(allLeadership, view.leadership);
+  const [openId, setOpenId] = useState(experience[0].id);
   const [ref, cls] = useReveal();
 
   return (
@@ -90,10 +101,10 @@ function ExperienceSection() {
             <div className="xp__list">
               {list.map((item) => (
                 <ExperienceRow
-                  key={item.role}
+                  key={item.id}
                   item={item}
-                  open={openId === item.role}
-                  onToggle={() => setOpenId(openId === item.role ? null : item.role)}
+                  open={openId === item.id}
+                  onToggle={() => setOpenId(openId === item.id ? null : item.id)}
                 />
               ))}
             </div>
