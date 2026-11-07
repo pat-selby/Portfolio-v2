@@ -21,7 +21,7 @@ import {
 } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { ExperienceChat } from "@/components/experience-chat";
-import { SocialLinks, Typewriter } from "@/components/socials";
+import { FloatingSocials, SocialLinks, Typewriter } from "@/components/socials";
 import { DriftCard, HorizontalScroll, Marquee, SmoothScroll, TiltCard, ZoomIn } from "@/components/scroll-fx";
 
 const LENS_KEYS: LensKey[] = ["general", "cyber", "swe"];
@@ -67,6 +67,7 @@ export function Portfolio() {
     <MotionConfig reducedMotion="user">
       <SmoothScroll>
       <Nav resume={lens.resume} />
+      <FloatingSocials />
 
       <main id="top" className="overflow-x-clip">
         {/* ---------------------------------------------------- Hero */}
@@ -276,8 +277,8 @@ export function Portfolio() {
               </p>
               <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                 Lately that means developer tools and small fixes for my own life as a student. I&apos;m a
-                cybersecurity sophomore at {profile.school}, minoring in Computer Information Systems, and I was
-                born and raised in Ghana.
+                cybersecurity student at {profile.school}, I love software engineering and cybersecurity, and I
+                was born and raised in Ghana.
               </p>
               <dl className="mt-8 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl bg-muted p-4">
@@ -285,8 +286,8 @@ export function Portfolio() {
                   <dd className="mt-1 font-medium">{profile.degree}</dd>
                 </div>
                 <div className="rounded-2xl bg-muted p-4">
-                  <dt className="text-sm text-muted-foreground">Graduation</dt>
-                  <dd className="mt-1 font-medium">{profile.grad}</dd>
+                  <dt className="text-sm text-muted-foreground">What I love</dt>
+                  <dd className="mt-1 font-medium">Software engineering and cybersecurity</dd>
                 </div>
               </dl>
             </Reveal>

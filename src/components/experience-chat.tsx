@@ -218,7 +218,7 @@ export function ExperienceChat({ roles, header }: { roles: Role[]; header: React
 
   return (
     <div ref={sectionRef} className="relative" style={{ height: `${items.length * VH_PER_MESSAGE + 100}vh` }}>
-      <div className="sticky top-14 mx-auto grid h-[calc(100dvh-3.5rem)] max-w-6xl gap-10 px-5 py-6 lg:grid-cols-[300px_1fr]">
+      <div className="sticky top-14 mx-auto grid h-[calc(100dvh-3.5rem)] max-w-6xl gap-10 px-5 pt-6 pb-20 lg:pb-6 lg:grid-cols-[300px_1fr]">
         <div className="hidden self-center lg:block">
           {header}
           {/* How far through the conversation you are. */}
