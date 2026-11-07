@@ -10,8 +10,7 @@ export const profile = {
   github: "https://github.com/pat-selby",
   linkedin: "https://www.linkedin.com/in/pat-selby",
   x: "https://x.com/selby_patrick05",
-  // Instagram: waiting on Patrick's handle. Leave null until he sends it.
-  instagram: null as string | null,
+  instagram: "https://www.instagram.com/selbyte.pat/" as string | null,
   school: "Grambling State University",
   degree: "B.S. Cybersecurity, Minor in Computer Information Systems",
   gpa: "3.88 / 4.00",
