@@ -110,15 +110,15 @@ export function HorizontalScroll({
 
   return (
     <section ref={sectionRef} className={cn("relative", className)} style={{ height: `calc(100dvh + ${travel}px)` }}>
-      <div className="sticky top-0 flex h-dvh flex-col justify-center overflow-hidden pt-14">
+      <div className="sticky top-0 flex h-dvh flex-col justify-start overflow-hidden pt-20 pb-6 [@media(max-height:760px)]:pt-16">
         <div className="mx-auto w-full max-w-6xl px-5">{header}</div>
         <TrackContext.Provider value={{ progress: smooth, count }}>
-        <motion.div ref={trackRef} style={{ x }} className="mt-8 flex w-max items-center gap-6 [perspective:1400px] pr-[8vw] pl-[max(20px,calc((100vw-72rem)/2+20px))]">
+        <motion.div ref={trackRef} style={{ x }} className="mt-6 flex w-max items-center gap-6 [@media(max-height:760px)]:mt-4 [perspective:1400px] pr-[8vw] pl-[max(20px,calc((100vw-72rem)/2+20px))]">
           {children}
         </motion.div>
         </TrackContext.Provider>
         {/* Progress rail: how far through the sideways tour you are. */}
-        <div className="mx-auto mt-8 h-1 w-full max-w-6xl px-5">
+        <div className="mx-auto mt-auto h-1 w-full max-w-6xl px-5">
           <div className="h-full overflow-hidden rounded-full bg-black/5">
             <motion.div style={{ scaleX: smooth }} className="h-full origin-left rounded-full bg-primary" />
           </div>

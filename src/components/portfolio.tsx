@@ -393,11 +393,11 @@ function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
         wide && "md:grid md:grid-cols-[1.25fr_1fr]"
       )}
     >
-      <div className={cn("h-[min(30vh,240px)] overflow-hidden", wide && "md:h-[min(46vh,400px)]")}>{media}</div>
+      <div className={cn("h-[min(26vh,230px)] overflow-hidden", wide && "md:h-[min(40vh,380px)]")}>{media}</div>
       <div className="flex flex-1 flex-col p-6 md:p-7">
         <div className="text-[13px] font-medium text-muted-foreground">{project.stack}</div>
         <h3 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">{project.title}</h3>
-        <p className="mt-3 leading-relaxed">{project.summary}</p>
+        <p className="mt-3 leading-relaxed [@media(max-height:700px)]:hidden">{project.summary}</p>
         <p className="mt-3 font-medium leading-relaxed">{project.result}</p>
         {project.href && (
           <a
