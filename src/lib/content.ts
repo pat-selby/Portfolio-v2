@@ -14,7 +14,6 @@ export const profile = {
   school: "Grambling State University",
   degree: "B.S. Cybersecurity, Minor in Computer Information Systems",
   gpa: "3.88 / 4.00",
-  grad: "Expected May 2028",
 };
 
 export const lenses: Record<
