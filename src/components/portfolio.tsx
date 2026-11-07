@@ -21,6 +21,7 @@ import {
   type Role,
 } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { DriftCard, FlyIn, HorizontalScroll, Marquee, SmoothScroll, TiltCard, ZoomIn } from "@/components/scroll-fx";
 
 const LENS_KEYS: LensKey[] = ["general", "cyber", "swe"];
 const spring = { type: "spring" as const, stiffness: 120, damping: 20 };
@@ -63,9 +64,10 @@ export function Portfolio() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <SmoothScroll>
       <Nav resume={lens.resume} />
 
-      <main id="top">
+      <main id="top" className="overflow-x-clip">
         {/* ---------------------------------------------------- Hero */}
         <section className="relative overflow-hidden">
           {/* Soft Stripe-style color wash behind the hero. */}
@@ -127,8 +129,8 @@ export function Portfolio() {
           </div>
 
           {/* Product-shot frame: the real UniQR launch video. */}
-          <Reveal className="relative mx-auto max-w-5xl px-5 pb-20">
-            <div className="overflow-hidden rounded-[28px] border border-border bg-[#eff0f3] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
+          <div className="relative mx-auto max-w-5xl px-5 pb-20">
+            <ZoomIn className="border border-border bg-[#eff0f3] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
               <video
                 src="/assets/uniqr-demo.mp4"
                 poster="/assets/uniqr.webp"
@@ -141,97 +143,109 @@ export function Portfolio() {
                 preload="metadata"
                 aria-label="UniQR launch video"
               />
-            </div>
+            </ZoomIn>
             <p className="mt-4 text-center text-sm text-muted-foreground">
               UniQR reads QR codes on your screen. 28-second launch video.
             </p>
-          </Reveal>
+          </div>
         </section>
 
         {/* --------------------------------------------------- Stats */}
-        <section className="border-y border-border bg-white">
-          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-5 py-12 md:grid-cols-5">
-            {receipts.map((r, i) => (
-              <Reveal key={r.value} delay={i * 0.04}>
-                <div className="text-2xl font-semibold tracking-tight md:text-3xl">{r.value}</div>
+        <section aria-label="Results" className="border-y border-border bg-white py-8">
+          <Marquee>
+            {receipts.map((r) => (
+              <div key={r.value} className="flex w-[300px] shrink-0 flex-col border-r border-border px-8">
+                <div className="text-3xl font-semibold tracking-tight text-primary">{r.value}</div>
                 <div className="mt-1.5 text-sm leading-snug text-muted-foreground">{r.label}</div>
-              </Reveal>
+              </div>
             ))}
-          </div>
+          </Marquee>
         </section>
 
         {/* ------------------------------------------------ Projects */}
-        <section id="projects" className="mx-auto max-w-6xl px-5 py-24">
-          <Reveal>
-            <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">Selected work.</h2>
-            <p className="mt-3 max-w-xl text-lg text-muted-foreground">
-              Each project, with the result it measured.
-            </p>
-          </Reveal>
-          <div key={lensKey} className="mt-12 grid gap-6 md:grid-cols-2">
+        <div id="projects">
+          <HorizontalScroll
+            key={lensKey}
+            count={shown.length}
+            header={
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">Selected work.</h2>
+                  <p className="mt-3 max-w-xl text-lg text-muted-foreground">Each project, with the result it measured.</p>
+                </div>
+                <span className="text-sm text-muted-foreground">{shown.length} projects · keep scrolling</span>
+              </div>
+            }
+          >
             {shown.map((p, i) => (
-              <Reveal key={p.id} className={i === 0 ? "md:col-span-2" : undefined} delay={(i % 2) * 0.05}>
-                <ProjectCard project={p} wide={i === 0} />
-              </Reveal>
+              <div
+                key={p.id}
+                className={cn("shrink-0 snap-start", i === 0 ? "w-[min(88vw,980px)]" : "w-[min(80vw,520px)]")}
+              >
+                <DriftCard index={i}>
+                  <TiltCard>
+                    <ProjectCard project={p} wide={i === 0} />
+                  </TiltCard>
+                </DriftCard>
+              </div>
             ))}
-          </div>
-        </section>
+          </HorizontalScroll>
+        </div>
 
         {/* ---------------------------------------------- Experience */}
         <section id="experience" className="bg-white py-24">
-          <div className="mx-auto max-w-4xl px-5">
-            <Reveal>
+          <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[280px_1fr]">
+            <div className="self-start lg:sticky lg:top-28">
               <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">Experience.</h2>
-            </Reveal>
-            <div key={lensKey} className="mt-10">
+              <p className="mt-3 text-muted-foreground">Fellowships, research and competition work.</p>
+            </div>
+            <div key={lensKey}>
               {pick(work, lens.work).map((r, i) => (
-                <Reveal key={r.id}>
+                <FlyIn key={r.id} from={i % 2 === 0 ? "left" : "right"}>
                   {i > 0 && <Separator className="my-8" />}
                   <RoleBlock role={r} />
-                </Reveal>
+                </FlyIn>
               ))}
             </div>
           </div>
         </section>
 
         {/* ---------------------------------- Leadership and skills */}
-        <section className="mx-auto grid max-w-6xl gap-6 px-5 py-24 md:grid-cols-5">
-          <Reveal className="md:col-span-3">
-            <div className="h-full rounded-[28px] border border-border bg-white p-8">
-              <h2 className="text-2xl font-semibold tracking-tight">Leadership</h2>
-              <ul key={lensKey} className="mt-6 space-y-6">
-                {pick(leadership, lens.leadership).map((r) => (
-                  <li key={r.id}>
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <span className="font-semibold">{r.org}</span>
-                      <span className="text-sm text-muted-foreground">{r.dates}</span>
-                    </div>
-                    <div className="text-sm text-muted-foreground">{r.role}</div>
-                    <p className="mt-2 leading-relaxed">{r.points[0]}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-          <Reveal className="md:col-span-2" delay={0.05}>
-            <div className="h-full rounded-[28px] bg-muted p-8">
-              <h2 className="text-2xl font-semibold tracking-tight">Skills</h2>
-              <div key={lensKey} className="mt-6 space-y-6">
-                {lens.skills.map((g) => (
-                  <div key={g.group}>
-                    <div className="text-sm font-medium text-muted-foreground">{g.group}</div>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {g.items.map((s) => (
-                        <Badge key={s} variant="outline" className="h-7 rounded-full bg-white px-3 text-[13px] font-normal">
-                          {s}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+        <section className="py-24">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-4 px-5">
+            <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">Beyond the code.</h2>
+            <span className="text-sm text-muted-foreground">Swipe or scroll sideways</span>
+          </div>
+          <div
+            key={lensKey}
+            className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 pl-[max(20px,calc((100vw-72rem)/2+20px))] pr-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {pick(leadership, lens.leadership).map((r) => (
+              <TiltCard key={r.id} className="w-[min(82vw,380px)] shrink-0 snap-start">
+              <article className="h-full rounded-[28px] border border-border bg-white p-7">
+                <div className="text-sm text-muted-foreground">Leadership · {r.dates}</div>
+                <h3 className="mt-2 text-xl font-semibold tracking-tight">{r.org}</h3>
+                <div className="text-sm text-muted-foreground">{r.role}</div>
+                <p className="mt-4 leading-relaxed">{r.points[0]}</p>
+              </article>
+              </TiltCard>
+            ))}
+            {lens.skills.map((g) => (
+              <TiltCard key={g.group} className="w-[min(82vw,340px)] shrink-0 snap-start">
+              <article className="h-full rounded-[28px] bg-muted p-7">
+                <div className="text-sm text-muted-foreground">Skills</div>
+                <h3 className="mt-2 text-xl font-semibold tracking-tight">{g.group}</h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {g.items.map((sk) => (
+                    <Badge key={sk} variant="outline" className="h-7 rounded-full bg-white px-3 text-[13px] font-normal">
+                      {sk}
+                    </Badge>
+                  ))}
+                </div>
+              </article>
+              </TiltCard>
+            ))}
+          </div>
         </section>
 
         {/* --------------------------------------------------- About */}
@@ -306,6 +320,7 @@ export function Portfolio() {
           </a>
         </div>
       </footer>
+      </SmoothScroll>
     </MotionConfig>
   );
 }
@@ -359,7 +374,12 @@ function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
     />
   ) : project.image ? (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={project.image} alt={`${project.title} screenshot`} className="h-full w-full object-cover object-top" loading="lazy" />
+    <img
+      src={project.image}
+      alt={`${project.title} screenshot`}
+      className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover/tilt:scale-[1.06]"
+      loading="lazy"
+    />
   ) : (
     <div className="flex h-full w-full items-end bg-[linear-gradient(135deg,#e8f1ff_0%,#f5f5f7_60%)] p-8">
       <span className="text-4xl font-semibold tracking-tighter text-[#0071e3]/80 md:text-5xl">{project.title}</span>
@@ -373,8 +393,8 @@ function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
         wide && "md:grid md:grid-cols-[1.25fr_1fr]"
       )}
     >
-      <div className={cn("aspect-[16/10] overflow-hidden", wide && "md:aspect-auto md:min-h-[340px]")}>{media}</div>
-      <div className="flex flex-1 flex-col p-7 md:p-8">
+      <div className={cn("h-[min(30vh,240px)] overflow-hidden", wide && "md:h-[min(46vh,400px)]")}>{media}</div>
+      <div className="flex flex-1 flex-col p-6 md:p-7">
         <div className="text-[13px] font-medium text-muted-foreground">{project.stack}</div>
         <h3 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">{project.title}</h3>
         <p className="mt-3 leading-relaxed">{project.summary}</p>
