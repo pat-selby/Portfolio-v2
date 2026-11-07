@@ -30,8 +30,8 @@ export const lenses: Record<
 > = {
   general: {
     label: "General",
-    headline: "I build tools, then measure them.",
-    sub: "Cybersecurity sophomore at Grambling State. I care about speed, honest numbers, and the groups I help run.",
+    headline: "I fix the pain points I live with.",
+    sub: "I love coding, mostly when it solves something that matters to me and the people around me. Lately that means dev tools for my life as a student.",
     resume: "/resume/patrick-selby-resume-swe.pdf",
     projects: ["uniqr", "packetshield", "scansafe", "kairo", "cloudcampus", "risk", "linux-ir"],
     work: ["ai4all", "codepath-swe", "aiot", "hydroficient", "cyberforce"],
@@ -44,8 +44,8 @@ export const lenses: Record<
   },
   cyber: {
     label: "Cyber",
-    headline: "I investigate, harden, and measure.",
-    sub: "Detection work, IoT security, and phishing-risk research, written up so the next analyst can repeat it.",
+    headline: "I fix security pain points, then test them.",
+    sub: "Phishing hidden in QR codes, replayed device messages, noisy Windows logs. I build the fix, then check how well it holds up.",
     resume: "/resume/patrick-selby-resume-cyber.pdf",
     projects: ["scansafe", "cloudcampus", "linux-ir", "risk"],
     work: ["codepath-cyber", "hydroficient", "cyberforce", "aiot"],
@@ -58,8 +58,8 @@ export const lenses: Record<
   },
   swe: {
     label: "SWE",
-    headline: "I build fast, tested tools.",
-    sub: "Python, C++20, and CUDA projects with real benchmarks, CI, and releases people can download.",
+    headline: "I love coding. Fast tools, mostly.",
+    sub: "Python, C++20, and CUDA projects with real benchmarks behind them, plus releases you can download.",
     resume: "/resume/patrick-selby-resume-swe.pdf",
     projects: ["uniqr", "packetshield", "kairo"],
     work: ["codepath-swe", "ai4all"],
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     id: "uniqr",
     title: "UniQR",
     stack: "Python · C++20 · OpenCV · pytest",
-    summary: "Reads QR codes on my screen so I never reach for my phone. Ported from Python and OpenCV to C++20.",
+    summary: "I kept asking: if my phone can scan a QR code, why can't my laptop? So I built UniQR. Then I rewrote it in C++20 without OpenCV.",
     result: "96.8% of 1,064 damaged codes across 7 formats, zero wrong decodes. 20 releases with CI.",
     video: "/assets/uniqr-demo.mp4",
     image: "/assets/uniqr.webp",
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     id: "packetshield",
     title: "PacketShield",
     stack: "C++20 · CUDA · CMake · CTest",
-    summary: "Asks whether a GPU helps packet inspection, with signature-matching kernels over 100K-packet batches.",
+    summary: "I wanted to know if a GPU really helps packet inspection. So I wrote CUDA signature-matching kernels and ran them against a CPU baseline.",
     result: "429.5 to 32.1 ms per batch on an NVIDIA T4, 100% CPU/GPU verdict agreement on the synthetic batch.",
     href: "https://github.com/pat-selby/packetshield-agentic",
     hrefLabel: "Code",
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     id: "scansafe",
     title: "ScanSafe",
     stack: "Python · Flask · Kotlin",
-    summary: "Scores a URL for phishing risk without sending it to an outside reputation service. 22 rules, under 5 ms.",
+    summary: "QR codes can hide phishing links. ScanSafe scores a URL without sending it to an outside service: 22 rules, under 5 ms.",
     result: "85% commodity phishing, 30% sophisticated attacks, about 8% false positives on 28 URLs.",
     image: "/assets/scansafe_app.webp",
     href: "https://github.com/pat-selby/scan-safe",
@@ -128,7 +128,7 @@ export const projects: Project[] = [
     id: "kairo",
     title: "Kairo",
     stack: "Team project · React fixes",
-    summary: "A team workspace for planning and running research experiments. My part: local React fixes in three areas and a manual-plan demo.",
+    summary: "A team hackathon build: a workspace for planning and running research experiments. I fixed React issues in three areas and prepared the manual-plan demo.",
     result: "2nd place at Grambling's Hacktoberfest Hack Day with a 4-person team.",
     // Team demo video (69 s, 28 MB): loads only when someone presses play.
     video: "/assets/kairo-demo.mp4",
@@ -140,7 +140,7 @@ export const projects: Project[] = [
     id: "cloudcampus",
     title: "CloudCampus",
     stack: "Python · AWS S3 · Lambda · IAM",
-    summary: "An S3 upload triggers a Lambda that extracts a document's text, under a least-privilege IAM role.",
+    summary: "Student paperwork, without the retyping. An S3 upload triggers a Lambda that pulls out the text, under an IAM role that touches only what it needs.",
     result: "50+ PDFs processed. A 3-hour manual workflow now takes under 30 minutes.",
     href: "https://github.com/pat-selby/cloudcampus-serverless-document-pipeline",
     hrefLabel: "Code",
@@ -301,3 +301,11 @@ export const leadership: Role[] = [
 
 export const pick = <T extends { id: string }>(list: T[], ids: string[]) =>
   ids.map((id) => list.find((x) => x.id === id)).filter((x): x is T => Boolean(x));
+
+// The experience "chat": a visitor asks, Patrick answers in his own words.
+export const chat = {
+  ask: "So what have you been working on?",
+  intro: "Happy you asked. Here is what I have been up to.",
+  closeAsk: "Nice. How do I reach you?",
+  closeReply: "Email works best:",
+};

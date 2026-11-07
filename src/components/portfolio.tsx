@@ -6,7 +6,6 @@ import { ArrowRight, ArrowUpRight, Download, Mail } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   leadership,
@@ -18,10 +17,10 @@ import {
   work,
   type LensKey,
   type Project,
-  type Role,
 } from "@/lib/content";
 import { cn } from "@/lib/utils";
-import { DriftCard, FlyIn, HorizontalScroll, Marquee, SmoothScroll, TiltCard, ZoomIn } from "@/components/scroll-fx";
+import { ExperienceChat } from "@/components/experience-chat";
+import { DriftCard, HorizontalScroll, Marquee, SmoothScroll, TiltCard, ZoomIn } from "@/components/scroll-fx";
 
 const LENS_KEYS: LensKey[] = ["general", "cyber", "swe"];
 const spring = { type: "spring" as const, stiffness: 120, damping: 20 };
@@ -194,19 +193,12 @@ export function Portfolio() {
 
         {/* ---------------------------------------------- Experience */}
         <section id="experience" className="bg-white py-24">
-          <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[280px_1fr]">
+          <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[300px_1fr]">
             <div className="self-start lg:sticky lg:top-28">
               <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">Experience.</h2>
-              <p className="mt-3 text-muted-foreground">Fellowships, research and competition work.</p>
+              <p className="mt-3 text-muted-foreground">Ask me what I have been up to. Keep scrolling and I will tell you.</p>
             </div>
-            <div key={lensKey}>
-              {pick(work, lens.work).map((r, i) => (
-                <FlyIn key={r.id} from={i % 2 === 0 ? "left" : "right"}>
-                  {i > 0 && <Separator className="my-8" />}
-                  <RoleBlock role={r} />
-                </FlyIn>
-              ))}
-            </div>
+            <ExperienceChat key={lensKey} roles={pick(work, lens.work)} />
           </div>
         </section>
 
@@ -265,12 +257,13 @@ export function Portfolio() {
             <Reveal delay={0.05}>
               <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">About me.</h2>
               <p className="mt-6 text-lg leading-relaxed">
-                I&apos;m a cybersecurity sophomore at {profile.school}, minoring in Computer Information
-                Systems, with a {profile.gpa} GPA. I was born and raised in Ghana.
+                I love coding, mostly when it fixes something that gets in my way, or in the way of the people
+                around me.
               </p>
               <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                I like tools that show their numbers. When something works, I want to know how well, and where
-                it stops working.
+                Lately that means developer tools and small fixes for my own life as a student. I&apos;m a
+                cybersecurity sophomore at {profile.school}, minoring in Computer Information Systems, and I was
+                born and raised in Ghana.
               </p>
               <dl className="mt-8 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl bg-muted p-4">
@@ -412,35 +405,5 @@ function ProjectCard({ project, wide }: { project: Project; wide: boolean }) {
         )}
       </div>
     </article>
-  );
-}
-
-function RoleBlock({ role }: { role: Role }) {
-  return (
-    <div className="grid gap-4 sm:grid-cols-[56px_1fr]">
-      {role.logo ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={role.logo} alt="" width={56} height={56} className="size-14 rounded-2xl border border-border bg-white object-contain p-1" />
-      ) : (
-        <div className="grid size-14 place-items-center rounded-2xl bg-muted text-lg font-semibold text-muted-foreground">
-          {role.org.slice(0, 1)}
-        </div>
-      )}
-      <div>
-        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h3 className="text-xl font-semibold tracking-tight">{role.org}</h3>
-          <span className="text-sm text-muted-foreground">{role.dates}</span>
-        </div>
-        <div className="text-muted-foreground">{role.role}</div>
-        <ul className="mt-4 space-y-2.5 leading-relaxed">
-          {role.points.map((pt) => (
-            <li key={pt} className="flex gap-3">
-              <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary/70" />
-              <span>{pt}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
   );
 }
