@@ -138,3 +138,13 @@ html {
     scroll-behavior: auto;
   }
 }
+
+/* Endless sideways ticker for the results strip (two copies, shift by one). */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
