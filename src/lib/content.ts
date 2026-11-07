@@ -9,6 +9,9 @@ export const profile = {
   email: "patrickselby256@gmail.com",
   github: "https://github.com/pat-selby",
   linkedin: "https://www.linkedin.com/in/pat-selby",
+  x: "https://x.com/selby_patrick05",
+  // Instagram: waiting on Patrick's handle. Leave null until he sends it.
+  instagram: null as string | null,
   school: "Grambling State University",
   degree: "B.S. Cybersecurity, Minor in Computer Information Systems",
   gpa: "3.88 / 4.00",
@@ -308,4 +311,13 @@ export const chat = {
   intro: "Happy you asked. Here is what I have been up to.",
   closeAsk: "Nice. How do I reach you?",
   closeReply: "Email works best:",
+  // Visitor reactions between roles. Reactions only, no claims about Patrick.
+  reactions: ["Nice. What else?", "Okay, I am following.", "That sounds fun. Next?", "Wow. Keep going.", "Love that."],
+};
+
+// The hero's short intro: what Patrick wants and what he has done so far.
+export const intro = {
+  greeting: "Hey, I'm Patrick Selby.",
+  lookingFor: "Summer 2027 internships in cybersecurity and software.",
+  soFar: "UniQR, PacketShield, ScanSafe, and a team 2nd place at Grambling's Hack Day.",
 };

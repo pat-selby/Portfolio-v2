@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
+  intro,
   leadership,
   lenses,
   pick,
@@ -20,6 +21,7 @@ import {
 } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { ExperienceChat } from "@/components/experience-chat";
+import { SocialLinks, Typewriter } from "@/components/socials";
 import { DriftCard, HorizontalScroll, Marquee, SmoothScroll, TiltCard, ZoomIn } from "@/components/scroll-fx";
 
 const LENS_KEYS: LensKey[] = ["general", "cyber", "swe"];
@@ -80,22 +82,31 @@ export function Portfolio() {
               Open to summer 2027 internships
             </Badge>
 
+            <h1 className="mx-auto mt-6 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tighter text-balance md:text-7xl">
+              <Typewriter text={intro.greeting} />
+            </h1>
+
             <AnimatePresence mode="wait" initial={false}>
-              <motion.h1
+              <motion.p
                 key={lensKey}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.28 }}
-                className="mx-auto mt-6 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tighter text-balance md:text-7xl"
+                initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
+                transition={{ duration: 0.32 }}
+                className="mx-auto mt-5 max-w-3xl text-2xl font-medium tracking-tight text-balance md:text-4xl"
               >
                 {lens.headline}
-              </motion.h1>
+              </motion.p>
             </AnimatePresence>
 
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              {lens.sub}
-            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">{lens.sub}</p>
+
+            <dl className="mx-auto mt-6 grid max-w-2xl gap-2 text-left text-[15px] sm:grid-cols-[auto_1fr] sm:gap-x-4">
+              <dt className="font-medium text-primary">Looking for</dt>
+              <dd className="text-muted-foreground">{intro.lookingFor}</dd>
+              <dt className="font-medium text-primary">So far</dt>
+              <dd className="text-muted-foreground">{intro.soFar}</dd>
+            </dl>
 
             <div className="mt-8 flex flex-col items-center gap-5">
               <Tabs value={lensKey} onValueChange={(v) => choose(v as LensKey)}>
@@ -192,14 +203,17 @@ export function Portfolio() {
         </div>
 
         {/* ---------------------------------------------- Experience */}
-        <section id="experience" className="bg-white py-24">
-          <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[300px_1fr]">
-            <div className="self-start lg:sticky lg:top-28">
-              <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">Experience.</h2>
-              <p className="mt-3 text-muted-foreground">Ask me what I have been up to. Keep scrolling and I will tell you.</p>
-            </div>
-            <ExperienceChat key={lensKey} roles={pick(work, lens.work)} />
-          </div>
+        <section id="experience" className="bg-white">
+          <ExperienceChat
+            key={lensKey}
+            roles={pick(work, lens.work)}
+            header={
+              <>
+                <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">Experience.</h2>
+                <p className="mt-3 text-muted-foreground">Ask me what I have been up to. Keep scrolling and I will tell you.</p>
+              </>
+            }
+          />
         </section>
 
         {/* ---------------------------------- Leadership and skills */}
@@ -280,34 +294,35 @@ export function Portfolio() {
         </section>
 
         {/* ------------------------------------------------- Contact */}
-        <section id="contact" className="mx-auto max-w-5xl px-5 py-28 text-center">
-          <Reveal>
-            <h2 className="text-5xl font-semibold tracking-tighter text-balance md:text-6xl">
-              Hiring for summer 2027?
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">Cybersecurity and software internships.</p>
-            <a
-              href={`mailto:${profile.email}`}
-              className="group mt-8 inline-flex items-center gap-2 text-2xl font-medium text-primary md:text-3xl"
-            >
-              {profile.email}
-              <ArrowRight className="size-6 transition-transform group-hover:translate-x-1" />
-            </a>
-            <div className="mt-8 flex justify-center gap-6 text-[15px]">
-              <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">
-                GitHub
+        <section id="contact" className="relative overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[420px] bg-[radial-gradient(60%_60%_at_50%_100%,rgba(0,113,227,0.12),transparent_70%)]"
+          />
+          <div className="relative mx-auto max-w-5xl px-5 py-28 text-center">
+            <Reveal>
+              <p className="text-lg text-muted-foreground">You made it to the end.</p>
+              <h2 className="mt-3 text-5xl font-semibold tracking-tighter text-balance md:text-7xl">Thanks for stopping by.</h2>
+              <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
+                Hiring for summer 2027, building something, or just want to say hi? Reach out.
+              </p>
+              <a
+                href={`mailto:${profile.email}`}
+                className="group mt-8 inline-flex items-center gap-2 text-2xl font-medium text-primary md:text-3xl"
+              >
+                {profile.email}
+                <ArrowRight className="size-6 transition-transform group-hover:translate-x-1" />
               </a>
-              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">
-                LinkedIn
-              </a>
-            </div>
-          </Reveal>
+              <SocialLinks className="mt-10" />
+            </Reveal>
+          </div>
         </section>
       </main>
 
       <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-3 px-5 py-8 text-sm text-muted-foreground">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-8 text-sm text-muted-foreground">
           <span>Patrick Selby · Grambling, LA</span>
+          <SocialLinks size="sm" />
           <a href="#top" className="hover:text-foreground">
             Back to top
           </a>
